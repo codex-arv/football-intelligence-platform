@@ -6,14 +6,14 @@ from pathlib import Path
 router = APIRouter(prefix="/api/v1")
 
 # Path to local JSON files
-CLUB_DATA_DIR = Path(__file__).resolve().parent.parent / "lovable website" / "src" / "data" / "clubs"
+CLUB_DATA_DIR = Path(__file__).resolve().parent.parent / "lovable_website" / "src" / "data" / "clubs"
 
 def load_local_club_file(club: str):
     """
     Loads a local JSON file matching the club name.
     Example: "Arsenal" → arsenal.json
     """
-    filename = club.lower().replace(" ", "_").replace("&", "and") + ".json"
+    filename = club.lower().replace(" ", "").replace("and", "") + ".json"
     filepath = CLUB_DATA_DIR / filename
 
     if not filepath.exists():
