@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+env/
+projectvenv/
+.venv/
+
+# Data & models
+*.pkl
+*.joblib
+data/
+data_artifacts/
+
+# OS junk
+.DS_Store
+Thumbs.db

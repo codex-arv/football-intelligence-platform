@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Premier League inspired palette */
+    --glowing-magenta: 323 92% 26%;
+    --vibrant-blue: 224 75% 48%;
+    --vibrant-green: 88 78% 33%;
+    --light-green: 88 45% 63%;
+    --snow-white: 0 0% 100%;
+    --deep-purple: 277 100% 21%;
+    --deep-violet: 270 100% 30%;
+    --dark-purple: 280 60% 15%;
+    --magenta: 287 100% 50%;
+    --electric-blue: 186 100% 50%;
+    --electric-cyan: 190 100% 45%;
+    --red-magenta: 340 90% 40%;
+    --strong-red: 0 80% 35%;
+    --dark-solid-red: 0 100% 25%;
+    --dark-sapphire: 210 100% 25%;
+    --rose-red: 350 85% 45%;
+    --sapphire-blue: 210 100% 40%;
+    --royal-blue: 225 73% 35%;
+    --pitch-green: 120 45% 25%;
+    --dark-bg: 277 50% 8%;
+    --golden: 53 100% 42%;
+    --black: 0 0% 0%;
+
+    --cloud-blue: 226 78% 57%;
+    
+    --background: var(--dark-bg);
+    --foreground: 0 0% 100%;
+
+    --card: 277 40% 15%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 277 40% 12%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: var(--magenta);
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: var(--light-green);
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 277 30% 25%;
+    --muted-foreground: 277 10% 70%;
+
+    --accent: var(--electric-blue);
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 277 30% 25%;
+    --input: 277 30% 25%;
+    --ring: var(--magenta);
+
+    --radius: 1rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0, 0%, 0%), hsl(0, 0%, 0%), hsl(0, 0%, 0%));
+
+    /* background gradient */
+    --gradient-sections: linear-gradient(135deg, hsla(245, 93%, 27%, 0.5), hsla(356, 76%, 29%, 0.15), hsla(240, 96%, 20%, 0.15), hsla(138, 100%, 11%, 0.35), hsla(166, 94%, 13%, 0.5));    
+    
+    /* stadium photo gradient */
+    --gradient-hero: linear-gradient(135deg, rgba(4, 2, 77, 0.75), rgba(0, 0, 0, 0.65), rgba(35, 3, 3, 0.7));
+    
+    --gradient-text: linear-gradient(135deg, hsl(var(--vibrant-green)), hsl(var(--snow-white)), hsl(var(--light-green)), hsl(var(--snow-white)), hsl(var(--vibrant-green)));
+    --gradient-flashcard-text: linear-gradient(135deg, hsl(var(--snow-white)), hsl(var(--snow-white)), hsl(var(--snow-white)));
+    
+    /* Glass effect */
+    --glass-bg: hsl(var(--deep-purple) / 0.1);
+    --glass-border: hsl(var(--magenta) / 0.3);
+    
+    /* Shadows & Glow */
+    --glow-deep-violet: 0 0 40px hsl(var(--deep-violet) / 0.8), 0 0 20px hsl(var(--deep-violet) / 0.4);
+    --glow-dark-purple: 0 0 40px hsl(var(--dark-purple) / 0.6);
+    --glow-cyan: 0 0 40px hsl(var(--electric-cyan) / 0.8), 0 0 20px hsl(var(--electric-cyan) / 0.4);
+    --glow-red-magenta: 0 0 40px hsl(var(--red-magenta) / 0.8), 0 0 20px hsl(var(--red-magenta) / 0.4);
+    --glow-magenta: 0 0 40px hsl(var(--magenta) / 0.5);
+    --glow-blue: 0 0 40px hsl(var(--electric-blue) / 0.5);
+    --shadow-elevated: 0 20px 60px hsl(var(--deep-purple) / 0.6);
+  }
+}
+
+@layer utilities {
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 0.3;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes float-up {
+    0% {
+      transform: translateY(100vh) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    90% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: translateY(-100vh) translateX(50px);
+      opacity: 0;
+    }
+  }
+
+  @keyframes spotlight-sweep {
+    0% {
+      transform: translateX(-100%) rotate(-45deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.2;
+    }
+    90% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: translateX(200%) rotate(-45deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes icon-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+  @keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); } /* slightly smaller bounce */
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.15); }
+}
+
+.section-gradient {
+  background: linear-gradient(
+    135deg,
+    hsla(341, 97%, 13%, 0.566),
+    hsla(356, 76%, 29%, 0.521),
+    hsla(239, 92%, 28%, 0.5),
+    hsla(0, 0%, 0%, 0.15),
+    hsla(127, 100%, 28%, 0.5),
+    hsla(166, 91%, 9%, 0.502),
+    hsla(243, 90%, 20%, 0.484),
+    hsla(352, 86%, 22%, 0.479),
+    hsla(242, 90%, 24%, 0.514),
+    hsla(340, 88%, 30%, 0.5)
+  );
+  background-size: 200% 200%;
+  animation: gradient-move 10s ease-in-out infinite;
+}
+
+@keyframes gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-reverse {
+  0% {
+    background: linear-gradient(
+      135deg,
+      hsla(245, 93%, 27%, 0.5),
+      hsla(356, 76%, 29%, 0.15),
+      hsla(240, 96%, 20%, 0.15),
+      hsla(138, 100%, 11%, 0.35),
+      hsla(166, 94%, 13%, 0.5)
+    );
+  }
+  50% {
+    background: linear-gradient(
+      135deg,
+      hsla(241, 95%, 24%, 0.5),
+      hsla(138, 95%, 8%, 0.35),
+      hsla(240, 96%, 20%, 0.15),
+      hsla(356, 76%, 29%, 0.15),
+      hsla(245, 93%, 27%, 0.5)
+    );
+  }
+  100% {
+    background: linear-gradient(
+      135deg,
+      hsla(245, 93%, 27%, 0.5),
+      hsla(356, 76%, 29%, 0.15),
+      hsla(240, 96%, 20%, 0.15),
+      hsla(138, 100%, 11%, 0.35),
+      hsla(166, 94%, 13%, 0.5)
+    );
+  }
+}
+
+.animate-gradient-reverse {
+  animation: gradient-reverse 5s linear infinite;
+  transition: background 5s ease-in-out
+}
+
+  .animate-bounce {
+    animation: bounce 1.2s ease-in-out infinite; /* faster bounce */
+  }
+
+  .animate-icon-spin {
+    animation: icon-spin 2s linear infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 1.4s ease-in-out infinite;
+  }
+
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 15s ease infinite;
+  }
+
+  .animate-float-up {
+    animation: float-up 20s linear infinite;
+  }
+
+  .animate-spotlight-sweep {
+    animation: spotlight-sweep 4s linear infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 1s ease-out forwards;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Flashcard gradient text effect */
+.feature-card h3,
+.feature-card p {
+  background: var(--gradient-flashcard-text);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+

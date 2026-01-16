@@ -1,0 +1,15 @@
+numpy==1.26.4
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+pytz==2025.2
+requests==2.32.3
+setuptools==80.9.0
+scikit-learn==1.6.1
+xgboost==3.0.1
+joblib==1.4.2
+scipy==1.13.1
+threadpoolctl==3.5.0
+imbalanced-learn==0.13.0
+category-encoders==2.8.1
+fastapi
+uvicorn[standard]
