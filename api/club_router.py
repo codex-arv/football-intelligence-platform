@@ -13,7 +13,7 @@ def load_local_club_file(club: str):
     Loads a local JSON file matching the club name.
     Example: "Arsenal" → arsenal.json
     """
-    filename = club.lower().replace(" ", "").replace("and", "") + ".json"
+    filename = club.lower().replace(" ", "").replace("&", "") + ".json"
     filepath = CLUB_DATA_DIR / filename
 
     if not filepath.exists():
