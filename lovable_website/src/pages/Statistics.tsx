@@ -1,4 +1,7 @@
 "use client";
+
+import { API_BASE_URL } from "../config/api";
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/ui/Navigation";
@@ -8,9 +11,6 @@ import MatchStatsBasic from "@/components/stats/MatchStatsBasic";
 import { useNavigate, useLocation } from "react-router-dom";
 import MatrixBackground from "@/components/ui/MatrixComponent";
 import MatrixGradientOverlay from "@/components/ui/MatrixGradientOverlay";
-
-
-const API_BASE = "http://localhost:5005";
 
 /* ---------------- CRESTS ---------------- */
 
@@ -91,7 +91,7 @@ const Statistics = () => {
 
     try {
       const res = await fetch(
-        `${API_BASE}/api/v1/stats/matches?season=${season}&gameweek=${matchday}`
+        `${API_BASE_URL}/api/v1/stats/matches?season=${season}&gameweek=${matchday}`
       );
       if (!res.ok) throw new Error("Failed to load matches");
       setMatches(await res.json());
@@ -114,7 +114,7 @@ const Statistics = () => {
 
     try {
       const res = await fetch(
-        `${API_BASE}/api/v1/stats/match/basic` +
+        `${API_BASE_URL}/api/v1/stats/match/basic` +
           `?season=${season}` +
           `&gameweek=${matchday}` +
           `&home=${m.HomeTeam}` +
@@ -150,7 +150,7 @@ const Statistics = () => {
     const fetchStats = async () => {
       try {
         const res = await fetch(
-          `${API_BASE}/api/v1/stats/match/basic` +
+          `${API_BASE_URL}/api/v1/stats/match/basic` +
             `?season=${season}` +
             `&gameweek=${matchday}` +
             `&home=${selectedMatch.HomeTeam}` +

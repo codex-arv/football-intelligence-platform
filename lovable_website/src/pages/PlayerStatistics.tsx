@@ -1,5 +1,7 @@
 "use client";
 
+import { API_BASE_URL } from "../config/api";
+
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -8,9 +10,6 @@ import Footer from "@/components/ui/Footer";
 import PlayerCard from "@/components/stats/PlayerCard";
 import MatrixBackground from "@/components/ui/MatrixComponent";
 import MatrixGradientOverlay from "@/components/ui/MatrixGradientOverlay";
-
-
-const API_BASE = "http://localhost:5005";
 
 /* ---------------- CRESTS ---------------- */
 
@@ -99,7 +98,7 @@ export default function MatchPlayerStatistics() {
     const fetchMatchScore = async () => {
       try {
         const res = await fetch(
-          `${API_BASE}/api/v1/stats/match/basic` +
+          `${API_BASE_URL}/api/v1/stats/match/basic` +
             `?season=${season}&gameweek=${gameweek}` +
             `&home=${home}&away=${away}`
         );
@@ -118,7 +117,7 @@ export default function MatchPlayerStatistics() {
     const fetchPlayers = async () => {
       try {
         const res = await fetch(
-          `${API_BASE}/api/v1/stats/players` +
+          `${API_BASE_URL}/api/v1/stats/players` +
             `?season=${season}&gameweek=${gameweek}` +
             `&home=${home}&away=${away}`
         );

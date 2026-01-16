@@ -102,7 +102,7 @@ const CLUB_MAP: Record<string, {
   "Tottenham Hotspur": {
     json: "tottenhamhotspur",
     crest: "tottenhamcrest",
-    stadium: "tottenham",
+    stadium: "tottenhamhotspur",
     crestExt: "png"
   },
   "Leicester City":{

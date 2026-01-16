@@ -1,4 +1,7 @@
 "use client";
+
+import { API_BASE_URL } from "../config/api";
+
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/ui/Navigation";
@@ -6,9 +9,6 @@ import Footer from "@/components/ui/Footer";
 import TeamPicker from "@/components/ui/TeamPicker";
 import MatrixBackground from "@/components/ui/MatrixComponent";
 import MatrixGradientOverlay from "@/components/ui/MatrixGradientOverlay";
-
-
-const API_BASE = "http://localhost:5005";
 
 const displayToDataset: Record<string, string> = {
   "Brighton & Hove Albion": "Brighton",
@@ -138,7 +138,7 @@ const Prediction = () => {
     setResult(null);
 
     try {
-      const res = await fetch(`${API_BASE}/api/v1/predict`, {
+      const res = await fetch(`${API_BASE_URL}/api/v1/predict`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
