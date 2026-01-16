@@ -1,0 +1,50 @@
+{
+  "Club Name": "Burnley",
+  "Full Official Name": "Burnley Football Club",
+  "Nickname(s)": ["The Clarets"],
+  "Founded Year": "18 May 1882",
+  "Founders / Founding Members": "Burnley Football Club was founded on 18 May 1882 in Burnley, Lancashire. It was formed by local football enthusiasts in the industrial town to participate in organized football following the rapid rise of the sport in northern England.",
+  "Location (City, Country)": "Burnley, Lancashire, England",
+  "Home Stadium": {
+    "Name": "Turf Moor",
+    "Capacity": 21944
+  },
+  "Current Manager": "Scott Parker",
+  "Motto": "Pretiumque et Causa Laboris",
+  "About the Club": "Burnley Football Club is a professional football club based in Burnley, Lancashire, with a rich history as a founding member of the Football League in 1888. Known as “The Clarets” for their distinctive claret and sky blue colours, Burnley enjoyed early top‑flight success and established themselves as a competitive force in English football. The club has won the English top division twice (1920–21, 1959–60) and lifted the FA Cup in 1913–14, reflecting its deep historical pedigree. Burnley are also among a select group of clubs to have won all four professional divisions of English football. In recent years they have fluctuated between the Premier League and the Championship, setting club records along the way and maintaining a loyal, passionate fan base. Under head coach Scott Parker, Burnley secured promotion back to the Premier League after the 2024–25 Championship season, demonstrating resilience and tactical discipline. The club is owned by ALK Capital and Velocity Sports Partners, and its long‑standing home ground, Turf Moor, has been in continuous use since 1883, making it one of the oldest professional football stadiums in the world.",
+  "Most Iconic Moments": [
+    "Foundation of Burnley FC in 1882, one of the earliest professional clubs in English football and a founder member of the Football League.",
+    "Winning their first English First Division title in 1920–21, establishing Burnley as a top‑flight force.",
+    "FA Cup triumph in 1913–14, securing the club’s first major domestic cup success.",
+    "Winning the 1959–60 First Division title under manager Harry Potts, one of the club’s greatest achievements.",
+    "Becoming one of only a few English clubs to win all four professional league divisions, showcasing Burnley’s historic breadth of success across the league pyramid.",
+    "Promotion to the Premier League in 2022–23 under Vincent Kompany, with a Championship title and a 101‑point season.",
+    "Promotion back to the Premier League in 2024–25 under Scott Parker, achieving a club record unbeaten run and returning to the top flight."
+  ],
+  "Total Trophies Won": "Burnley have won a total of 10 major honours. The breakdown is as follows: \nEnglish First Division / Premier League: 2 (1920–21, 1959–60)\nFA Cup: 1 (1913–14)\nFootball League Championship / Second Division: 3 (1897–98, 1972–73, 2015–16)\nFootball League Third Division: 1 (1981–82)\nFootball League Fourth Division: 1 (1991–92)\nFA Charity Shield: 2 (1960 shared, 1973)",
+  "Major Rivalries": [
+    {
+      "Club": "Blackburn Rovers",
+      "Rivalry Name": "East Lancashire Derby",
+      "Notes": "Burnley’s principal historic rivalry, rooted in geography, industrial heritage, and long competitive history, particularly intense in local league and cup matches."
+    },
+    {
+      "Club": "Preston North End",
+      "Rivalry Name": "Lancashire Derby",
+      "Notes": "A traditional regional rivalry driven by proximity and frequent encounters in league competitions through the club’s history."
+    },
+    {
+      "Club": "Bradford City",
+      "Rivalry Name": "Older rivalries",
+      "Notes": "Though less prominent today, Burnley and Bradford share historical competitive ties dating to early league years."
+    }
+  ],
+  "Fun Facts": [
+    "Burnley are one of the 12 founder members of the Football League, established in 1888.",
+    "Turf Moor, Burnley’s home since 1883, is one of the oldest continuously used professional football grounds in the world.",
+    "Burnley are one of only a handful of English clubs to have won all four professional divisions of the Football League.",
+    "The club’s traditional colours — claret and sky blue — are among the most iconic kits in English football.",
+    "Despite being a relatively small town club, Burnley have twice won the English top division and regularly punched above their weight historically.",
+    "Burnley set club and Championship records during their promotion season in 2024–25, including a long unbeaten run and defensive discipline."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Club Name": "Nottingham Forest",
+  "Full Official Name": "Nottingham Forest Football Club",
+  "Nickname(s)": ["The Reds", "Forest"],
+  "Founded Year": "1865",
+  "Founders / Founding Members": "Nottingham Forest Football Club was founded in 1865 at The Playwright pub in Nottingham by a group of sportsmen who chose to focus on association football. It is one of the oldest professional football clubs in England.",
+  "Location (City, Country)": "Nottingham, England",
+  "Home Stadium": {
+    "Name": "City Ground",
+    "Capacity": 30602
+  },
+  "Current Manager": "Sean Dyche",
+  "Motto": "Vivit Post Funera Virtus",
+  "About the Club": "Nottingham Forest Football Club is a professional football club based in Nottingham that competes in the Premier League. Founded in 1865, Forest have a long and storied history in English and European football, highlighted by remarkable success under manager Brian Clough in the late 1970s and early 1980s. The club historically won the English league title once and achieved back-to-back European Cup victories in 1979 and 1980, making them one of only a few English clubs to win Europe’s top club competition. After years outside the top flight, Forest earned promotion to the Premier League for the 2022–23 season and have since worked to re-establish themselves at the highest level. For the 2025–26 season, Sean Dyche is the head coach, having been appointed in October 2025 to steady the club and build on recent competitive campaigns.",
+  "Most Iconic Moments": [
+    "Foundation of Nottingham Forest in 1865, making them one of the oldest professional football clubs in England.",
+    "Winning the English top-flight league title in 1977–78 under manager Brian Clough.",
+    "Consecutive European Cup (now UEFA Champions League) victories in 1979 and 1980 — one of the most remarkable achievements in English football history.",
+    "Winning the UEFA Super Cup in 1979.",
+    "Multiple League Cup victories in the late 1970s and late 1980s, establishing Forest among England’s top clubs during that era.",
+    "Return to the Premier League in the 2022–23 season after 23 years outside the top division.",
+    "Strong 2024–25 Premier League performance under Nuno Espirito Santo, finishing seventh and qualifying for European competition for the first time in decades."
+  ],
+  "Total Trophies Won": "Nottingham Forest have won a total of 13 major honours. The breakdown is as follows: \nEnglish top-flight league title: 1 (1977–78)\nFA Cup: 2 (1897–98, 1958–59)\nEFL Cup: 4 (1977–78, 1978–79, 1988–89, 1989–90)\nFA Community Shield: 1 (1978)\nEuropean Cup / UEFA Champions League: 2 (1978–79, 1979–80)\nUEFA Super Cup: 1 (1979)",
+  "Major Rivalries": [
+    {
+      "Club": "Derby County",
+      "Rivalry Name": "East Midlands Derby",
+      "Notes": "The fiercest and most historic rivalry for Forest, based on proximity and shared football heritage in the East Midlands."
+    },
+    {
+      "Club": "Leicester City",
+      "Rivalry Name": "Regional rivalry",
+      "Notes": "A traditional regional rivalry that has featured numerous competitive league and cup encounters."
+    },
+    {
+      "Club": "Notts County",
+      "Rivalry Name": "Nottingham Derby",
+      "Notes": "A local derby with historic roots due to geographic proximity, though matches are less frequent because the clubs have often played in different divisions."
+    }
+  ],
+  "Fun Facts": [
+    "Nottingham Forest are one of only a handful of English clubs to have won the UEFA Champions League (European Cup), and they did so twice in consecutive years.",
+    "Brian Clough is one of the club’s most legendary figures, having led Forest to their greatest successes in the late 1970s.",
+    "The City Ground has been Nottingham Forest’s home since 1898 and is known for its passionate atmosphere.",
+    "Forest returned to the Premier League for the 2022–23 season after a 23-year absence from the top flight.",
+    "Under manager Nuno Espirito Santo in 2024–25, Forest finished seventh in the Premier League — their highest placement in decades — and qualified for European competition."
+  ]
+}

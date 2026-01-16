@@ -1,0 +1,50 @@
+{
+  "Club Name": "Manchester United",
+  "Full Official Name": "Manchester United Football Club",
+  "Nickname(s)": ["The Red Devils"],
+  "Founded Year": "1878",
+  "Founders / Founding Members": "Manchester United Football Club was originally founded in 1878 as Newton Heath LYR Football Club by railway workers from the Lancashire and Yorkshire Railway depot at Newton Heath. The club changed its name to Manchester United in 1902 and joined the Football League shortly after.",
+  "Location (City, Country)": "Manchester, England",
+  "Home Stadium": {
+    "Name": "Old Trafford",
+    "Capacity": 74879
+  },
+  "Current Manager": "Darren Fletcher (Interim)",
+  "Motto": "We'll Never Die",
+  "About the Club": "Manchester United Football Club is one of the most successful and globally recognised football clubs in the world. Based in Manchester, England, the club has a rich history of domestic and international success. Founded in 1878 as Newton Heath LYR FC, United adopted their current name in 1902 and moved to Old Trafford in 1910. The club’s most iconic era came under Sir Alex Ferguson, who managed the team from 1986 to 2013 and delivered unprecedented success, including multiple Premier League titles and UEFA Champions League triumphs. In the modern era, Manchester United continue to compete at the highest level in English and European football. After a period of managerial changes following Ferguson’s retirement, Ruben Amorim was appointed head coach ahead of the 2025–26 season in a bid to restore United’s competitive edge. The club holds vast global support and remains a central figure in the history and culture of the sport.",
+  "Most Iconic Moments": [
+    "The foundation of the club in 1878 as Newton Heath LYR FC, marking the beginning of one of football’s most storied histories.",
+    "The club’s first English league title victories in the early 20th century, establishing Manchester United’s early competitive footsteps.",
+    "Winning the European Cup (UEFA Champions League) for the first time in 1968 under manager Sir Matt Busby.",
+    "The 1998–99 season treble under Sir Alex Ferguson, winning the Premier League, FA Cup, and UEFA Champions League in a historic campaign.",
+    "Securing the Premier League title in 1992–93, the first under the league’s new format, beginning an era of dominance.",
+    "Multiple Premier League titles and cup successes throughout the 1990s and 2000s under Sir Alex Ferguson.",
+    "Recent FA Cup triumph in 2024, demonstrating United’s continued ability to compete in major competitions."
+  ],
+  "Total Trophies Won": "Manchester United have won a total of 68 major honours. The breakdown is as follows: \nPremier League: 20\nFA Cup: 12\nLeague Cup: 6\nFA Community Shield: 21\nUEFA Champions League: 3\nUEFA Europa League: 1\nUEFA Cup Winners’ Cup: 1\nUEFA Super Cup: 1\nFIFA Club World Cup: 1\nIntercontinental Cup: 1",
+  "Major Rivalries": [
+    {
+      "Club": "Liverpool",
+      "Rivalry Name": "North West Derby",
+      "Notes": "Manchester United’s fiercest and most historic rivalry, rooted in long-standing competition for domestic and European honours."
+    },
+    {
+      "Club": "Manchester City",
+      "Rivalry Name": "Manchester Derby",
+      "Notes": "A major local derby rivalry with intense competition and city bragging rights at stake."
+    },
+    {
+      "Club": "Arsenal",
+      "Rivalry Name": "Historic Rivalry",
+      "Notes": "A rivalry intensified during the Premier League era, particularly in battles for titles in the 1990s and early 2000s."
+    }
+  ],
+  "Fun Facts": [
+    "Manchester United are one of the most widely supported football clubs in the world, with huge global fanbases.",
+    "The club’s iconic home, Old Trafford, is nicknamed the 'Theatre of Dreams.'",
+    "Under Sir Alex Ferguson, Manchester United became the first English club to win the continental treble of Premier League, FA Cup, and UEFA Champions League in the same season (1998–99).",
+    "Manchester United have won more top-flight league titles than any other English club.",
+    "United’s youth academy has produced many famous players who went on to become club legends and world stars.",
+    "The club’s success and popularity have made it one of the most valuable and recognised sports brands worldwide."
+  ]
+}

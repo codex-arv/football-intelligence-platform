@@ -1,0 +1,44 @@
+{
+  "Club Name": "Brighton & Hove Albion",
+  "Full Official Name": "Brighton & Hove Albion Football Club",
+  "Nickname(s)": ["The Seagulls", "Albion"],
+  "Founded Year": "1901",
+  "Founders / Founding Members": "Brighton & Hove Albion Football Club was founded in 1901 following the dissolution of Brighton United FC. The new club was formed to continue senior football representation for the town of Brighton and surrounding areas, quickly establishing itself within the Southern League.",
+  "Location (City, Country)": "Brighton and Hove, East Sussex, England",
+  "Home Stadium": {
+    "Name": "American Express Stadium",
+    "Capacity": 31876
+  },
+  "Current Manager": "Fabian Hürzeler",
+  "Motto": "Aim High, Never Give Up",
+  "About the Club": "Brighton & Hove Albion Football Club, founded in 1901, is a professional football club based on England’s south coast and widely admired for its progressive, well-structured football model. For much of its early and mid-20th-century history, Brighton competed outside the top tier, enjoying notable cup runs but limited league success. The club’s modern identity was shaped by survival through severe financial and infrastructural crises in the 1990s, including the sale of the Goldstone Ground and temporary exile from the city. A defining turning point came under chairman Tony Bloom, whose ownership from 2009 restored stability, delivered the state-of-the-art American Express Stadium in 2011, and introduced a data-driven, long-term sporting strategy. Brighton reached the Premier League for the first time in 2017 and have since established themselves as a competitive top-flight side, earning widespread respect for intelligent recruitment, youth development, and attractive football. Under successive modern coaches and now led by Fabian Hürzeler, Brighton are regarded as one of the best-run clubs in English football, balancing sustainability with consistent on-field ambition.",
+  "Most Iconic Moments": [
+    "The club’s foundation in 1901, ensuring the continuation of senior football in Brighton after the collapse of Brighton United.",
+    "Reaching the FA Cup final in 1983, narrowly losing to Manchester United after a replay in one of the club’s most famous cup campaigns.",
+    "The loss of the Goldstone Ground in 1997 and subsequent years of instability, a low point that nearly ended the club’s existence.",
+    "Return to Brighton with the opening of the American Express Stadium in 2011, restoring a permanent home after years of exile.",
+    "Promotion to the Premier League in 2017 for the first time in club history, marking a transformational milestone.",
+    "Qualification for European competition in 2023–24, the club’s first ever participation in continental football.",
+    "Establishing a reputation as one of England’s most progressive and sustainably run clubs in the modern era."
+  ],
+  "Total Trophies Won": "Brighton & Hove Albion have won a total of 6 major honours. The breakdown is as follows: \nFootball League Third Division / League One: 3\nFootball League Fourth Division / League Two: 1\nCharity Shield: 1\nSouthern League: 1",
+  "Major Rivalries": [
+    {
+      "Club": "Crystal Palace",
+      "Rivalry Name": "M23 Derby",
+      "Notes": "Brighton’s primary and fiercest rivalry, rooted in historical clashes, supporter animosity, and competitive encounters despite geographic distance."
+    },
+    {
+      "Club": "Southampton",
+      "Rivalry Name": "South Coast rivalry",
+      "Notes": "A secondary regional rivalry driven by south-coast proximity and league competition."
+    }
+  ],
+  "Fun Facts": [
+    "Brighton’s nickname, ‘The Seagulls,’ was adopted in the 1970s in response to Crystal Palace’s ‘Eagles.’",
+    "The club nearly ceased to exist in the 1990s after losing their stadium and facing severe financial crisis.",
+    "The American Express Stadium was purpose-built and opened in 2011 after years of campaigning by supporters.",
+    "Brighton are widely known for identifying and developing undervalued talent before selling at significant profit.",
+    "The club achieved its first-ever European qualification in the 2020s, a historic milestone in its history."
+  ]
+}

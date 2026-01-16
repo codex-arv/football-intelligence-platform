@@ -1,0 +1,49 @@
+{
+  "Club Name": "Southampton",
+  "Full Official Name": "Southampton Football Club",
+  "Nickname(s)": ["The Saints"],
+  "Founded Year": "1885",
+  "Founders / Founding Members": "Southampton Football Club was founded in 1885 as St. Mary’s Young Men’s Association FC by members of the local Anglican church community. The club adopted the name Southampton St Mary’s shortly afterwards and then Southampton Football Club.",
+  "Location (City, Country)": "Southampton, Hampshire, England",
+  "Home Stadium": {
+    "Name": "St Mary's Stadium",
+    "Capacity": 32689
+  },
+  "Current Manager": "Tonda Eckert",    
+  "Motto": "The Saints: It's not just a name, It's who we are",
+  "About the Club": "Southampton Football Club is a professional football club based in Southampton, England. The Saints play their home matches at St Mary’s Stadium and have a long history in English football, participating in both the Premier League and the Championship. The club’s most celebrated achievement is winning the FA Cup in 1976, and they are known for producing top-level talent through their academy system. Southampton earned promotion to the Premier League for the 2024–25 season via the Championship play-offs but were relegated back to the Championship after the 2024–25 campaign. Following the departure of previous managers, Tonda Eckert was appointed head coach in late 2025 after an impressive interim spell, with the club targeting a return to the Premier League and sustained success.",
+  "Most Iconic Moments": [
+    "Foundation of Southampton FC in 1885 as St. Mary’s Young Men’s Association FC.",
+    "Winning the FA Cup in 1976 with a 1–0 victory over Manchester United.",
+    "Achieving promotion to the Premier League via the Championship play-offs in 2024.",
+    "A memorable sixth-place finish in the Premier League in the 2015–16 season.",
+    "Reaching the EFL Cup final in 2017.",
+    "Opening St Mary’s Stadium in 2001, which became the club’s long-term home.",
+    "Appointment of Tonda Eckert as head coach following a successful interim spell in 2025."
+  ],
+  "Total Trophies Won": "Southampton have won a total of 1 major honour: \nFA Cup: 1 (1976)",
+  "Major Rivalries": [
+    {
+      "Club": "Portsmouth",
+      "Rivalry Name": "South Coast Derby",
+      "Notes": "Southampton’s fiercest and most historic rivalry, rooted in geographic proximity and competitive tension with neighboring Portsmouth."
+    },
+    {
+      "Club": "Bournemouth",
+      "Rivalry Name": "South Coast rivalry",
+      "Notes": "A regional rivalry with Bournemouth driven by shared local history and competitive fixtures."
+    },
+    {
+      "Club": "Brighton & Hove Albion",
+      "Rivalry Name": "South Coast rivalry",
+      "Notes": "Another regional rivalry often contested in league and cup matches among south coast clubs."
+    }
+  ],
+  "Fun Facts": [
+    "Southampton’s only major trophy came in 1976 when they won the FA Cup.",
+    "St Mary’s Stadium has been the club’s home since 2001, replacing the historic Dell stadium.",
+    "Southampton’s academy has produced top players such as Gareth Bale, Theo Walcott, and Luke Shaw.",
+    "The club set a Championship unbeaten record during the 2023–24 promotion season.",
+    "Despite multiple Premier League campaigns, Southampton have yet to win the Premier League title as of 2025."
+  ]
+}

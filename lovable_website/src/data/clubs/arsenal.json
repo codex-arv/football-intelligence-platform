@@ -1,0 +1,52 @@
+{
+  "Club Name": "Arsenal",
+  "Full Official Name": "Arsenal Football Club",
+  "Nickname(s)": ["The Gunners"],
+  "Founded Year": "11 December 1886",
+  "Founders / Founding Members": "A group of munitions workers at the Royal Arsenal armaments factory in Woolwich: led by Scottish engineer David Danskin, along with Elijah Watkins, Richard Pearce, Jack Humble and others. The club’s first match was played as “Dial Square” on 11 December 1886, before being renamed “Royal Arsenal” by Christmas 1886.",
+  "Location (City, Country)": "Islington, London, England",
+  "Home Stadium": {
+    "Name": "Emirates Stadium",
+    "Capacity": 60704
+  },
+  "Current Manager":"Mikel Arteta",
+  "Motto": "Victoria Concordia Crescit",
+  "About the Club": "Arsenal Football Club, founded in 1886 as Dial Square in Woolwich before relocating to North London in 1913, is one of England’s most historically significant clubs, known for combining innovation, tradition, and a distinctive style of play. The club’s early rise came under Herbert Chapman in the 1930s, who transformed Arsenal into a dominant force by introducing tactical innovations, modern training methods, and the famous red shirt with white sleeves, winning multiple league titles and FA Cups. After periods of fluctuation, Arsenal entered a golden era under Arsène Wenger (1996–2018), a defining turning point in the club’s history, as he revolutionized English football with sports science, global scouting, and attacking football, delivering three Premier League titles—including the legendary 2003–04 “Invincibles” season—alongside seven FA Cups, while also overseeing the move to the Emirates Stadium in 2006, which secured long-term financial stability but initially limited spending and competitiveness. The post-Wenger transition was turbulent, marked by inconsistent results and identity struggles, but another key turning point came with the appointment of Mikel Arteta in 2019, who rebuilt the squad culture, restored discipline, and re-established Arsenal as a title contender through a young, technically strong team. As of now, Arsenal are firmly re-established among England’s elite, regularly competing for the Premier League title and performing strongly in European competition, with a clear footballing identity, a stable ownership model under Kroenke Sports & Entertainment, and a squad blending elite youth development with targeted signings, positioning the club as both a present-day challenger and a long-term force in English and European football."
+,
+  "Most Iconic Moments": [
+    "The foundation on 11 December 1886: A small group of factory workers — with minimal resources — formed a football team (Dial Square), played their first match on the Isle of Dogs (a 6–0 win), and laid the foundation for a club that would become one of England’s giants.",
+    "The move from Woolwich to North London in 1913: This relocation, and the subsequent dropping of “Woolwich” from the name, marked a turning point — ensuring better financial stability, access to a larger fan base, and a new era for the club.",
+    "The 1930s domination under Herbert Chapman and successors: Arsenal won their first major honours — their first league title in 1930–31, followed by multiple league championships through the 1930s — establishing themselves as a powerhouse of English football.",
+    "The 1970 double (First Division + FA Cup) in 1970–71: Under manager Bertie Mee, Arsenal achieved their first top-flight league and FA Cup double, a landmark in the club’s history.",
+    "The 2003–04 'Invincibles' season: Under Arsène Wenger, Arsenal went through the entire Premier League season unbeaten — one of only two clubs ever to do so — finishing with 26 wins and 12 draws. That campaign remains one of the greatest achievements in English football history.",
+    "Relocation to the Emirates Stadium in 2006: Leaving behind historic Highbury, Arsenal moved into a modern arena with a ~60,000 capacity — enabling growth, modern facilities, and a new era off the pitch.",
+    "Sustained modern-era success and global prominence: Through consistent Champions League qualifications, multiple FA Cup victories (including recent ones), and global fanbase growth — Arsenal solidified itself as a global brand and one of England’s most historically significant clubs."
+  ],  
+  "Total Trophies Won": "Arsenal have won a total of 48 major domestic and international trophies. The breakdown is as follows: \nPremier League: 13\nFA Cup: 14\nEFL League Cup: 2\nInter-Cities Fairs Cup: 1\nUEFA Cup Winners’ Cup: 1\nCommunity / Charity Shield: 17",
+  "Major Rivalries": [
+    {
+      "Club": "Tottenham Hotspur",
+      "Rivalry Name": "North London Derby",
+      "Notes": "Local north-London rivalry rooted in proximity and history. Matches between the clubs have been among English football’s most intense."
+    },
+    {
+      "Club": "Chelsea",
+      "Rivalry Name": "London Rivalry",
+      "Notes": "Both London clubs; frequent competitive encounters across league and cup competitions."
+    },
+    {
+      "Club": "Manchester United",
+      "Rivalry Name": "Historical Title Contenders Rivalry",
+      "Notes": "Rivalry shaped by competition for league titles, high-stakes matches in domestic cups and European competitions across decades."
+    }
+  ],
+  "Fun Facts": [
+    "When founded in 1886, the club’s first name was “Dial Square” — referring to a workshop at the Woolwich Arsenal armaments factory. That first team was formed by 15 workers who pooled together money for a ball.",
+    "The very first match was played on 11 December 1886, against Eastern Wanderers on the Isle of Dogs; Dial Square won 6–0.",
+    "Arsenal were the first club from the south of England to join the Football League (in 1893). ",
+    "The club has played continuously in the top flight of English football since 1919 (First Division / Premier League), the longest unbroken spell in the country.",
+    "Arsenal’s 2003–04 ‘Invincibles’ season remains one of only two times a club has gone an entire top-flight league season unbeaten.",
+    "Despite its extensive success, Arsenal has never won the UEFA Champions League (as of 2025). Their best European successes remain the 1993–94 Cup Winners’ Cup and the 1970 Inter-Cities Fairs Cup."
+  ]
+}
+

@@ -1,0 +1,49 @@
+{
+  "Club Name": "Brentford",
+  "Full Official Name": "Brentford Football Club",
+  "Nickname(s)": ["The Bees"],
+  "Founded Year": "10 October 1889",
+  "Founders / Founding Members": "Brentford Football Club was founded on 10 October 1889 by members of Brentford Rowing Club, who decided to form a football team to stay active during the rowing off-season. The club was established in West London and quickly became a focal sporting institution for the local community.",
+  "Location (City, Country)": "Brentford, London, England",
+  "Home Stadium": {
+    "Name": "Gtech Community Stadium",
+    "Capacity": 17250
+  },
+  "Current Manager": "Keith Andrews",
+  "Motto": "Forward Thinking Football - Togetherness, Respect & Progressiveness",
+  "About the Club": "Brentford Football Club, founded in 1889, is a professional football club based in West London, widely respected for its modern, data-driven approach to recruitment and squad building. For much of its history, Brentford competed in the lower divisions of English football, developing a reputation as a resilient and community-oriented club. A major transformation began in the 2010s under owner Matthew Benham, whose innovative use of analytics and sustainable financial planning reshaped the club’s identity. This period culminated in promotion to the Premier League in 2021 — the club’s first appearance in England’s top flight. Following the move from the historic Griffin Park to the Gtech Community Stadium in 2020, Brentford established themselves as a competitive Premier League side under head coach Thomas Frank, known for tactical flexibility, high-intensity pressing, and effective talent development. Today, Brentford are regarded as one of English football’s most intelligently run clubs, combining strong performance with long-term stability.",
+  "Most Iconic Moments": [
+    "The founding of Brentford FC in 1889 by members of Brentford Rowing Club, creating a lasting football institution in West London.",
+    "Joining the Football League in 1920, marking Brentford’s entry into national professional competition.",
+    "Top-flight success in the 1930s, including a fifth-place finish in the First Division during the 1935–36 season.",
+    "Long tenure at Griffin Park (1904–2020), famous for having a pub on each corner of the ground.",
+    "Promotion to the Premier League in 2021 after winning the Championship play-off final at Wembley, the club’s first-ever top-flight promotion.",
+    "Move to the Gtech Community Stadium in 2020, signaling a new era of growth and modern infrastructure.",
+    "Establishing Premier League status in the early 2020s, defeating multiple traditional top-six clubs and earning respect across English football."
+  ],
+  "Total Trophies Won": "Brentford have won a total of 6 major honours. The breakdown is as follows: \nFootball League Second Division / Championship: 1 (1934–35)\nFootball League Third Division South / League One: 3 (1932–33, 1991–92, 1998–99)\nFootball League Fourth Division / League Two: 1 (1962–63)\nLondon War Cup: 1 (1941–42)",
+  "Major Rivalries": [
+    {
+      "Club": "Fulham",
+      "Rivalry Name": "West London Derby",
+      "Notes": "A traditional West London rivalry rooted in geographic proximity and frequent league encounters."
+    },
+    {
+      "Club": "Queens Park Rangers",
+      "Rivalry Name": "West London Derby",
+      "Notes": "Another major local rivalry, intensified by competition for regional dominance in West London."
+    },
+    {
+      "Club": "Chelsea",
+      "Rivalry Name": "West London Rivalry",
+      "Notes": "A less frequent but high-profile rivalry, particularly intensified during Brentford’s Premier League era."
+    }
+  ],
+  "Fun Facts": [
+    "Brentford’s nickname, ‘The Bees,’ originated from a misheard chant of ‘B’s’ (short for Brentford Boys) by supporters.",
+    "Griffin Park, Brentford’s former stadium, was famous for having a pub on each corner — a unique feature in English football.",
+    "The club is widely known for pioneering the use of advanced data analytics in player recruitment and squad planning.",
+    "Brentford reached the Premier League for the first time in their history in 2021.",
+    "Despite their rise, Brentford remain one of the smallest clubs by budget to consistently compete in the Premier League."
+  ]
+}

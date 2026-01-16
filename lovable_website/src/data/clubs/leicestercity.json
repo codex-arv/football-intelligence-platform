@@ -1,0 +1,50 @@
+{
+  "Club Name": "Leicester City",
+  "Full Official Name": "Leicester City Football Club",
+  "Nickname(s)": ["The Foxes"],
+  "Founded Year": "1884",
+  "Founders / Founding Members": "Leicester City Football Club was founded in 1884 as Leicester Fosse by a group of local football enthusiasts. The club adopted the name Leicester City in 1919 following the city’s official status change.",
+  "Location (City, Country)": "Leicester, England",
+  "Home Stadium": {
+    "Name": "King Power Stadium",
+    "Capacity": 32262
+  },
+  "Current Manager": "Martí Cifuentes",
+  "Motto": "Foxes Never Quit",
+  "About the Club": "Leicester City Football Club is a professional football club based in Leicester, England. Founded in 1884, the club spent much of its early and mid-history oscillating between the top two tiers of English football. Leicester rose to global prominence during the 2015–16 Premier League season, when they achieved one of the greatest sporting shocks of all time by winning the league against overwhelming odds under manager Claudio Ranieri. The club followed this success with consistent European qualification, an FA Cup triumph in 2021, and further domestic honours. After periods of transition and relegation from the Premier League, Leicester appointed Martí Cifuentes as manager as part of a strategic rebuild aimed at restoring stability, modern tactical identity, and long-term competitiveness. Leicester are widely respected for their recruitment model, youth development, and data-driven approach to squad building.",
+  "Most Iconic Moments": [
+    "Winning the Premier League in 2015–16, completing one of the greatest underdog stories in the history of world sport.",
+    "Promotion to the Premier League in 2014, beginning a golden modern era for the club.",
+    "Winning the FA Cup for the first time in 2020–21, defeating Chelsea at Wembley Stadium.",
+    "Qualifying for the UEFA Champions League for the first time in 2016–17.",
+    "Winning the FA Community Shield in 2021, defeating Manchester City.",
+    "Moving from Filbert Street to the King Power Stadium in 2002, marking a new chapter in the club’s infrastructure and growth.",
+    "Establishing Leicester as a respected Premier League club through consistent top-half finishes in the late 2010s."
+  ],
+  "Total Trophies Won": "Leicester City have won a total of 7 major honours. The breakdown is as follows: \nPremier League: 1 (2015–16)\nFA Cup: 1 (2020–21)\nChampionship: 2 (2013–14, 2023–24)\nLeague One: 1 (2008–09)\nCommunity Shield: 2 (1971, 2021)",
+  "Major Rivalries": [
+    {
+      "Club": "Nottingham Forest",
+      "Rivalry Name": "East Midlands Derby",
+      "Notes": "Leicester’s most significant rivalry, contested with Nottingham Forest, rooted in regional pride and historical competition."
+    },
+    {
+      "Club": "Derby County",
+      "Rivalry Name": "East Midlands Derby",
+      "Notes": "A traditional regional rivalry with Derby County, particularly prominent during shared spells in the top two divisions."
+    },
+    {
+      "Club": "Coventry City",
+      "Rivalry Name": "M69 Derby",
+      "Notes": "A geographically driven rivalry between the two clubs located along the M69 corridor."
+    }
+  ],
+  "Fun Facts": [
+    "Leicester City’s 2015–16 Premier League title win is widely regarded as the greatest upset in football history.",
+    "The club were bookmakers’ 5000-1 outsiders at the start of the 2015–16 season.",
+    "Leicester City won their first ever FA Cup in 2021 after previously losing four finals.",
+    "The club’s nickname ‘The Foxes’ comes from Leicestershire’s historical association with fox hunting.",
+    "Leicester City have competed in European competitions including the Champions League, Europa League, and Europa Conference League.",
+    "The King Power Stadium has been the club’s home since 2002 and is considered one of England’s most modern mid-sized stadiums."
+  ]
+}

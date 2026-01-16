@@ -1,0 +1,50 @@
+{
+  "Club Name": "Chelsea",
+  "Full Official Name": "Chelsea Football Club",
+  "Nickname(s)": ["The Blues"],
+  "Founded Year": "10 March 1905",
+  "Founders / Founding Members": "Chelsea Football Club was founded on 10 March 1905 at The Rising Sun pub (now The Butcher’s Hook) near Stamford Bridge in London. The club was established to gain entry into the Football League immediately, and the founders successfully secured a place in the league for the upcoming season.",
+  "Location (City, Country)": "London, England",
+  "Home Stadium": {
+    "Name": "Stamford Bridge",
+    "Capacity": 40834
+  },
+  "Current Manager": "Liam Rosenior",
+  "Motto": "Nisi Dominus Frustra",
+  "About the Club": "Chelsea Football Club is a professional football club based in Fulham, London, widely recognized as one of the most successful English clubs both domestically and in European competition. Since its foundation in 1905, Chelsea has developed into a powerhouse of modern football, with major investment in the 21st century substantially elevating its standing. Chelsea have won multiple top-flight league titles and domestic cups, and they have achieved significant European success, including victories in the UEFA Champions League. Under current head coach Enzo Maresca, appointed in June 2024, Chelsea secured a top-four Premier League finish, won the UEFA Europa Conference League, and captured the FIFA Club World Cup in 2025, making them the only club to have won all currently contested UEFA club competitions. Chelsea play home matches at Stamford Bridge, a historic London stadium, and compete regularly at the highest level in English and European football.",
+  "Most Iconic Moments": [
+    "Foundation of Chelsea FC on 10 March 1905 at The Rising Sun pub in London, immediately entering the Football League.",
+    "Winning their first First Division (top-flight) title in 1954–55 under manager Ted Drake.",
+    "The arrival of Roman Abramovich as owner in 2003, ushering in a transformative era of investment and success.",
+    "First UEFA Champions League triumph in 2011–12, defeating Bayern Munich in the final.",
+    "Second Champions League victory in 2020–21 under manager Thomas Tuchel.",
+    "Winning the UEFA Europa Conference League in 2024–25, making Chelsea the first club to win all three major UEFA competitions.",
+    "Capturing the 2025 FIFA Club World Cup, adding a worldwide title to Chelsea’s trophy cabinet."
+  ],
+  "Total Trophies Won": "Chelsea have won a total of 34 major honours. The breakdown is as follows: \nEnglish First Division / Premier League: 6\nFA Cup: 8\nEFL Cup: 5\nFA Community/Charity Shield: 4\nUEFA Champions League: 2\nUEFA Europa League: 2\nUEFA Cup Winners’ Cup: 2\nUEFA Europa Conference League: 1\nUEFA Super Cup: 2\nFIFA Club World Cup: 1",
+  "Major Rivalries": [
+    {
+      "Club": "Tottenham Hotspur",
+      "Rivalry Name": "London Derby",
+      "Notes": "Matches between Chelsea and Tottenham are significant London derbies with competitive intensity and fan interest."
+    },
+    {
+      "Club": "Arsenal",
+      "Rivalry Name": "London Derby",
+      "Notes": "A historic rivalry in English football, Chelsea versus Arsenal features frequent high-stakes league and cup battles."
+    },
+    {
+      "Club": "Liverpool",
+      "Rivalry Name": "Historic Rivalry",
+      "Notes": "Though not local, the rivalry has grown through repeated important clashes in domestic and European competition."
+    }
+  ],
+  "Fun Facts": [
+    "Chelsea are the only London club to have won the UEFA Champions League as of 2025.",
+    "Under Enzo Maresca in 2025, Chelsea became the first club to win all three of UEFA’s current major club competitions.",
+    "Stamford Bridge has been Chelsea’s home since the club’s foundation in 1905.",
+    "Chelsea experienced a major renaissance under owner Roman Abramovich from 2003 to 2022, winning a significant portion of their modern trophies.",
+    "Chelsea’s traditional home colours are royal blue shirts and shorts with white socks.",
+    "The club has one of the largest global fanbases among English football teams."
+  ]
+}

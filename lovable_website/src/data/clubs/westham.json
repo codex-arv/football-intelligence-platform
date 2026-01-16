@@ -1,0 +1,49 @@
+{
+  "Club Name": "West Ham United",
+  "Full Official Name": "West Ham United Football Club",
+  "Nickname(s)": ["The Hammers", "The Irons"],
+  "Founded Year": "1895",
+  "Founders / Founding Members": "West Ham United Football Club was founded in 1895 as Thames Ironworks FC by workers at the Thames Ironworks and Shipbuilding Company, before being reformed as West Ham United in 1900 to represent the wider community in east London.",
+  "Location (City, Country)": "London, England",
+  "Home Stadium": {
+    "Name": "London Stadium",
+    "Capacity": 62000
+  },
+  "Current Manager": "Nuno Espírito Santo",
+  "Motto": "Deo Confidimus (In God, We Trust)",
+  "About the Club": "West Ham United Football Club is a professional football club based in Stratford, East London, competing in the Premier League. Founded in 1895 (as Thames Ironworks FC) and renamed West Ham United in 1900, the club has a long history in English football and is known for its passionate fanbase, traditional attacking style, and club anthem \"I'm Forever Blowing Bubbles.\" West Ham have won several major honours, including FA Cup victories and European trophies. In recent history, the club won the UEFA Europa Conference League in 2023, their first major trophy since the 1980s. Nuno Espírito Santo was appointed head coach in September 2025 after Graham Potter’s departure, and he is leading the club in the 2025–26 Premier League season.",
+  "Most Iconic Moments": [
+    "Foundation of the club in 1895 as Thames Ironworks FC and reformation as West Ham United in 1900.",
+    "Winning the FA Cup in 1964 with a 3–1 victory over Preston North End.",
+    "FA Cup victories in 1975 and 1980, marking West Ham as one of England’s respected cup teams.",
+    "Winning the European Cup Winners’ Cup in 1965, one of the club’s greatest European achievements.",
+    "Winning the UEFA Europa Conference League in 2023, ending a long major-trophy drought.",
+    "The opening of the London Stadium in 2016, giving West Ham one of the largest and most modern stadiums in England.",
+    "Consistent Premier League participation and passionate home support, symbolised by the chant \"I’m Forever Blowing Bubbles.\""
+  ],
+  "Total Trophies Won": "West Ham United have won a total of 9 major honours. The breakdown is as follows: \nFA Cup: 3 (1964, 1975, 1980)\nEuropean Cup Winners’ Cup: 1 (1965)\nUEFA Europa Conference League: 1 (2023)\nFA Community Shield: 1 (1964 shared)\nUEFA Intertoto Cup: 1 (1999)\nFootball League Second Tier titles (Championship / Second Division): 2 (1957–58, 1980–81)",
+  "Major Rivalries": [
+    {
+      "Club": "Millwall",
+      "Rivalry Name": "Dockers Derby",
+      "Notes": "West Ham’s most fierce and historic rivalry, rooted in geographic proximity and competitive tension in local and national competitions."
+    },
+    {
+      "Club": "Tottenham Hotspur",
+      "Rivalry Name": "London Derby",
+      "Notes": "A long-standing rivalry between East and North London clubs, often contested in the Premier League and cup competitions."
+    },
+    {
+      "Club": "Chelsea",
+      "Rivalry Name": "London Rivalry",
+      "Notes": "Another significant London derby rivalry, marked by frequent competitive clashes and regional pride."
+    }
+  ],
+  "Fun Facts": [
+    "Three West Ham players (Bobby Moore, Geoff Hurst, and Martin Peters) were members of England’s 1966 World Cup-winning squad.",
+    "West Ham’s anthem \"I’m Forever Blowing Bubbles\" is one of the most iconic supporter songs in English football.",
+    "West Ham United won the UEFA Europa Conference League in 2023, their first major trophy in over 40 years. ",
+    "The club has a long tradition of developing fantastic young talent, earning a reputation for its academy.",
+    "Despite a passionate fanbase and strong support, West Ham have never won the Premier League title as of 2025."
+  ]
+}

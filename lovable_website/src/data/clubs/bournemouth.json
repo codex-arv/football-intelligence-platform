@@ -1,0 +1,49 @@
+{
+  "Club Name": "AFC Bournemouth",
+  "Full Official Name": "AFC Bournemouth",
+  "Nickname(s)": ["The Cherries"],
+  "Founded Year": "1899",
+  "Founders / Founding Members": "Formed in 1899 in Boscombe, a suburb of Bournemouth, the club was originally known as Boscombe Football Club. The name evolved over the years — becoming Bournemouth and Boscombe Athletic in 1923 and eventually AFC Bournemouth in 1971, with 'AFC' specifically chosen to position the club higher alphabetically in lists.",
+  "Location (City, Country)": "Bournemouth, Dorset, England",
+  "Home Stadium": {
+    "Name": "Vitality Stadium (Dean Court)",
+    "Capacity": 11307
+  },
+  "Current Manager": "Andoni Iraola",
+  "Motto": "Together, Anything Is Possible",
+  "About the Club": "AFC Bournemouth is a professional football club based in Bournemouth, Dorset, known affectionately as “The Cherries” due to their traditional red and black kit. Founded in 1899 as Boscombe FC, the club has played its home matches at Dean Court (currently known as the Vitality Stadium) since 1910, and adopted the name AFC Bournemouth in 1971. Historically a lower-league side for much of its existence, Bournemouth has experienced a remarkable rise in recent decades, culminating in their first-ever promotion to the Premier League in 2015 after climbing from near relegation and financial difficulty. Since then, under various managers and with strong strategic backing from owners Black Knight Football Club UK Ltd, the club has successfully consolidated its place in the top tier of English football. AFC Bournemouth are known for their competitive spirit, solid tactical identity under manager Andoni Iraola, and ambitious long-term plans for development both on and off the pitch.",
+  "Most Iconic Moments": [
+    "Founding in 1899 as Boscombe FC — marking the beginning of a long-standing football institution on England’s south coast.",
+    "Establishment of Dean Court as the club’s home ground in 1910 — a home that has endured for over a century.",
+    "Name change to AFC Bournemouth in 1971 — a unique rebranding designed to position the club first in alphabetical listings.",
+    "Winning the Football League Third Division (now League One) in 1986–87.",
+    "Victory in the Associate Members’ Cup (Football League Trophy) in 1983–84 — the club’s first major cup success.",
+    "Promotion to the Premier League in 2015 — Bournemouth’s first ever top-flight appearance, a historic breakthrough for the club.",
+    "Return to the Premier League after Championship success in 2021–22, establishing Bournemouth as a consistent top-tier competitor."
+  ],
+  "Total Trophies Won": "AFC Bournemouth have won a total of 5 recognised league and cup honours, including: \nChampionship (2nd Tier): 1 (2014–15)\nLeague One/Third Division (3rd Tier): 1 (1986–87)\nFootball League Trophy / Associate Members’ Cup: 1 (1983–84)\nPlus multiple significant runners-up and promotion achievements in the Football League’s lower divisions.",
+  "Major Rivalries": [
+    {
+      "Club": "Southampton",
+      "Rivalry Name": "South Coast rivalry",
+      "Notes": "A regional rivalry due to geographic proximity along England’s south coast, though it is not traditionally considered a fierce derby by all fanbases."
+    },
+    {
+      "Club": "Portsmouth",
+      "Rivalry Name": "South Coast rivalry",
+      "Notes": "Occasional rivalry driven by local geography and competitive encounters, though matches are infrequent due to division differences."
+    },
+    {
+      "Club": "Brighton & Hove Albion",
+      "Rivalry Name": "South Coast rivalry",
+      "Notes": "A regional rivalry occasionally referenced due to relative proximity and overlapping Premier League status in recent seasons."
+    }
+  ],
+  "Fun Facts": [
+    "The club’s name 'AFC Bournemouth' was specifically chosen so it would appear ahead of many teams in alphabetical club listings.",
+    "Dean Court, now known as the Vitality Stadium, has been Bournemouth’s home ground since 1910 — over 110 years of continuous use.",
+    "The Vitality Stadium is the smallest stadium in the Premier League, with a capacity just over 11,000.",
+    "Bournemouth’s rise from near-relegation in the lower leagues to the Premier League is considered one of English football’s most remarkable turnarounds.",
+    "The club has never won a top-flight English league title or major domestic cup like the FA Cup, but has achieved historical success through league promotions and lower-division honours."
+  ]
+}

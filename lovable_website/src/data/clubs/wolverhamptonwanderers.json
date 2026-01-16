@@ -1,0 +1,49 @@
+{
+  "Club Name": "Wolverhampton Wanderers",
+  "Full Official Name": "Wolverhampton Wanderers Football Club",
+  "Nickname(s)": ["Wolves", "The Wanderers"],
+  "Founded Year": "1877",
+  "Founders / Founding Members": "Wolverhampton Wanderers Football Club was founded in 1877 in Wolverhampton, England. The club was one of the founding members of the Football League in 1888 and has a long history in English football, known for its distinctive gold and black colours and passionate supporter base.",
+  "Location (City, Country)": "Wolverhampton, England",
+  "Home Stadium": {
+    "Name": "Molineux Stadium",
+    "Capacity": 31700
+  },
+  "Current Manager": "Rob Edwards",
+  "Motto": "Out of Darkness Cometh Light",
+  "About the Club": "Wolverhampton Wanderers Football Club, commonly known as Wolves, is a professional football club based in Wolverhampton, England, competing in the Premier League. Founded in 1877, the club played a significant role in the early development of organised football and was one of the original members of the Football League. Wolves enjoyed their most successful period in the 1950s and 1960s, winning multiple top-flight titles and domestic cups, and have a strong tradition of competitive participation in English football. In the modern era, the club has spent several seasons in the Premier League, establishing itself as a respected top-flight competitor. In November 2025, Rob Edwards was appointed head coach to lead the team after a managerial change during the 2025–26 Premier League season. Wolves have a large support base and play their home matches at Molineux Stadium.",
+  "Most Iconic Moments": [
+    "Foundation of Wolverhampton Wanderers in 1877, one of the oldest football clubs in England and a founding member of the Football League.",
+    "Winning three top-flight English league titles in the 1950s, establishing Wolves as one of the dominant sides of that era.",
+    "FA Cup triumphs, including victories in 1893, 1908, 1949 and 1960, reflecting historic success in England’s most prestigious cup competition.",
+    "Victories in the EFL Cup in 1974 and 1980, securing major domestic silverware in the modern era.",
+    "Molineux Stadium becoming the club’s iconic home ground, famous for its atmosphere and historic significance in English football.",
+    "Return to the Premier League and sustained top-flight competition since 2018, showcasing the club’s modern resilience and ambition.",
+    "Appointment of Rob Edwards as head coach in late 2025, marking a new chapter for the club in the Premier League."
+  ],
+  "Total Trophies Won": "Wolverhampton Wanderers have won a total of 16 major honours. The breakdown is as follows: \nEnglish top-flight titles: 3 (1953–54, 1957–58, 1958–59)\nFA Cup: 4 (1892–93, 1907–08, 1948–49, 1959–60)\nEFL Cup: 2 (1973–74, 1979–80)\nFA Community/Charity Shield: 4 (1949, 1954, 1959, 1960)\nChampionship titles (2nd tier): 4 (multiple years)",
+  "Major Rivalries": [
+    {
+      "Club": "Aston Villa",
+      "Rivalry Name": "West Midlands Derby",
+      "Notes": "A historic regional rivalry with Aston Villa, contested fiercely due to geographic proximity and competitive encounters."
+    },
+    {
+      "Club": "West Bromwich Albion",
+      "Rivalry Name": "Black Country Derby",
+      "Notes": "A traditional derby in the West Midlands with deep community pride and rivalry history."
+    },
+    {
+      "Club": "Birmingham City",
+      "Rivalry Name": "Midlands Rivalry",
+      "Notes": "A regional rivalry within the Midlands, marked by historic competitive matches."
+    }
+  ],
+  "Fun Facts": [
+    "Wolves were one of the original 12 founding members of the Football League in 1888, making them a historic cornerstone of organised football in England.",
+    "The club won three English top-flight titles in the 1950s under legendary manager Stan Cullis, a period often considered the club’s greatest era.",
+    "Molineux Stadium, opened in 1889, is one of the oldest continuously used professional football grounds in England.",
+    "Wolves have won the FA Cup four times, with the most recent victory in 1960.",
+    "The club has competed in European competitions and contributed to early conceptual developments that led toward Europe’s premier club tournaments."
+  ]
+}

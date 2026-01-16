@@ -1,0 +1,49 @@
+{
+  "Club Name": "Newcastle United",
+  "Full Official Name": "Newcastle United Football Club",
+  "Nickname(s)": ["The Magpies", "The Toon"],
+  "Founded Year": "1892",
+  "Founders / Founding Members": "Newcastle United Football Club was founded on 9 December 1892 following the merger of two local clubs, Newcastle East End and Newcastle West End, to become the primary professional football club in the city of Newcastle upon Tyne.",
+  "Location (City, Country)": "Newcastle upon Tyne, England",
+  "Home Stadium": {
+    "Name": "St James' Park",
+    "Capacity": 52436
+  },
+  "Current Manager": "Eddie Howe",
+  "Motto": "Fortiter Defendit Triumphans",
+  "About the Club": "Newcastle United Football Club is a professional football club based in Newcastle upon Tyne, England, competing in the Premier League. Founded in 1892, the club has a long and storied history in English football, known for passionate support, iconic black and white striped kits, and memorable stadium atmosphere at St James' Park. Newcastle have enjoyed periods of domestic success, particularly in the early 20th century, and have been competitive across major competitions. Under head coach Eddie Howe, who has been in charge since 2021, Newcastle ended a decades-long domestic trophy drought by winning the EFL Cup in 2025 — their first major trophy since 1955 — and secured qualification for the UEFA Champions League on multiple occasions. The club’s recent resurgence under new ownership and management has rekindled ambitions for sustained success at both domestic and European levels.",
+  "Most Iconic Moments": [
+    "Foundation of Newcastle United in 1892 through the merger of Newcastle East End and Newcastle West End.",
+    "Winning multiple English league titles in the early 20th century, establishing the club as a top-flight force in English football.",
+    "FA Cup triumphs in the early-to-mid 20th century, including victories in 1910 and the 1950s.",
+    "Reaching European competition and memorable UEFA matches in the late 20th and early 21st centuries.",
+    "Qualification for the UEFA Champions League under Eddie Howe, marking the club’s return to Europe’s premier club competition after many years.",
+    "Winning the EFL Cup in 2025, ending a 70-year gap between major domestic trophies.",
+    "Strong Premier League finishes in the early 2020s, reflecting a period of competitive resurgence under modern ownership and coaching."
+  ],
+  "Total Trophies Won": "Newcastle United have won a total of 13 major honours. The breakdown is as follows: \nPremier League: 4\nFA Cup: 6\nEFL Cup: 1\nInter-Cities Fairs Cup: 1\nCharity/Community Shield: 1",
+  "Major Rivalries": [
+    {
+      "Club": "Sunderland",
+      "Rivalry Name": "Tyne–Wear Derby",
+      "Notes": "The fiercest and most historic rivalry for Newcastle, contested with regional neighbours Sunderland with deep cultural and sporting significance."
+    },
+    {
+      "Club": "Hull City",
+      "Rivalry Name": "Regional rivalry",
+      "Notes": "A regional rivalry driven by occasional competitive fixtures and proximity."
+    },
+    {
+      "Club": "Leeds United",
+      "Rivalry Name": "Historic rivalry",
+      "Notes": "A rivalry rooted in competitive history and periodic high-stakes league and cup encounters."
+    }
+  ],
+  "Fun Facts": [
+    "Newcastle United’s traditional home kit features black and white stripes, leading to the popular nickname ‘The Magpies’.",
+    "St James’ Park has been the club’s home since its founding and is known for its passionate atmosphere.",
+    "The club ended a 70-year trophy drought by winning the EFL Cup in 2025 under Eddie Howe.",
+    "Kieran Trippier captained the team to the 2025 EFL Cup victory, becoming the first Newcastle captain in decades to lift a major domestic trophy.",
+    "Newcastle United have a large global fanbase and are known for one of the most vibrant supporter cultures in English football."
+  ]
+}

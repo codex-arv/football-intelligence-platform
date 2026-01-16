@@ -1,0 +1,49 @@
+{
+  "Club Name": "Crystal Palace",
+  "Full Official Name": "Crystal Palace Football Club",
+  "Nickname(s)": ["The Eagles", "The Glaziers"],
+  "Founded Year": "10 September 1905",
+  "Founders / Founding Members": "Crystal Palace Football Club was established on 10 September 1905 in South London, named after the Crystal Palace exhibition building where the club initially played. Local football enthusiasts organised the club to compete professionally, quickly entering the Southern League before joining the Football League in 1920.",
+  "Location (City, Country)": "London, England",
+  "Home Stadium": {
+    "Name": "Selhurst Park",
+    "Capacity": 25486
+  },
+  "Current Manager": "Oliver Glasner",
+  "Motto": "—",
+  "About the Club": "Crystal Palace Football Club is a professional football club based in Selhurst, London, competing in the Premier League. Founded in 1905, the club played its early matches at the grounds of the Crystal Palace exhibition before moving to Selhurst Park in 1924, where it has remained. Historically fluctuating between divisions, Palace established a long-term presence in the Premier League from the mid-2010s onwards. Under manager Oliver Glasner, Palace achieved the greatest success in its history by winning the FA Cup in 2025, its first major trophy after more than a century of competitive football. The club is known for its passionate fanbase, distinctive red and blue colours, and strong community identity in south London.",
+  "Most Iconic Moments": [
+    "The founding of Crystal Palace FC in 1905, establishing a professional football club tied to the iconic Crystal Palace structure.",
+    "Move to Selhurst Park in 1924, setting the club’s long-term home and legacy ground.",
+    "Reaching the FA Cup final in 1990, taking the match to a replay before narrowly losing.",
+    "FA Cup final appearance in 2016, a dramatic campaign ending in extra time defeat.",
+    "Winning the FA Cup in 2025 with a 1–0 victory over Manchester City, Crystal Palace’s first major trophy in club history.",
+    "Qualification for European competition (UEFA) for the first time following the 2025 FA Cup win, marking a historic continental milestone.",
+    "Establishing a consistent Premier League presence with strong mid-table finishes throughout the 2010s and 2020s."
+  ],
+  "Total Trophies Won": "Crystal Palace have won a total of 3 major honours. The breakdown is as follows: \nFA Cup: 1 (2024–25)\nFootball League Second Division / Championship: 2 (1978–79, 1993–94)",
+  "Major Rivalries": [
+    {
+      "Club": "Millwall",
+      "Rivalry Name": "South London Derby",
+      "Notes": "A fierce local rivalry rooted in geographic proximity and fanbase intensity, known for passionate and sometimes volatile encounters."
+    },
+    {
+      "Club": "Charlton Athletic",
+      "Rivalry Name": "South London Derby",
+      "Notes": "A traditional south London derby reflecting local competition and historical ties between the clubs."
+    },
+    {
+      "Club": "Brighton & Hove Albion",
+      "Rivalry Name": "M23 Derby",
+      "Notes": "A rivalry that has grown in intensity with increased competitive matches and close supporters’ relations."
+    }
+  ],
+  "Fun Facts": [
+    "Crystal Palace’s nickname 'The Eagles' was adopted in the early 1970s, replacing the older nickname 'The Glaziers.'",
+    "The club played its first matches at the Crystal Palace exhibition grounds before moving to Selhurst Park in 1924.",
+    "Crystal Palace’s FA Cup win in 2025 was their first major trophy after over 120 years of professional competition.",
+    "The club’s supporters are known for flying an eagle mascot around Selhurst Park before home matches.",
+    "Despite limited major honours historically, Palace have a proud and resilient reputation in English football."
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "Club Name": "Sunderland",
+  "Full Official Name": "Sunderland Association Football Club",
+  "Nickname(s)": ["The Black Cats"],
+  "Founded Year": "1879",
+  "Founders / Founding Members": "Sunderland Association Football Club was founded in 1879 in Sunderland, Tyne and Wear, England. Originally established to represent the town in organised football, the club quickly became a significant force in early English football.",
+  "Location (City, Country)": "Sunderland, England",
+  "Home Stadium": {
+    "Name": "Stadium of Light",
+    "Capacity": 48795
+  },
+  "Current Manager": "Régis Le Bris",
+  "Motto": "Consectatio Excellentiae",
+  "About the Club": "Sunderland AFC is a professional football club based in Sunderland, England. The Black Cats compete in the Premier League for the 2025–26 season after earning promotion via the Championship play-offs in 2025. Founded in 1879, Sunderland have a rich history in English football, with periods of top-flight success and memorable cup runs. The club’s iconic Stadium of Light, opened in 1997, is known for its passionate atmosphere. Under head coach Régis Le Bris, appointed in June 2024, Sunderland achieved promotion from the Championship at the end of the 2024–25 season and are now competing in the Premier League. Granit Xhaka serves as club captain for the 2025–26 campaign as Sunderland aim to establish themselves and achieve sustained top-flight status.",
+  "Most Iconic Moments": [
+    "Foundation of Sunderland AFC in 1879, establishing one of the oldest professional football clubs in England.",
+    "Winning multiple top-flight English league titles in the early periods of professional football, asserting Sunderland as a major early force in the sport.",
+    "Historic FA Cup victories in the 1930s and 1970s, showcasing the club’s success in domestic cup competitions.",
+    "The opening of the Stadium of Light in 1997, giving Sunderland a modern home and large supporter capacity.",
+    "Achieving promotion to the Premier League via the Championship play-offs in 2025 under head coach Régis Le Bris, marking a significant milestone after years outside the top flight.",
+    "Strong start to life in the Premier League in the 2025–26 season, demonstrating competitiveness and ambition in England’s top division.",
+    "Appointment of Granit Xhaka as club captain ahead of the 2025–26 Premier League campaign, bringing experienced leadership to the side."
+  ],
+  "Total Trophies Won": "Sunderland have won a total of 9 major honours. The breakdown is as follows: \nEnglish league titles: 6 \nFA Cup: 2 \nFA Community Shield: 1",
+  "Major Rivalries": [
+    {
+      "Club": "Newcastle United",
+      "Rivalry Name": "Tyne–Wear Derby",
+      "Notes": "Sunderland’s fiercest and most historic rivalry, contested with regional neighbours Newcastle United. The matches are among the most passionate local derbies in English football."
+    },
+    {
+      "Club": "Middlesbrough",
+      "Rivalry Name": "North East Derby",
+      "Notes": "A longstanding regional rivalry driven by geographic proximity and competitive fixtures between the two clubs."
+    },
+    {
+      "Club": "Durham City",
+      "Rivalry Name": "Historical Regional Rivalry",
+      "Notes": "A lesser-known local rivalry rooted in early football history and local competitive pride."
+    }
+  ],
+  "Fun Facts": [
+    "Sunderland are one of the oldest professional football clubs in England, founded in 1879.",
+    "The Stadium of Light, Sunderland’s home ground since 1997, is one of the largest football stadiums in the North East of England.",
+    "Sunderland’s fans are known for their passionate support and high attendances, often filling the stadium even during lower-division campaigns.",
+    "Granit Xhaka was appointed club captain ahead of the 2025–26 Premier League season, bringing leadership and experience from his extensive international and Premier League career.",
+    "Sunderland’s promotion in 2025 was secured through a dramatic Championship play-off final victory, returning the club to the Premier League after several seasons outside the top flight."
+  ]
+}

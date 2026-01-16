@@ -1,0 +1,49 @@
+{
+  "Club Name": "Tottenham Hotspur",
+  "Full Official Name": "Tottenham Hotspur Football Club",
+  "Nickname(s)": ["Spurs", "The Lilywhites"],
+  "Founded Year": "1882",
+  "Founders / Founding Members": "Tottenham Hotspur Football Club was formed in 1882 by a group of schoolboys from the local grammar school in Tottenham, North London, who wanted to play organised football and quickly established themselves in amateur competitions before turning professional.",
+  "Location (City, Country)": "London, England",
+  "Home Stadium": {
+    "Name": "Tottenham Hotspur Stadium",
+    "Capacity": 62850
+  },
+  "Current Manager": "Thomas Frank",
+  "Motto": "Audere est Facere",
+  "About the Club": "Tottenham Hotspur Football Club is a professional football club based in North London and a long-standing member of the Premier League. Spurs have a rich history in English and European football, combining passionate support with memorable campaigns and success across domestic and continental competitions. The club’s iconic home, Tottenham Hotspur Stadium, opened in 2019 and is one of the largest in the Premier League. In 2025, Spurs won the UEFA Europa League, ending a long trophy drought and securing qualification for the UEFA Champions League. Managed by Thomas Frank from June 2025 onwards, Tottenham continue to compete at the highest levels domestically and in Europe while maintaining a strong tradition of attacking football and youth development.",
+  "Most Iconic Moments": [
+    "Foundation of Tottenham Hotspur FC in 1882, establishing one of North London’s historic football clubs.",
+    "Winning the FA Cup and English league title double in 1960–61 under legendary manager Bill Nicholson, a first for the 20th century.",
+    "Reaching the UEFA Champions League final in 2019, the club’s deepest run in Europe’s premier competition to date.",
+    "Winning the UEFA Europa League in 2025, ending a 17-year wait for a major title and breaking a long trophy drought.",
+    "Opening of the state-of-the-art Tottenham Hotspur Stadium in 2019, providing a world-class venue for home matches.",
+    "Consistent Premier League campaigns throughout the 2010s and 2020s, including competing for European places regularly.",
+    "The development of iconic players and captains who have defined Spurs’ modern identity on the international stage."
+  ],
+  "Total Trophies Won": "Tottenham Hotspur have won a total of 29 major honours. The breakdown is as follows: \nFA Cup: 8\nEFL Cup: 4\nEnglish league titles (top-flight predecessors to Premier League): 2\nFA Community Shield: 7\nUEFA Europa League: 3\nUEFA Cup Winners’ Cup: 1",
+  "Major Rivalries": [
+    {
+      "Club": "Arsenal",
+      "Rivalry Name": "North London Derby",
+      "Notes": "Tottenham’s fiercest and most historic rivalry, rooted in geographic proximity and decades of competitive encounters."
+    },
+    {
+      "Club": "Chelsea",
+      "Rivalry Name": "London Derby",
+      "Notes": "A regional rivalry reflecting broader London football competition and frequent high-stakes matches."
+    },
+    {
+      "Club": "West Ham",
+      "Rivalry Name": "London Rivalry",
+      "Notes": "Another heated local rivalry often contested in both Premier League and cup competitions."
+    }
+  ],
+  "Fun Facts": [
+    "Tottenham were the first club in the 20th century to win the league and FA Cup double (1960–61).",
+    "Spurs won the UEFA Europa League in 2025, ending a long wait for major silverware for the club and securing Champions League qualification.",
+    "Tottenham Hotspur Stadium, with a capacity of over 62,000, is one of the largest and most modern football stadiums in England.",
+    "Despite their long history, Spurs have never won the Premier League title since its inception in 1992.",
+    "The club’s motto, \"Audere est facere,\" translates to \"To Dare Is to Do,\" and reflects its ambitious footballing philosophy."
+  ]
+}

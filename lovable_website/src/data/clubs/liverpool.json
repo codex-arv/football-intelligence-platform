@@ -1,0 +1,49 @@
+{
+  "Club Name": "Liverpool",
+  "Full Official Name": "Liverpool Football Club",
+  "Nickname(s)": ["The Reds"],
+  "Founded Year": "3 June 1892",
+  "Founders / Founding Members": "Liverpool Football Club was founded on 3 June 1892 following a split from Everton FC. John Houlding, the club’s first chairman, established Liverpool to play at Anfield after Everton left the ground to move to Goodison Park.",
+  "Location (City, Country)": "Liverpool, England",
+  "Home Stadium": {
+    "Name": "Anfield",
+    "Capacity": 54174
+  },
+  "Current Manager": "Arne Slot",
+  "Motto": "You'll Never Walk Alone",
+  "About the Club": "Liverpool Football Club is one of the most successful and historic football institutions in England and Europe. Since its foundation in 1892, the club has developed a global fanbase and a legacy of success on both domestic and international stages. Based at Anfield in Liverpool, the club has won multiple English league titles, including the Premier League, as well as numerous FA Cups, League Cups, UEFA Champions League trophies, and other major honours. Under head coach Arne Slot, appointed in June 2024, Liverpool secured the Premier League title in the 2024–25 season — their 20th English championship — and continue to compete strongly in domestic and European competitions. The club is renowned for its intense attacking style of play, passionate supporter culture, and iconic anthem \"You’ll Never Walk Alone.\"",
+  "Most Iconic Moments": [
+    "Foundation of the club in 1892 after the split from Everton and establishment at Anfield.",
+    "Winning the English league title for the first time in 1901–02, beginning a tradition of domestic success.",
+    "Bill Shankly’s managerial era (1959–1974), which laid the foundations for Liverpool’s rise to dominance in English football.",
+    "The club’s first European Cup (now UEFA Champions League) triumph in 1977 under Bob Paisley.",
+    "Achieving the historic treble in 1984–85 by winning the league, League Cup, and European Cup.",
+    "Premier League title win in 2019–20 under Jürgen Klopp, Liverpool’s first top-flight title in 30 years.",
+    "Premier League title in 2024–25 under Arne Slot, securing Liverpool’s 20th English championship."
+  ],
+  "Total Trophies Won": "Liverpool have won a total of 69 major honours. The breakdown is as follows: \nPremier League / First Division: 20\nFA Cup: 8\nEFL Cup: 9\nFA Community Shield: 15\nUEFA Champions League: 6\nUEFA Europa League / UEFA Cup: 3\nUEFA Super Cup: 4\nFIFA Club World Cup: 1",
+  "Major Rivalries": [
+    {
+      "Club": "Manchester United",
+      "Rivalry Name": "North West Derby",
+      "Notes": "One of the fiercest rivalries in English football, rooted in geographic proximity, historical dominance, and competition for major honours."
+    },
+    {
+      "Club": "Everton",
+      "Rivalry Name": "Merseyside Derby",
+      "Notes": "A long-standing local rivalry within the city of Liverpool, known for passionate encounters and historical significance."
+    },
+    {
+      "Club": "Aston Villa",
+      "Rivalry Name": "Historic rivalry",
+      "Notes": "Matches between Liverpool and Aston Villa have historical significance due to numerous high-stakes league and cup battles over many decades."
+    }
+  ],
+  "Fun Facts": [
+    "Liverpool’s anthem \"You’ll Never Walk Alone\" is one of the most famous supporter songs in world football, sung by fans before every home match at Anfield.",
+    "Anfield’s iconic Kop stand is known for its significant capacity and intense atmosphere.",
+    "Liverpool hold the record for the most English league titles tied with Manchester United (20 as of 2025).",
+    "The club’s 2024–25 Premier League title was the first in five years and came under head coach Arne Slot.",
+    "Liverpool have won the UEFA Champions League six times, making them one of the most successful English clubs in European competition."
+  ]
+}

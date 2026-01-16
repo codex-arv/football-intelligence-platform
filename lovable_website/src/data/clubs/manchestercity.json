@@ -1,0 +1,49 @@
+{
+  "Club Name": "Manchester City",
+  "Full Official Name": "Manchester City Football Club",
+  "Nickname(s)": ["The Citizens", "City"],
+  "Founded Year": "1880",
+  "Founders / Founding Members": "Manchester City Football Club was founded in 1880 as St. Mark’s (West Gorton) by members of the St. Mark’s Church in Manchester. The club later became Ardwick Association Football Club in 1887 before reorganising as Manchester City in 1894 and joining the Football League.",
+  "Location (City, Country)": "Manchester, England",
+  "Home Stadium": {
+    "Name": "Etihad Stadium",
+    "Capacity": 55097
+  },
+  "Current Manager": "Pep Guardiola",
+  "Motto": "Superbia in Proelio",
+  "About the Club": "Manchester City Football Club is a professional football club based in Manchester, England, and one of the most successful teams in English and European football in the 21st century. Founded in 1880, City have a long history that includes domestic titles and historic achievements, but the club’s modern era of dominance began after investment from the Abu Dhabi United Group in 2008. Under manager Pep Guardiola, appointed in 2016, Manchester City have won multiple Premier League titles, domestic cups, and European trophies, including the UEFA Champions League. City became the first English club to win a continental treble by securing the Premier League, FA Cup, and UEFA Champions League in the 2022–23 season, and followed up with additional major honours. The club plays home matches at the Etihad Stadium and is renowned for an attacking playing style, strong player development, and sustained success at the highest levels of competition.",
+  "Most Iconic Moments": [
+    "Foundation of Manchester City in 1880 as St. Mark’s (West Gorton), later becoming Manchester City and joining the Football League.",
+    "Winning the FA Cup in 1904, the club’s first major honour.",
+    "Premier League title in 2011–12 secured by Sergio Agüero’s dramatic last-minute goal, a defining moment in modern English football.",
+    "The historic treble in the 2022–23 season — winning the Premier League, FA Cup, and UEFA Champions League — marking City as one of Europe’s elite clubs.",
+    "Winning the UEFA Champions League for the first time in 2023 by defeating Inter Milan, establishing continental success for the club.",
+    "Setting the Premier League points record with 100 points during the 2017–18 season under Pep Guardiola.",
+    "Multiple consecutive Premier League titles in the 2020s, solidifying City’s dominance in English football."
+  ],
+  "Total Trophies Won": "Manchester City have won a total of 45 major honours. The breakdown is as follows: \nPremier League: 8\nFA Cup: 7\nEFL Cup: 9\nFA Community Shield: 6\nUEFA Champions League: 1\nUEFA Super Cup: 1\nFIFA Club World Cup: 1",
+  "Major Rivalries": [
+    {
+      "Club": "Manchester United",
+      "Rivalry Name": "Manchester Derby",
+      "Notes": "The most intense local rivalry based on city bragging rights and historic competitive clashes in league and cup competitions."
+    },
+    {
+      "Club": "Liverpool",
+      "Rivalry Name": "Historic Top-Flight Rivalry",
+      "Notes": "A strong rivalry rooted in recent title battles and frequent encounters at the top of the Premier League table."
+    },
+    {
+      "Club": "Chelsea",
+      "Rivalry Name": "Modern Era Rivalry",
+      "Notes": "During the 2010s and 2020s, competitive battles for domestic honours intensified the rivalry between Manchester City and Chelsea."
+    }
+  ],
+  "Fun Facts": [
+    "Manchester City completed a historic continental treble in the 2022–23 season by winning the Premier League, FA Cup, and UEFA Champions League in the same campaign.",
+    "City set a Premier League record of 100 points in the 2017–18 season, a mark that remains one of the greatest achievements in English top-flight history.",
+    "The dramatic title win in 2011–12 was decided in stoppage time by a goal from Sergio Agüero (Aguerooooo), one of the most iconic moments in Premier League history.",
+    "Under Pep Guardiola, City became the first English club to hold all five major trophies (Premier League, FA Cup, EFL Cup, UEFA Champions League, and FIFA Club World Cup) within a single calendar year.",
+    "The club’s modern success has made City one of the richest and most globally recognised football brands in the world."
+  ]
+}

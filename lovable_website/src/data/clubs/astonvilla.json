@@ -1,0 +1,52 @@
+{
+  "Club Name": "Aston Villa",
+  "Full Official Name": "Aston Villa Football Club",
+  "Nickname(s)": ["The Villans", "The Villa", "The Claret and Blues"],
+  "Founded Year": "March 1874",
+  "Founders / Founding Members": "Members of the Villa Cross Wesleyan Chapel cricket team in Handsworth, Birmingham. The club was founded by four young men — Jack Hughes, Frederick Matthews, Walter Price, and William Scattergood — who decided to form a football team during the cricket off-season.",
+  "Location (City, Country)": "Birmingham, England",
+  "Home Stadium": {
+    "Name": "Villa Park",
+    "Capacity": 42682
+  },
+  "Current Manager": "Unai Emery",
+  "Motto": "Prepared",
+  "About the Club": "Aston Villa Football Club, founded in 1874 in Birmingham, is one of the oldest and most historically important football clubs in England, playing a central role in shaping the modern game. Villa were founding members of the Football League in 1888 and the Football League First Division in 1892, and quickly established themselves as a dominant force in English football during the late 19th and early 20th centuries, winning multiple league titles and FA Cups. The club’s greatest era came in the early 1980s, when under manager Ron Saunders — and later Tony Barton — Aston Villa won the 1980–81 First Division title and followed it up with their crowning achievement, the 1981–82 European Cup, defeating Bayern Munich in the final and becoming one of only a handful of English clubs to be crowned champions of Europe. Following this peak, Villa experienced long periods of decline and instability, including relegations and fluctuating ownership, but remained a major cultural institution within English football. A modern turning point arrived with the takeover by NSWE (Nassef Sawiris and Wes Edens) in 2018, which brought financial stability and long-term planning. The appointment of Unai Emery in 2022 marked another significant revival, as Villa re-established themselves as a competitive Premier League side and returned to European competition. Today, Aston Villa are recognized as a historically elite club with renewed ambition, combining deep tradition, a loyal fanbase, and modern sporting infrastructure, aiming to reclaim a consistent place among England’s top teams."
+,
+  "Most Iconic Moments": [
+    "The club’s foundation in 1874: Aston Villa’s early formation by local cricketers laid the groundwork for one of England’s oldest football institutions.",
+    "Founding the Football League in 1888: Villa were among the 12 clubs that created the Football League, helping shape professional football in England.",
+    "Early dominance (1890s–1910s): Aston Villa won multiple league titles and FA Cups, becoming one of the most successful clubs of the era.",
+    "The 1980–81 First Division title: Under Ron Saunders, Villa won the English league championship, setting the stage for European success.",
+    "Winning the 1982 European Cup: Aston Villa defeated Bayern Munich 1–0 in Rotterdam, with Peter Withe scoring the decisive goal and goalkeeper Nigel Spink producing a legendary performance.",
+    "European Super Cup victory in 1982: Villa defeated Barcelona over two legs, confirming their status as Europe’s best team at the time.",
+    "Return to the Premier League in 2019: Promotion via the Championship play-offs marked the beginning of the club’s modern resurgence.",
+    "Re-establishment as a European contender under Unai Emery: Qualification for European competition in the 2020s signaled Villa’s return to relevance on the continental stage."
+  ],
+  "Total Trophies Won": "Aston Villa have won a total of 25 major domestic and international trophies. The breakdown is as follows: \nEnglish First Division / Premier League: 7\nFA Cup: 7\nEFL League Cup: 5\nEuropean Cup (UEFA Champions League): 1\nUEFA Super Cup: 1\nCharity / Community Shield: 4",
+  "Major Rivalries": [
+    {
+      "Club": "Birmingham City",
+      "Rivalry Name": "Second City Derby",
+      "Notes": "The primary and fiercest rivalry, rooted in shared city identity and deep historical tension."
+    },
+    {
+      "Club": "West Bromwich Albion",
+      "Rivalry Name": "West Midlands Derby",
+      "Notes": "A long-standing regional rivalry dating back to the early days of league football."
+    },
+    {
+      "Club": "Wolverhampton Wanderers",
+      "Rivalry Name": "West Midlands Rivalry",
+      "Notes": "Another traditional regional rivalry, intensified by geographical proximity and competitive history."
+    }
+  ],
+  "Fun Facts": [
+    "Aston Villa were one of the founding members of the Football League in 1888 and helped write the original rules of professional football.",
+    "The club was instrumental in the creation of the FA Cup final tradition, hosting early finals at Villa Park.",
+    "Villa Park is one of England’s most historic stadiums and has hosted FA Cup semi-finals, international matches, and World Cup games (1966).",
+    "Aston Villa are one of only five English clubs to have won the European Cup / UEFA Champions League.",
+    "The club’s motto, “Prepared,” reflects its Victorian-era heritage and forward-looking identity.",
+    "Despite fluctuating fortunes, Aston Villa remain one of England’s most supported clubs outside the traditional ‘big six.’"
+  ]
+}

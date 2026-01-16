@@ -1,0 +1,45 @@
+{
+  "Club Name": "Everton",
+  "Full Official Name": "Everton Football Club",
+  "Nickname(s)": ["The Toffees", "The Blues", "The People's Club"],
+  "Founded Year": "1878",
+  "Founders / Founding Members": "Everton Football Club was formed in 1878 as St. Domingo’s FC by members of the St. Domingo Methodist New Connexion Chapel in Everton, Liverpool. The club was renamed Everton FC in 1879 to reflect the wider community it represented.",
+  "Location (City, Country)": "Liverpool, England",
+  "Home Stadium": {
+    "Name": "Hill Dickinson Stadium",
+    "Capacity": 52769
+  },
+  "Current Manager": "David Moyes",
+  "Motto": "Nil Satis Nisi Optimum",
+  "About the Club": "Everton Football Club is a professional football club based in Liverpool that competes in the Premier League, England’s top division. Founded in 1878, Everton are one of the oldest and most historic clubs in English football and were founding members of both the Football League (in 1888) and the Premier League (in 1992). Known as “The Toffees,” Everton have a proud tradition of competing at the highest level, with a passionate supporter base and a long rivalry with neighbours Liverpool. The club played at Goodison Park from 1892 until 2025, when they moved to the newly constructed Hill Dickinson Stadium at Bramley-Moore Dock. Under manager David Moyes, who returned to the club in January 2025 for a second managerial spell, Everton are focused on establishing Premier League stability and building for the future under The Friedkin Group ownership.",
+  "Most Iconic Moments": [
+    "Winning their first Football League Championship in the 1890–91 season, establishing Everton early as a top-flight force.",
+    "Building and moving to Goodison Park in 1892, one of the world’s first purpose-built football stadiums.",
+    "Dixie Dean scoring a record 60 league goals in the 1927–28 season, a mark that still stands to this day.",
+    "The dominant period in the mid-1980s under manager Howard Kendall, winning two league titles and the European Cup Winners’ Cup.",
+    "FA Cup triumph in 1995, with a 1–0 win over Manchester United securing the club’s most recent major trophy.",
+    "Everton becoming a founding member of the Premier League in 1992, cementing their long-standing presence in England’s top division.",
+    "Relocating to Hill Dickinson Stadium in 2025, beginning a new era for the club after more than 130 years at Goodison Park."
+  ],
+  "Total Trophies Won": "Everton have won a total of 24 major honours. The breakdown is as follows: \nEnglish First Division / Premier League: 9 (1890–91, 1914–15, 1927–28, 1931–32, 1938–39, 1962–63, 1969–70, 1984–85, 1986–87)\nFA Cup: 5 (1905–06, 1932–33, 1965–66, 1983–84, 1994–95)\nEuropean Cup Winners’ Cup: 1 (1984–85)\nFA Charity/Community Shield: 9 (1928, 1932, 1963, 1970, 1984, 1985, 1986, 1987, 1995)",
+  "Major Rivalries": [
+    {
+      "Club": "Liverpool",
+      "Rivalry Name": "Merseyside Derby",
+      "Notes": "Everton’s most significant and historic rivalry, contested with city neighbours Liverpool. Matches are known for their local intensity, proximity of stadiums, and long-standing competitive history."
+    },
+    {
+      "Club": "Tranmere Rovers",
+      "Rivalry Name": "Merseyside Derby (secondary)",
+      "Notes": "A regional rivalry with fellow Merseyside club Tranmere Rovers, occasioned largely in cup competitions and occasional league meetings."
+    }
+  ],
+  "Fun Facts": [
+    "Everton have competed in the top flight of English football longer than almost any other club, with only a small number of clubs having a longer continuous presence.",
+    "The club’s nickname “The Toffees” originates from a local Everton Toffee House sweet shop near their original ground in Stanley Park.",
+    "Dixie Dean’s 60-goal season in 1927–28 remains the all-time top-flight league record in English football.",
+    "Everton were one of the founding members of both the Football League in 1888 and the Premier League in 1992.",
+    "Goodison Park was one of the earliest purpose-built football stadiums and hosted Everton for over 130 years before the move to Hill Dickinson Stadium.",
+    "Everton’s rivalry with Liverpool is one of the longest-running and most famous derbies in English football."
+  ]
+}

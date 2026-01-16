@@ -1,0 +1,48 @@
+{
+  "Club Name": "Ipswich Town",
+  "Full Official Name": "Ipswich Town Football Club",
+  "Nickname(s)": ["The Blues", "Tractor Boys"],
+  "Founded Year": "1878",
+  "Founders / Founding Members": "Ipswich Town Football Club was founded in 1878 in Ipswich, Suffolk, as a local amateur football club. The club turned professional in 1936 and joined the Football League in 1938, reflecting the growing popularity and organisation of the sport in England during that period.",
+  "Location (City, Country)": "Ipswich, Suffolk, England",
+  "Home Stadium": {
+    "Name": "Portman Road",
+    "Capacity": 29673
+  },
+  "Current Manager": "Kieran McKenna",
+  "Motto": "Running Towards Adversity",
+  "About the Club": "Ipswich Town Football Club is a professional football club based in Ipswich, Suffolk, with a distinguished history in English football. Founded in 1878, the club rose to national prominence under Sir Alf Ramsey, winning the English First Division title in 1961–62. Further success followed under Sir Bobby Robson, with Ipswich claiming the FA Cup in 1977–78 and the UEFA Cup in 1980–81, establishing themselves as a respected force both domestically and in Europe. After several decades fluctuating between divisions, Ipswich experienced a modern resurgence under manager Kieran McKenna, achieving back-to-back promotions from League One to the Premier League in 2023 and 2024. Following relegation from the Premier League in 2025, the club now competes in the Championship with ambitions of returning to the top flight. Ipswich Town are renowned for their loyal support, strong club identity, and historic home at Portman Road.",
+  "Most Iconic Moments": [
+    "Winning the English First Division title in 1961–62 under Sir Alf Ramsey, securing the club’s first and only top-flight championship.",
+    "FA Cup victory in 1977–78 under Sir Bobby Robson, defeating Arsenal at Wembley to claim one of the club’s most celebrated honours.",
+    "Winning the UEFA Cup in 1980–81, completing an unbeaten European campaign and achieving the club’s greatest continental success.",
+    "Back-to-back promotions from League One to the Premier League in 2023 and 2024 under Kieran McKenna, marking one of the most remarkable modern rises in English football.",
+    "Establishing Portman Road as a consistently strong home venue, hosting major domestic and European matches across decades.",
+    "Developing influential managers such as Sir Alf Ramsey and Sir Bobby Robson, both of whom went on to manage the England national team."
+  ],
+  "Total Trophies Won": "Ipswich Town have won a total of 8 major honours. The breakdown is as follows: \nEnglish First Division: 1 (1961–62)\nFA Cup: 1 (1977–78)\nUEFA Cup: 1 (1980–81)\nFootball League Second Division / Championship: 3 (1960–61, 1967–68, 1991–92)\nFootball League Third Division / League One: 2 (1953–54, 1956–57)",
+  "Major Rivalries": [
+    {
+      "Club": "Norwich City",
+      "Rivalry Name": "East Anglian Derby",
+      "Notes": "Ipswich Town’s fiercest and most historic rivalry, contested against regional neighbours Norwich City, representing pride and supremacy in East Anglia."
+    },
+    {
+      "Club": "Colchester United",
+      "Rivalry Name": "Eastern Counties rivalry",
+      "Notes": "A regional rivalry driven by geographic proximity and competitive encounters, though less intense than the East Anglian Derby."
+    },
+    {
+      "Club": "Southend United",
+      "Rivalry Name": "Historical rivalry",
+      "Notes": "A traditional rivalry rooted in earlier Football League meetings, now less frequent due to time spent in different divisions."
+    }
+  ],
+  "Fun Facts": [
+    "Ipswich Town are one of the few English clubs to have won a European trophy without ever winning the League Cup or Community Shield.",
+    "The club won the UEFA Cup in 1980–81 without losing a single match throughout the competition.",
+    "Portman Road has been Ipswich Town’s home ground since 1884 and is one of the most recognisable stadiums in East Anglia.",
+    "The nickname ‘Tractor Boys’ emerged in the late 1990s and early 2000s and has since been proudly embraced by supporters.",
+    "Both Sir Alf Ramsey and Sir Bobby Robson managed Ipswich Town before going on to manage England at international level."
+  ]
+}

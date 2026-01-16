@@ -1,0 +1,50 @@
+{
+  "Club Name": "Leeds United",
+  "Full Official Name": "Leeds United Football Club",
+  "Nickname(s)": ["The Whites", "United"],
+  "Founded Year": "1919",
+  "Founders / Founding Members": "Leeds United Football Club was founded in 1919 following the disbanding of Leeds City FC, which had been expelled from the Football League due to financial irregularities. Leeds United were formed to represent the city of Leeds in professional football and were quickly elected to the Football League.",
+  "Location (City, Country)": "Leeds, West Yorkshire, England",
+  "Home Stadium": {
+    "Name": "Elland Road",
+    "Capacity": 37892
+  },
+  "Current Manager": "Daniel Farke",
+  "Motto": "Marching On Together",
+  "About the Club": "Leeds United Football Club is a professional football club based in Leeds, West Yorkshire, and is one of the most historically significant clubs in English football. Founded in 1919, Leeds rose to national and international prominence under legendary manager Don Revie during the 1960s and 1970s, becoming one of the dominant forces in England and Europe. Known for their intense style, strong identity, and passionate fanbase, Leeds won multiple league titles, domestic cups, and reached several European finals during this era. After periods of decline, financial instability, and time outside the top flight, the club returned to the Premier League in 2020 under Marcelo Bielsa, restoring their reputation for high-energy football. Following relegation in 2023, Leeds have been competing in the Championship under Daniel Farke, aiming to secure a return to the Premier League. Leeds United are widely regarded as a club with a powerful footballing culture, a globally recognised fanbase, and a strong historical legacy.",
+  "Most Iconic Moments": [
+    "Formation of Leeds United in 1919 following the dissolution of Leeds City, establishing a new football identity for the city.",
+    "The Don Revie era (1961–1974), during which Leeds became one of the most dominant clubs in England and Europe.",
+    "Winning the First Division (now Premier League) titles in 1968–69 and 1973–74, cementing Leeds as an elite club.",
+    "Reaching the European Cup final in 1975, finishing runners-up to Bayern Munich in one of the most controversial finals in European history.",
+    "Winning the League Cup in 1967–68, the club’s first major trophy.",
+    "Reaching the UEFA Champions League semi-finals in 2001 under David O’Leary, marking a modern European high point.",
+    "Promotion to the Premier League in 2020 after a 16-year absence, under Marcelo Bielsa, restoring Leeds to the top flight."
+  ],
+  "Total Trophies Won": "Leeds United have won a total of 11 major honours. The breakdown is as follows: \nPremier League: 3 (1968–69, 1973–74, 1991–92)\nFA Cup: 1 (1971–72)\nEFL Cup: 1 (1967–68)\nFA Community Shield: 2 (1969, 1992)\nChampionship: 1 (2019–20)\nLeague One: 1 (2006–07)\nInter-Cities Fairs Cup: 2 (1968, 1971)",
+  "Major Rivalries": [
+    {
+      "Club": "Manchester United",
+      "Rivalry Name": "Roses Rivalry",
+      "Notes": "One of English football’s most historic rivalries, rooted in regional, cultural, and historical conflict between Yorkshire and Lancashire."
+    },
+    {
+      "Club": "Chelsea",
+      "Rivalry Name": "1970s rivalry",
+      "Notes": "A rivalry formed during intense domestic and European battles in the late 1960s and 1970s."
+    },
+    {
+      "Club": "Sheffield United",
+      "Rivalry Name": "Yorkshire rivalry",
+      "Notes": "A regional rivalry reflecting Yorkshire pride and competitive league history."
+    }
+  ],
+  "Fun Facts": [
+    "Leeds United’s all-white kit was inspired by Real Madrid and introduced by Don Revie in the 1960s.",
+    "Elland Road has been Leeds United’s home stadium since the club’s formation in 1919.",
+    "Leeds won the Premier League title in 1991–92, the final season before the league was rebranded as the Premier League.",
+    "The club’s anthem ‘Marching On Together’ is one of the most iconic and widely recognised chants in English football.",
+    "Leeds United reached the Champions League semi-finals in 2001 despite having one of the youngest squads in the competition.",
+    "Leeds have one of the largest and most passionate fanbases in England, with strong support both domestically and internationally."
+  ]
+}

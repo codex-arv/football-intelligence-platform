@@ -1,0 +1,50 @@
+{
+  "Club Name": "Fulham",
+  "Full Official Name": "Fulham Football Club",
+  "Nickname(s)": ["The Cottagers", "The Whites"],
+  "Founded Year": "1879",
+  "Founders / Founding Members": "Fulham Football Club was formed in 1879 as Fulham St Andrew’s Church Sunday School FC by members of the local St Andrew’s parish in West Kensington. The name was shortened to Fulham FC in 1888 as the club focused fully on football.",
+  "Location (City, Country)": "Fulham, London, England",
+  "Home Stadium": {
+    "Name": "Craven Cottage",
+    "Capacity": 27200
+  },
+  "Current Manager": "Marco Silva",
+  "Motto": "Pro Civibus Et Civitate",
+  "About the Club": "Fulham Football Club is a professional football club based in Fulham, London, and is the oldest professional football team in the capital. Founded in 1879, the club has a long history spanning amateur beginnings, entry into the Football League in 1907, and multiple promotions and relegations between the top two tiers of English football. Fulham achieved continental recognition by winning the UEFA Intertoto Cup in 2002 and reaching the UEFA Europa League final in 2010. Under owner Shahid Khan, Fulham returned to the Premier League in 2022 and have since established themselves as a competitive top-flight side. The club plays its home matches at the historic riverside ground Craven Cottage, famed for its traditional architecture and atmosphere.",
+  "Most Iconic Moments": [
+    "Foundation of Fulham FC in 1879 as an early organised club in London’s football history.",
+    "Election to the Football League Second Division in 1907, beginning professional league competition.",
+    "Winning the Southern League Division One titles in 1905–06 and 1906–07 before joining the Football League.",
+    "Fulham’s run to the UEFA Europa League final in 2010, the club’s first major European campaign.",
+    "Winning the UEFA Intertoto Cup in 2002, Fulham’s only UEFA trophy.",
+    "Promotion to the Premier League in 2022 and consolidation as a top-flight side under Marco Silva.",
+    "Reaching consistent mid-table Premier League finishes with competitive performances against higher-profile clubs."
+  ],
+  "Total Trophies Won": "Fulham’s major honours include recognised league and international trophies: \nSouthern League Division One: 2 (1905–06, 1906–07)\nFootball League Second Division / EFL Championship: 2 (1931–32, 1948–49)\nFootball League Third Division South: 1 (1931–32)\nWestern League: 1 (1893)\nUEFA Intertoto Cup: 1 (2002)",
+  "Major Rivalries": [
+    {
+      "Club": "Chelsea",
+      "Rivalry Name": "West London Derby I",
+      "Notes": "A regional rivalry with local pride at stake, though historically less intense than some other London derbies."
+    },
+    {
+      "Club": "Queens Park Rangers",
+      "Rivalry Name": "West London Derby II",
+      "Notes": "A traditional local rivalry rooted in geographic proximity and historical league encounters."
+    },
+    {
+      "Club": "Brentford",
+      "Rivalry Name": "West London Derby III",
+      "Notes": "Another West London rivalry, regularly contested due to both clubs’ proximity and competitive fixtures."
+    }
+  ],
+  "Fun Facts": [
+    "Fulham are the oldest professional football club in London, founded in 1879.",
+    "Craven Cottage has been Fulham’s home ground since 1896, one of the oldest continuously used football stadiums in England.",
+    "Fulham won the UEFA Intertoto Cup in 2002, the club’s only continental trophy.",
+    "The club reached the UEFA Europa League final in 2010, losing narrowly in a historic European campaign.",
+    "Despite its long history, Fulham have never won the English top-flight title or FA Cup as of 2025.",
+    "Fulham have yo-yoed between the Premier League and Championship in recent decades, earning promotion through both automatic and play-off routes."
+  ]
+}
