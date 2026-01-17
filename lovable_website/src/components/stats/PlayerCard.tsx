@@ -116,14 +116,14 @@ export default function PlayerCard({
   onClick={onToggle}
   whileHover={{
               scale: 1.03,
-              boxShadow: "0 0 30px rgba(255,255,255,0.4)",
+              boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)",
             }}
   transition={{
     type: "spring",
     stiffness: 300,
     damping: 22,
   }}
-  className="cursor-pointer rounded-2xl border border-white/30
+  className="cursor-pointer rounded-2xl border border-white/40
               p-5 backdrop-blur-md
               transition-all duration-100
              bg-transparent p-6 space-y-4

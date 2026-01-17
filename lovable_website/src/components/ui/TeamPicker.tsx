@@ -130,7 +130,7 @@ export default function TeamPicker({
       {/* Trigger */}
       <button
         onClick={() => setOpen((s) => !s)}
-        className="mb-3 px-4 py-2 rounded-xl bg-transparent
+        className="mb-3 px-4 py-2 rounded-xl bg-black/25
           hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
           shadow-[0_0_20px_rgba(255,255,255,0.4)] text-sm"
       >
@@ -173,7 +173,7 @@ export default function TeamPicker({
       {/* Carousel */}
       <div className="flex items-center gap-6 mt-0">
 
-        <button onClick={prev} className="p-3 bg-white/10 rounded-full hover:bg-white/20">❮</button>
+        <button onClick={prev} className="p-3 bg-transparent rounded-full hover:bg-black/25">❮</button>
 
         <div className="flex flex-col items-center">
           <button
@@ -194,7 +194,7 @@ export default function TeamPicker({
           <div className="mt-4 text-center text-xl font-semibold">{visible}</div>
         </div>
 
-        <button onClick={next} className="p-3 bg-white/10 rounded-full hover:bg-white/20">❯</button>
+        <button onClick={next} className="p-3 bg-transparent rounded-full hover:bg-black/25">❯</button>
 
       </div>
     </div>

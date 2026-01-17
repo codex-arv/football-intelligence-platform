@@ -268,7 +268,7 @@ export default function KnowYourClubs() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-6xl font-bold uppercase italic bg-gradient-text bg-clip-text text-transparent">
+          <h1 className="text-6xl font-extrabold uppercase italic bg-gradient-text bg-clip-text text-transparent">
             Hall of Clubs
           </h1>
           <p className="text-xl font-lightbold text-white/80 max-w-3xl mx-auto">
@@ -378,11 +378,11 @@ export default function KnowYourClubs() {
                     >
                       <div className="flex items-center gap-3 mb-3 text-white transition-colors">
                         <item.icon className="w-6 h-6" />
-                        <span className="text-3xl font-semibold uppercase tracking-wide bg-gradient-text bg-clip-text text-transparent">
+                        <span className="text-3xl font-bold uppercase tracking-wide bg-gradient-text bg-clip-text text-transparent">
                           {item.label}
                         </span>
                       </div>
-                      <p className="text-xl font-lightbold tracking-tight text-white/75">{item.value}</p>
+                      <p className="text-xl font-semibold tracking-[0.02em] text-white/90">{item.value}</p>
                     </motion.div>
                   )
               )}
@@ -392,18 +392,18 @@ export default function KnowYourClubs() {
             {/* ABOUT THE CLUB SECTION */}
             <section className="w-full max-w-6xl">
               <div className="flex items-center gap-4 mb-8">
-                <h3 className="text-4xl font-semibold uppercase tracking-wide whitespace-nowrap bg-gradient-text bg-clip-text text-transparent">
+                <h3 className="text-4xl font-bold italic uppercase tracking-wide whitespace-nowrap bg-gradient-text bg-clip-text text-transparent">
                   About the Club
                 </h3>
               </div>
-              <div className="font-normal text-white/80">
+              <div className="font-normal text-white/90">
                 <ExpandableText text={clubData["About the Club"]} wordLimit={100} />
               </div>
             </section>
 
             {/* ICONIC MOMENTS */}
             <section className="space-y-16">
-              <h3 className="text-4xl font-semibold uppercase tracking-wide bg-gradient-text bg-clip-text text-transparent">
+              <h3 className="text-4xl font-bold italic uppercase tracking-wide bg-gradient-text bg-clip-text text-transparent">
                 Iconic Moments
               </h3>
               <div className="relative space-y-24">
@@ -427,7 +427,7 @@ export default function KnowYourClubs() {
                       </div>
                       <div className="space-y-4">
                         <span className="md:hidden text-white font-semibold text-lg">{year}</span>
-                        <p className="text-xl font-lightbold leading-relaxed text-white/90 max-w-3xl">
+                        <p className="text-xl font-semibold leading-relaxed text-white/85 max-w-3xl">
                           {moment}
                         </p>
                       </div>
@@ -441,7 +441,7 @@ export default function KnowYourClubs() {
             {/* SILVERWARE CABINET */}
             <section className="py-6">
               <div className="flex items-center gap-4 mb-10">
-                <h3 className="text-4xl font-semibold uppercase tracking-wide bg-gradient-text bg-clip-text text-transparent">
+                <h3 className="text-4xl font-bold italic uppercase tracking-wide bg-gradient-text bg-clip-text text-transparent">
                   Silverware Cabinet
                 </h3>
               </div>
@@ -497,7 +497,7 @@ export default function KnowYourClubs() {
 
 
                       {/* Competition name */}
-                      <p className={`text-m font-semibold uppercase tracking-[0.1em] text-white/80 text-center leading-relaxed group-hover:text-white/100 transition-colors`}>
+                      <p className={`text-m font-semibold uppercase tracking-[0.12em] text-white/90 text-center leading-relaxed group-hover:text-white/100 transition-colors`}>
                         {competition.trim()}
                       </p>
                     </div>
@@ -513,7 +513,7 @@ export default function KnowYourClubs() {
             <section>
               <h3
                 className="
-                  text-4xl font-semibold uppercase tracking-wide
+                  text-4xl font-bold italic uppercase tracking-wide
                   whitespace-nowrap bg-gradient-text bg-clip-text text-transparent
                   mb-10
                   relative z-10
@@ -532,10 +532,9 @@ export default function KnowYourClubs() {
                     transition={{ duration: 0.4, ease: "easeOut" }}
                     className="
                     flex items-center gap-8
-                    bg-white/3 backdrop-blur-md
+                    bg-transparent backdrop-blur-xs
                     rounded-2xl p-6
-                    hover:border-white/20
-                    hover:shadow-[0_0_18px_rgba(255,255,255,0.12)]
+                    border border-white/0
                     transition-all duration-300
                   "
 

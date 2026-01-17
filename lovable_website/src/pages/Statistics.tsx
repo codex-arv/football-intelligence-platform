@@ -184,13 +184,23 @@ const Statistics = () => {
             >
               <h1
                 className="
-                  text-6xl font-bold uppercase italic
+                  text-6xl font-extrabold uppercase italic
                   bg-gradient-text bg-clip-text text-transparent
                   whitespace-nowrap
                   leading-[1.15]
                 "
               >
-                Match & Player Statistics
+                Historical Match and
+              </h1>
+              <h1
+                className="
+                  text-6xl font-extrabold uppercase italic
+                  bg-gradient-text bg-clip-text text-transparent
+                  whitespace-nowrap
+                  leading-[1.15]
+                "
+              >
+                Player Statistics
               </h1>
 
               <p className="text-xl md:text-xl text-white/80 max-w-4xl font-lightbold mx-auto text-center">
@@ -271,7 +281,7 @@ const Statistics = () => {
               onClick={() => selectMatch(m)}
               whileHover={{
                 scale: 1.03,
-                boxShadow: "0 0 30px rgba(255,255,255,0.4)",
+                boxShadow: "0 0 30px rgba(255, 255, 255, 0.78)",
               }}
               transition={{
                 type: "spring",

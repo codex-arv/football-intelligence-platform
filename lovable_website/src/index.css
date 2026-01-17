@@ -9,7 +9,7 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Premier League inspired palette */
-    --matrix-green: 127 100% 28%;
+    --matrix-green: 101 100% 34%;
     --glowing-magenta: 323 92% 26%;
     --vibrant-blue: 224 75% 48%;
     --vibrant-green: 88 78% 33%;
@@ -209,6 +209,21 @@ All colors MUST be HSL.
     #000,
     #000000,
     hsl(120, 100%, 1%),
+    hwb(0 0% 100%),
+    #000000,
+    hsl(0, 0%, 0%),
+    #000
+  );
+  background-size: 300% 300%;
+  animation: gradient-move 8s ease-in-out infinite;
+}
+
+.feature-card-gradient {
+  background: linear-gradient(
+    90deg,
+    #000,
+    #000000,
+    hsl(207, 91%, 31%),
     hwb(0 0% 100%),
     #000000,
     hsl(0, 0%, 0%),

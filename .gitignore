@@ -1,4 +1,4 @@
-# Python
+# Python cache and compiled files
 __pycache__/
 *.pyc
 *.pyo
@@ -10,12 +10,13 @@ env/
 projectvenv/
 .venv/
 
-# Data & models
-*.pkl
-*.joblib
-data/
-data_artifacts/
+# Environment variables (secrets)
+.env
+.env.local
 
 # OS junk
 .DS_Store
 Thumbs.db
+
+# Node modules
+lovable_website/node_modules/

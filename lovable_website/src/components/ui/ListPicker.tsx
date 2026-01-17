@@ -39,14 +39,15 @@ export default function ListPicker<T extends string | number>({
 
   return (
     <div ref={wrapperRef} className="w-full flex flex-col items-center relative">
-      <h3 className="text-xl font-semibold mb-4 italic">{title}</h3>
+      <h3 className="text-2xl font-semibold mb-4 italic">{title}</h3>
 
       {/* Trigger */}
       <button
         onClick={() => setOpen((s) => !s)}
-        className="mb-3 px-4 py-3 rounded-xl bg-transparent
-          hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.4)]
-          shadow-[0_0_20px_rgba(255,255,255,0.4)] text-sm"
+        className="mb-3 px-4 py-3 rounded-xl 
+          border border-white/0 bg-black/25
+          hover:shadow-[0_0_10px_rgba(255,255,255,0.6)]
+          shadow-[0_0_20px_rgba(255,255,255,0.2)] text-md"
       >
         {selected || "Select from List"} ▼
       </button>

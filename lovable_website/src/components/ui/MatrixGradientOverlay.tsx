@@ -5,7 +5,7 @@ export default function MatrixGradientOverlay() {
         fixed inset-0
         pointer-events-none
         about-the-clubs-gradient
-        opacity-40
+        opacity-90
         mix-blend-screen
         -z-5
       "

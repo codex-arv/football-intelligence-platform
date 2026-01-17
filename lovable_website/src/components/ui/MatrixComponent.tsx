@@ -1,235 +1,248 @@
 import { useEffect, useRef } from "react";
+import turfImage from "../../assets/turf3.png";
 
-interface Particle {
-  x: number;
-  y: number;
-  vx: number;
-  vy: number;
-  size: number;
-  opacity: number;
-  pulsePhase: number;
-}
-
-interface MatrixDrop {
-  x: number;
-  y: number;
-  speed: number;
-  length: number;
-  opacity: number;
-}
+/**
+ * STRATEGIC NEXUS BACKGROUND (Refined)
+ * Prediction-focused, analytics-driven, legacy-aware.
+ */
 
 export default function MatrixBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouseRef = useRef({ x: 0, y: 0, active: false });
 
   useEffect(() => {
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext("2d")!;
-    let animationId: number;
-
+    const bgImage = new Image();
+    bgImage.src = turfImage;
+    let raf: number;
     let t = 0;
-    const MATRIX_GREEN = "0,169,21";
-    const AURORA_GREEN = "0,101,29";
 
-    const particles: Particle[] = [];
-    const matrixDrops: MatrixDrop[] = [];
-
-    let cssW = 0;
-    let cssH = 0;
-
-    const resize = () => {
-      const dpr = window.devicePixelRatio || 1;
-
-      cssW = window.innerWidth;
-      cssH = window.innerHeight;
-
-      canvas.width = cssW * dpr;
-      canvas.height = cssH * dpr;
-      canvas.style.width = cssW + "px";
-      canvas.style.height = cssH + "px";
-
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-      initParticles();
-      initMatrixDrops();
+    const COLORS = {
+      matrix: "0, 255, 90",
+      highlight: "0, 255, 90",
+      bg: "#041c04",
     };
 
-    resize();
-    window.addEventListener("resize", resize);
+    let w: number, h: number;
 
-    function initParticles() {
-      particles.length = 0;
-      const particleCount = Math.floor((cssW * cssH) / 15000);
-      for (let i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * cssW,
-          y: Math.random() * cssH,
-          vx: (Math.random() - 0.5) * 0.5,
-          vy: (Math.random() - 0.5) * 0.5,
-          size: Math.random() * 2 + 1,
-          opacity: Math.random() * 0.5 + 0.3,
-          pulsePhase: Math.random() * Math.PI * 2,
-        });
+    const nodes: Node[] = [];
+    const pulses: Pulse[] = [];
+    const rings: Ring[] = [];
+
+    class Node {
+      x: number; y: number; vx: number; vy: number;
+      size: number; baseOpacity: number;
+
+      constructor() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.vx = (Math.random() - 0.5) * 0.75;
+        this.vy = (Math.random() - 0.5) * 0.75;
+        this.size = Math.random() * 1.5 + 0.6;
+        this.baseOpacity = Math.random() * 0.35 + 0.15;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > w) this.vx *= -1;
+        if (this.y < 0 || this.y > h) this.vy *= -1;
       }
     }
 
-    function initMatrixDrops() {
-      matrixDrops.length = 0;
-      const dropCount = Math.floor(cssW / 80);
-      for (let i = 0; i < dropCount; i++) {
-        matrixDrops.push({
-          x: Math.random() * cssW,
-          y: Math.random() * cssH - cssH,
-          speed: Math.random() * 2,
-          length: Math.random() * 80 + 40,
-          opacity: Math.random() * 0.3 + 0.1,
-        });
+    class Pulse {
+      a: Node;
+      b: Node;
+      progress: number;
+      speed: number;
+
+      constructor(a: Node, b: Node) {
+        this.a = a;
+        this.b = b;
+        this.progress = 0;
+        this.speed = Math.random() * 0.008 + 0.004;
       }
-    }
 
-    // FIXED CENTERED PITCH
-    function drawPitch() {
-      const pitchW = cssW * 1;
-      const pitchH = cssH * 1;
-      const px = (cssW - pitchW) / 2;
-      const py = (cssH - pitchH) / 2;
+      update() {
+        this.progress += this.speed;
+      }
 
-      ctx.strokeStyle = `rgba(${MATRIX_GREEN},0.35)`;
-      ctx.lineWidth = 1;
+      draw() {
+        if (this.progress > 1) return;
 
-      ctx.strokeRect(px, py, pitchW, pitchH);
-
-      ctx.beginPath();
-      ctx.moveTo(px + pitchW / 2, py);
-      ctx.lineTo(px + pitchW / 2, py + pitchH);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.arc(px + pitchW / 2, py + pitchH / 2, pitchH * 0.15, 0, Math.PI * 2);
-      ctx.stroke();
-
-      const boxW = pitchW * 0.18;
-      const boxH = pitchH * 0.32;
-
-      ctx.strokeRect(px, py + pitchH / 2 - boxH / 2, boxW, boxH);
-      ctx.strokeRect(px + pitchW - boxW, py + pitchH / 2 - boxH / 2, boxW, boxH);
-    }
-
-    function drawParticles() {
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x < 0) p.x = cssW;
-        if (p.x > cssW) p.x = 0;
-        if (p.y < 0) p.y = cssH;
-        if (p.y > cssH) p.y = 0;
-
-        p.pulsePhase += 0.05;
-        const pulse = Math.sin(p.pulsePhase) * 0.3 + 0.7;
+        const x = this.a.x + (this.b.x - this.a.x) * this.progress;
+        const y = this.a.y + (this.b.y - this.a.y) * this.progress;
 
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${MATRIX_GREEN},${p.opacity * pulse * 0.6})`;
+        ctx.arc(x, y, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${COLORS.highlight}, 0.7)`;
         ctx.fill();
+      }
+    }
 
-        for (let j = 0; j < 6; j++) {
-          const p2 = particles[(Math.random() * particles.length) | 0];
-          const dx = p2.x - p.x;
-          const dy = p2.y - p.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+    class Ring {
+      x: number; y: number; r: number; opacity: number;
 
-          if (dist < 120 && dist > 0) {
-            ctx.beginPath();
-            ctx.moveTo(p.x, p.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(${MATRIX_GREEN},${(1 - dist / 120) * 0.15 * pulse})`;
+      constructor() {
+        this.x = Math.random() * w;
+        this.y = Math.random() * h;
+        this.r = 0;
+        this.opacity = 0;
+      }
+
+      update() {
+        this.r += 0.6;
+        this.opacity -= 0.0008;
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(${COLORS.matrix}, ${this.opacity})`;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+
+    const init = () => {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+
+      nodes.length = 0;
+      pulses.length = 0;
+      rings.length = 0;
+
+      for (let i = 0; i < 90; i++) nodes.push(new Node());
+    };
+
+    const drawScanlines = () => {
+      ctx.fillStyle = "rgba(0,255,90,0.012)";
+      for (let y = 0; y < h; y += 4) {
+        ctx.fillRect(0, y, w, 1);
+      }
+    };
+
+    const drawConnections = () => {
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.hypot(dx, dy);
+
+          if (dist < 150) {
+            ctx.strokeStyle = `rgba(${COLORS.matrix}, ${0.12 * (1 - dist / 150)})`;
             ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.stroke();
+
+            if (Math.random() > 0.9985) {
+              pulses.push(new Pulse(nodes[i], nodes[j]));
+            }
+          }
+        }
+
+        if (mouseRef.current.active) {
+          const dx = nodes[i].x - mouseRef.current.x;
+          const dy = nodes[i].y - mouseRef.current.y;
+          const d = Math.hypot(dx, dy);
+          if (d < 200) {
+            ctx.strokeStyle = `rgba(${COLORS.matrix}, 0.1)`;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(mouseRef.current.x, mouseRef.current.y);
             ctx.stroke();
           }
         }
-      });
-    }
-
-    function drawMatrixRain() {
-      matrixDrops.forEach((drop) => {
-        drop.y += drop.speed;
-
-        if (drop.y > cssH + drop.length) {
-          drop.y = -drop.length;
-          drop.x = Math.random() * cssW;
-        }
-
-        const gradient = ctx.createLinearGradient(drop.x, drop.y, drop.x, drop.y + drop.length);
-        gradient.addColorStop(0, `rgba(${MATRIX_GREEN},${drop.opacity})`);
-        gradient.addColorStop(0.5, `rgba(${MATRIX_GREEN},${drop.opacity * 0.5})`);
-        gradient.addColorStop(1, `rgba(${MATRIX_GREEN},0)`);
-
-        ctx.strokeStyle = gradient;
-        ctx.lineWidth = 1.5;
-        ctx.beginPath();
-        ctx.moveTo(drop.x, drop.y);
-        ctx.lineTo(drop.x, drop.y + drop.length);
-        ctx.stroke();
-      });
-    }
-
-    function drawScanline() {
-      const scanY = ((t * 50) % (cssH + 200)) - 100;
-      const grad = ctx.createLinearGradient(0, scanY - 100, 0, scanY + 100);
-      grad.addColorStop(0, `rgba(${MATRIX_GREEN},0)`);
-      grad.addColorStop(0.5, `rgba(${MATRIX_GREEN},0.03)`);
-      grad.addColorStop(1, `rgba(${MATRIX_GREEN},0)`);
-
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, scanY - 100, cssW, 200);
-    }
-
-    function drawAurora() {
-      const bandCount = 4;
-
-      for (let i = 0; i < bandCount; i++) {
-        const baseY = cssH * 0.2 + i * (cssH / bandCount);
-        const wave = Math.sin(t * 0.4 + i * 2) * 120;
-        const y = baseY + wave;
-
-        const grad = ctx.createLinearGradient(0, y - 200, 0, y + 200);
-
-        grad.addColorStop(0, `rgba(${AURORA_GREEN},0)`);
-        grad.addColorStop(0.4, `rgba(${AURORA_GREEN},0.06)`);
-        grad.addColorStop(0.5, `rgba(${AURORA_GREEN},0.06)`);
-        grad.addColorStop(0.6, `rgba(${AURORA_GREEN},0.06)`);
-        grad.addColorStop(1, `rgba(${AURORA_GREEN},0)`);
-
-        ctx.fillStyle = grad;
-
-        ctx.fillRect(0, y - 250, cssW, 500);
       }
-    }
-
-
-    const draw = () => {
-      t += 0.016;
-
-      ctx.fillStyle = "#000700";
-      ctx.fillRect(0, 0, cssW, cssH);
-
-      drawPitch();
-      drawAurora();
-      drawMatrixRain();
-      drawParticles();
-      drawScanline();
-    //   drawLightSweeps();
-
-      animationId = requestAnimationFrame(draw);
     };
 
-    draw();
+    const animate = () => {
+      t += 0.02;
+
+      // Draw turf image as base layer
+      if (bgImage.complete) {
+        ctx.drawImage(bgImage, 0, 0, w, h);
+      } else {
+        ctx.fillStyle = COLORS.bg;
+        ctx.fillRect(0, 0, w, h);
+      }
+
+      // Darken + unify tone (critical for readability)
+      ctx.fillStyle = "rgba(4, 32, 4, 0.68)";
+      ctx.fillRect(0, 0, w, h);
+
+      // Subtle desaturation pass (keeps detail, kills glare)
+      ctx.fillStyle = "rgba(5, 33, 3, 0.64)";
+      ctx.fillRect(0, 0, w, h);
+
+      // drawConnections();
+
+      nodes.forEach(n => {
+        n.update();
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, n.size, 0, Math.PI * 1);
+        ctx.fillStyle = `rgba(${COLORS.matrix}, ${n.baseOpacity + Math.sin(t + n.x) * 0.15})`;
+        ctx.fill();
+      });
+
+      pulses.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      pulses.splice(0, pulses.filter(p => p.progress <= 1).length);
+
+      if (Math.random() > 0.995) rings.push(new Ring());
+      rings.forEach(r => {
+        r.update();
+        r.draw();
+      });
+      rings.splice(0, rings.filter(r => r.opacity > 0).length);
+
+      drawScanlines();
+
+      raf = requestAnimationFrame(animate);
+    };
+
+    const onMouseMove = (e: MouseEvent) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY, active: true };
+    };
+
+    window.addEventListener("resize", init);
+    window.addEventListener("mousemove", onMouseMove);
+
+    init();
+    animate();
 
     return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
+      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", init);
+      window.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="fixed inset-0 -z-10" />;
+  return (
+    <>
+      {/* Turf image background layer */}
+      <div
+        className="fixed inset-0 -z-20 pointer-events-none"
+        style={{
+          backgroundImage: `url(${turfImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          filter: "brightness(0.35) contrast(1.1) saturate(0.85)",
+        }}
+      />
+
+      {/* Matrix animation layer (unchanged) */}
+      <canvas
+        ref={canvasRef}
+        className="fixed inset-0 -z-10"
+        style={{ filter: "contrast(1.27) brightness(2.8)" }}
+      />
+    </>
+  );
 }

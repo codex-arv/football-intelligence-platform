@@ -235,7 +235,7 @@ export default function MatchPlayerStatistics() {
             {/* HOME TEAM */}
             {homePlayers.length > 0 && (
               <div className="space-y-6">
-                <h2 className="text-4xl font-semibold uppercase tracking-[0.005em] bg-gradient-text bg-clip-text text-transparent leading-[1.15] pb-2">
+                <h2 className="text-4xl font-bold uppercase tracking-[0.005em] bg-gradient-text bg-clip-text text-transparent leading-[1.15] pb-2">
                   {displayName(home)}
                 </h2>
 
@@ -260,7 +260,7 @@ export default function MatchPlayerStatistics() {
             {/* AWAY TEAM */}
             {awayPlayers.length > 0 && (
               <div className="space-y-6 mt-12">
-                <h2 className="text-4xl font-semibold uppercase tracking-[0.005em] bg-gradient-text bg-clip-text text-transparent leading-[1.15] pb-2">
+                <h2 className="text-4xl font-bold uppercase tracking-[0.005em] bg-gradient-text bg-clip-text text-transparent leading-[1.15] pb-2">
                   {displayName(away)}
                 </h2>
 

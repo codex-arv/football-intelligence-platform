@@ -21,12 +21,12 @@ const Contact = () => {
           initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-6xl font-bold bg-gradient-text bg-clip-text text-transparent leading-[1.15]
+          <h1 className="text-6xl font-extrabold bg-gradient-text bg-clip-text text-transparent leading-[1.15]
           uppercase italic tracking-[0.01em]">
             Get In Touch
           </h1>
 
-          <p className="text-lg md:text-xl italic font-lightbold tracking-[0.01em] text-white/80 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl italic font-lightbold tracking-[0.0em] text-white/80 max-w-2xl mx-auto">
             Open to internship opportunities, collaborations and discussions.
           </p>
         </motion.section>
@@ -48,7 +48,7 @@ const Contact = () => {
               currently maintaining a CGPA of 9.70. I am driven by a strong interest in
               machine learning and data analytics, with a focus on applying data-driven
               approaches to practical, real-world problems. My academic and project
-              experience includes exposure to end-to-end ML workflows, research paper publications and performance-focused model evaluation.
+              experience includes exposure to end-to-end ML workflows, performance-focused model evaluation and relevant research publications in IEEE.
             </p>
           </div>
 
@@ -58,13 +58,12 @@ const Contact = () => {
               Technical Focus
             </h2>
             <p className="text-lg text-white/90 tracking-[0.03em] leading-relaxed">
-              My technical focus lies at the intersection of Machine Learning, Data Science,
-              and backend systems. I have hands-on experience with supervised and
-              unsupervised learning techniques, data analysis pipelines, and applied model
+              My technical focus lies at the intersection of Machine Learning, Data Science & Deep Learning. I also have hands-on experience with supervised and
+              unsupervised learning techniques, data engineering and analysis pipelines and applied model
               development using Python-based ML libraries.
             </p>
             <p className="text-lg text-white/90 tracking-[0.03em] leading-relaxed">
-              Alongside ML, I actively explore backend development using FastAPI, RESTful
+              Additionally, I actively explore backend development using FastAPI, RESTful
               APIs, and web scraping to build data-centric applications. I place strong
               emphasis on clean code, scalable design, and core computer science
               fundamentals, while continuously expanding my practical exposure through
@@ -125,8 +124,8 @@ const Contact = () => {
                                            group-hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
                     <h3 className="text-xl font-semibold text-white">{item.title}</h3>
                   </div>
-                  <p className="text-white/70 text-md leading-relaxed mb-4">{item.description}</p>
-                  <p className="text-md text-white/60">
+                  <p className="text-white/80 text-md leading-relaxed mb-4">{item.description}</p>
+                  <p className="text-md text-white/75">
                     <span className="text-white/80 font-semibold font-medium">Tech:</span> {item.stack}
                   </p>
                 </div>

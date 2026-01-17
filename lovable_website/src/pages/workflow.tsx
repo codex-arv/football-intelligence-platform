@@ -30,7 +30,7 @@ export default function PipelinePage() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-7xl md:text-7xl uppercase italic font-bold bg-gradient-text bg-clip-text text-transparent mb-12">
+          <h1 className="text-7xl md:text-7xl uppercase italic font-extrabold bg-gradient-text bg-clip-text text-transparent mb-12">
             How It Works
           </h1>
 

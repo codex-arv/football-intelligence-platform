@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import stadiumHero from "@/assets/stadium.png";
+import stadiumHero from "@/assets/stadiumimage.png";
 import { Zap, BarChart3, Trophy, ChartNoAxesColumnIncreasing, Crown, Volleyball, Heart } from "lucide-react";
 import Navigation from "@/components/ui/Navigation";
 import Footer from "@/components/ui/Footer";
@@ -22,16 +22,16 @@ const Index = () => {
           className="absolute inset-0 bg-center bg-cover"
           style={{
             backgroundImage: `url(${stadiumHero})`,
-            filter: "brightness(1.2) contrast(1)", // ↓ darken, ↑ contrast
+            filter: "brightness(1.2) contrast(1) saturate(1.5) sepia(0.1)", // ↓ darken, ↑ contrast
           }}
         />
 
         {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-hero opacity-75" />
+        <div className="absolute inset-0 bg-gradient-hero opacity-50" />
         
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-bold italic uppercase tracking-[0.02em] mb-6 
+          <h1 className="text-6xl md:text-8xl font-extrabold italic uppercase tracking-[0.02em] mb-6 
           bg-gradient-text bg-clip-text text-transparent animate-fade-in-up inline-block whitespace-nowrap px-6"
               style={{ animationDelay: "0.2s", opacity: 0 }}
           >
@@ -166,69 +166,69 @@ const FeatureCard = ({ icon, title, description, delay, hoverShadow }: FeatureCa
   };
 
   return (
-    <Card
-      className={`group relative overflow-hidden transition-all 
-                  bg-transparent backdrop-blur-md border border-white/50
-                  scale-110 ${hoverShadow}
-                  animate-scale-in opacity-0`}
-      style={{ animationDelay: delay, animationFillMode: "forwards" }}
-    >
-      {/* Premium Shimmer Effect Overlay */}
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-tr -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-      </div>
-
-      <CardContent className="relative p-8 flex flex-col items-center text-center h-full z-20">
-        {/* Icon with Glass Circle */}
-        <div
-          className="
-            relative inline-flex items-center justify-center w-20 h-20 rounded-2xl 
-            mb-8 transition-all duration-500 scale-110
-            shadow-[0_0_15px_rgba(255,255,255,0.50)]
-            hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]
-          "
-        >
-
-          <div className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.15)]">
-            {icon}
-          </div>
-          
-          {/* Subtle glow behind icon */}
-          <div className="absolute inset-0 bg-white/0 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <Card
+        className={`group relative overflow-hidden transition-all 
+                    bg-transparent backdrop-blur-md border border-white/50
+                    scale-110 ${hoverShadow}
+                    animate-scale-in opacity-0`}
+        style={{ animationDelay: delay, animationFillMode: "forwards" }}
+      >
+        {/* Premium Shimmer Effect Overlay */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none">
+          <div className="absolute inset-0 bg-gradient-to-tr -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
         </div>
 
-        {/* Title with extra letter spacing for premium feel */}
-        <h3 className="text-2xl font-bold mb-4 text-white tracking-tight group-hover:tracking-[0.04em] transition-all duration-500">
-          {title}
-        </h3>
-
-        {/* Description with refined opacity */}
-        <p className="text-white/80 leading-relaxed mb-10 text-md font-lightbold">
-          {description}
-        </p>
-
-        {/* Extraordinary Button: Ghost style with white-out hover */}
-        <button
-          onClick={handleClick}
-          className="relative mt-auto w-full py-3 px-6 rounded-lg font-semibold text-xs uppercase tracking-[0.18em]
-                     border border-white/20 text-white/100
-                     hover:shadow-[0_0_8px_rgba(255,255,255,0.6),0_0_18px_rgba(255,255,255,0.4)]
-                     hover:border-white/80 overflow-hidden transition-all duration-300"
-        >
-          <span
+        <CardContent className="relative p-8 flex flex-col items-center text-center h-full z-20">
+          {/* Icon with Glass Circle */}
+          <div
             className="
-              relative z-10 text-white transition-all duration-300
+              relative inline-flex items-center justify-center w-20 h-20 rounded-2xl 
+              mb-8 transition-all duration-500 scale-110
+              shadow-[0_0_15px_rgba(255,255,255,0.50)]
+              hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]
             "
           >
-            {buttonTexts[title]}
-          </span>
+
+            <div className="text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.15)]">
+              {icon}
+            </div>
+            
+            {/* Subtle glow behind icon */}
+            <div className="absolute inset-0 bg-white/0 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </div>
+
+          {/* Title with extra letter spacing for premium feel */}
+          <h3 className="text-2xl font-bold mb-4 text-white tracking-tight group-hover:tracking-[0.04em] transition-all duration-500">
+            {title}
+          </h3>
+
+          {/* Description with refined opacity */}
+          <p className="text-white/80 leading-relaxed mb-10 text-md font-lightbold">
+            {description}
+          </p>
+
+          {/* Extraordinary Button: Ghost style with white-out hover */}
+          <button
+            onClick={handleClick}
+            className="relative mt-auto w-full py-3 px-6 rounded-lg font-semibold text-xs uppercase tracking-[0.18em]
+                      border border-white/20 text-white/100
+                      hover:shadow-[0_0_8px_rgba(255,255,255,0.6),0_0_18px_rgba(255,255,255,0.4)]
+                      hover:border-white/80 overflow-hidden transition-all duration-300"
+          >
+            <span
+              className="
+                relative z-10 text-white transition-all duration-300
+              "
+            >
+              {buttonTexts[title]}
+            </span>
 
 
-          {/* Background fill animation */}
-          <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
-        </button>
-      </CardContent>
-    </Card>
+            {/* Background fill animation */}
+            <div className="absolute inset-0 bg-white translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300 ease-out" />
+          </button>
+        </CardContent>
+      </Card>
   );
 };
 

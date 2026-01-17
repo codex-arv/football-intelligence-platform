@@ -21,7 +21,7 @@ export default function ExpandableText({
   const fullText = words.join(" ");
 
   return (
-    <div className="text-lg text-white/85 leading-relaxed">
+    <div className="text-lg text-white/90 font-lightbold leading-relaxed">
       <AnimatePresence initial={false}>
         <motion.p
         key={expanded ? "expanded" : "collapsed"}

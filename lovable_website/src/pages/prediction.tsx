@@ -189,7 +189,7 @@ const Prediction = () => {
           animate={{ opacity: 1, y: 0 }}
           style={{ animationDelay: "0.2s", opacity: 0 }}
         >
-          <h1 className="text-6xl uppercase italic font-bold mb-4 bg-gradient-text bg-clip-text text-transparent">
+          <h1 className="text-6xl uppercase italic font-extrabold mb-4 bg-gradient-text bg-clip-text text-transparent">
             Live Match Prediction
           </h1>
 
