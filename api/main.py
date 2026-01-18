@@ -4,7 +4,10 @@ from pydantic import BaseModel
 from typing import List
 
 from .stats_router import router as stats_router
+from .stats_router import ensure_stats_loaded
 from .club_router import router as club_router
+from .club_router import preload_club_data
+
 from src.live_feature_calculation import (
     load_data_once,
     load_model_once,
@@ -38,8 +41,14 @@ class MatchRequest(BaseModel):
 
 @app.on_event("startup")
 async def startup_event():
+    print("1. Loading Data...")
     load_data_once()
+    print("2. Loading Models...")
     load_model_once()
+    print("3. Loading Statistics...")
+    ensure_stats_loaded();
+    print("4. Loading Club Data...")
+    preload_club_data();
 
 
 @app.get("/")

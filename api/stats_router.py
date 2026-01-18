@@ -40,13 +40,6 @@ def ensure_stats_loaded():
             raw["teams_25"]
         )
 
-        # STATS_MASTER[:] = STATS_MASTER.replace([np.inf, -np.inf], np.nan).fillna(None)
-        # STATS_MASTER_BASIC[:] = STATS_MASTER_BASIC.replace([np.inf, -np.inf], np.nan).fillna(None)
-        # STATS_MASTER_ROLLING[:] = STATS_MASTER_ROLLING.replace([np.inf, -np.inf], np.nan).fillna(None)
-
-        # PLAYERS_MATCHES_24[:] = PLAYERS_MATCHES_24.replace([np.inf, -np.inf], np.nan).fillna(None)
-        # PLAYERS_MATCHES_25[:] = PLAYERS_MATCHES_25.replace([np.inf, -np.inf], np.nan).fillna(None)
-
 
     except Exception as e:
         raise HTTPException(

@@ -83,45 +83,11 @@ def prepare_master_data(
         'HT_WinRate_L5','AT_WinRate_L5'
     ]
 
-    print("Code working after merge and before subsetting the columns!\n")
-
     required_cols = basic_stats + rolling_features
     missing = [c for c in required_cols if c not in final_master.columns]
 
     if missing:
         raise ValueError(f"Missing required columns: {missing}")
-    
-#     teams_matches.loc[
-#     (teams_matches['gameweek'] == 7) & (teams_matches['HomeTeam'] == 'Brentford'), 'Date'] = '2025-10-05'
-
-#     teams_matches.loc[
-#     (teams_matches['gameweek'] == 9) & (teams_matches['HomeTeam'] == 'Newcastle'), 'Date'] = '2025-10-25'
-
-#     teams_matches.loc[
-#     (teams_matches['gameweek'] == 9) & (teams_matches['HomeTeam'] == 'Arsenal'), 'Date'] = '2025-10-26'
-
-#     teams_matches['Date'] = pd.to_datetime(
-#         teams_matches['Date'],
-#         errors='coerce'
-# )
-
-    # final_master.loc[
-    #     (final_master['Date'] == '2025-10-05') &
-    #     (final_master['HomeTeam'] == 'Brentford'),
-    #     ['gameweek','match_id']
-    # ] = [7, '25-26-prem-brentford-vs-manchester-city']
-
-    # final_master.loc[
-    #     (final_master['Date'] == '2025-10-25') &
-    #     (final_master['HomeTeam'] == 'Newcastle'),
-    #     ['gameweek','match_id']
-    # ] = [9, '25-26-prem-newcastle-vs-fulham']
-
-    # final_master.loc[
-    #     (final_master['Date'] == '2025-10-26') &
-    #     (final_master['HomeTeam'] == 'Arsenal'),
-    #     ['gameweek','match_id']
-    # ] = [9, '25-26-prem-arsenal-vs-crystal-palace']
 
     final_master = final_master[required_cols]
 
@@ -179,6 +145,9 @@ def prepare_players_match_data(
         if v < pm_final_25.shape[0] * 0.6
     ]
     pm_25_final = pm_final_25[valid_25_cols]
+
+    pm_24_final = pm_24_final.copy()
+    pm_25_final = pm_25_final.copy()
 
     pm_24_final["player_name"] = (pm_24_final["first_name"] + " " + pm_24_final["second_name"])
     pm_25_final["player_name"] = (pm_25_final["first_name"] + " " + pm_25_final["second_name"])
