@@ -66,11 +66,11 @@ const Footer = () => {
           whileInView={{ scaleX: 1, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
-          className="h-px w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent mb-12"
+          className="h-px w-full bg-gradient-to-r from-transparent via-primary/100 to-transparent mb-12"
         />
 
         {/* Main Footer Content - 3 Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 sm:gap-12 mb-12">
           {/* Brand Column */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -79,13 +79,13 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h3 className="text-4xl font-bold bg-gradient-text bg-clip-text text-transparent italic">
+            <h3 className="text-4xl text-left font-bold bg-gradient-text bg-clip-text text-transparent italic">
               The 90<span className="text-xl align-super">th</span> Minute
             </h3>
-            <p className="text-foreground/80 text-md leading-relaxed">
+            <p className="text-foreground/80 text-md px-1 sm:px-0 leading-relaxed">
               Every minute. Every match. Every goal, predicted.
             </p>
-            <p className="text-foreground/70 text-md leading-relaxed">
+            <p className="text-foreground/80 text-md px-1 sm:px-0 leading-relaxed">
               Powered by AI. Inspired by the beautiful game.
             </p>
           </motion.div>
@@ -98,7 +98,7 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            <h4 className="text-2xl font-semibold text-foreground">Quick Links</h4>
+            <h4 className="text-2xl text-left font-semibold text-foreground">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -217,14 +217,14 @@ const Footer = () => {
           viewport={{ once: true }}
           className="text-center text-foreground/80 text-sm"
         >
-          © 2025 The 90<sup>th</sup> Minute. All rights reserved.
+          © 2026 The 90<sup>th</sup> Minute. All rights reserved.
         </motion.div>
 
         {/* Disclaimer */}
-        <p className="mt-2 italic tracking-[0.05em] text-center text-sm leading-relaxed text-foreground/60 max-w-3xl mx-auto">
+        <p className="mt-2 italic tracking-[0.02em] sm:tracking-[0.05em] text-center text-sm leading-relaxed text-foreground/60 max-w-3xl mx-auto mb-1">
           Predictions, statistics and club information are provided for informational and research purposes only.  
         </p>
-        <p className="italic tracking-[0.05em] text-center text-sm leading-relaxed text-foreground/60 max-w-3xl mx-auto">
+        <p className="italic tracking-[0.02em] sm:tracking-[0.05em] text-center text-sm leading-relaxed text-foreground/60 max-w-3xl mx-auto">
           Model outputs and aggregated data may contain inaccuracies, delays or limitations.
         </p>
       </div>

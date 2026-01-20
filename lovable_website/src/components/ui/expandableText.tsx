@@ -21,15 +21,14 @@ export default function ExpandableText({
   const fullText = words.join(" ");
 
   return (
-    <div className="text-lg text-white/90 font-lightbold leading-relaxed">
+    <div className="text-white/80 sm:text-white font-lightbold leading-relaxed">
       <AnimatePresence initial={false}>
         <motion.p
         key={expanded ? "expanded" : "collapsed"}
-        initial={{ opacity: 0, fontSize: "1.22rem" }}
-        animate={{ opacity: 1, fontSize: "1.22rem" }}
+        initial={{ opacity: 0, fontSize: "1.2rem" }}
+        animate={{ opacity: 1, fontSize: "1.2rem" }}
         exit={{ opacity: 0 }}
         >
-
           {expanded || !isTruncated ? fullText : previewText}
           {!expanded && isTruncated && "..."}
         </motion.p>
@@ -39,7 +38,7 @@ export default function ExpandableText({
         <button
           onClick={() => setExpanded(!expanded)}
           className="
-            mt-2 text-m font-semibold text-white/90
+            mt-2 text-lg font-semibold text-white/75
             hover:text-white underline underline-offset-4
             transition-colors
           "

@@ -103,57 +103,52 @@ interface PlayerCardProps {
   onToggle: () => void;
 }
 
-export default function PlayerCard({
-  player,
-  isExpanded,
-  onToggle,
-}: PlayerCardProps) {
+export default function PlayerCard({ player, isExpanded, onToggle }: PlayerCardProps) {
   const statsToShow = POSITION_STATS[player.position] ?? [];
+
+  // Gap between goals and assists on mobile (in Tailwind units)
+  const mobileGoalAssistGap = "gap-4"; // You can tweak this: "gap-2", "gap-4", "gap-6", etc.
 
   return (
     <motion.div
-  layout
-  onClick={onToggle}
-  whileHover={{
-              scale: 1.03,
-              boxShadow: "0 0 30px rgba(255, 255, 255, 0.3)",
-            }}
-  transition={{
-    type: "spring",
-    stiffness: 300,
-    damping: 22,
-  }}
-  className="cursor-pointer rounded-2xl border border-white/40
-              p-5 backdrop-blur-md
-              transition-all duration-100
-             bg-transparent p-6 space-y-4
-             "
->
-
-      {/* HEADER */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <span className="text-md uppercase tracking-[0.005em] font-bold text-white/70">
+      layout
+      onClick={onToggle}
+      whileHover={{
+        scale: 1.03,
+        boxShadow: "0 0 30px rgba(255, 255, 255, 0.57)",
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 22,
+      }}
+      className="cursor-pointer rounded-2xl border border-white/50 p-4 sm:p-6 backdrop-blur-md transition-all duration-100 bg-transparent space-y-5 sm:space-y-4"
+    >
+      {/* ===== HEADER (POSITION + NAME) ===== */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-center sm:text-left">
+          <span className="text-sm sm:text-md uppercase tracking-[0.005em] font-bold text-white/70">
             {POSITION_ABBR[player.position] ?? player.position.slice(0, 3).toUpperCase()}
           </span>
-
-          <span className="text-xl font-semibold tracking-[0.05em]">
+          <span className="text-lg sm:text-xl font-semibold tracking-[0.05em]">
             {player.first_name} {player.second_name}
           </span>
         </div>
 
-        {/* GOALS / ASSISTS */}
-        <div className="flex gap-6 text-base font-semibold">
-          <span className="text-white text-lg tracking-[0.075em]">
-            Goals: {player.goals}
-          </span>
-          <span className="text-white text-lg  tracking-[0.075em]">
-            Assists: {player.assists}
-          </span>
+        {/* Desktop Goals / Assists (unchanged) */}
+        <div className="hidden sm:flex flex-row gap-6 text-sn sm:text-xl font-semibold text-white mt-1 sm:mt-0">
+          <span>Goals: {player.goals}</span>
+          <span>Assists: {player.assists}</span>
         </div>
       </div>
 
-      {/* EXPANDABLE STATS */}
+      {/* ===== MOBILE GOALS / ASSISTS ===== */}
+      <div className={`flex sm:hidden justify-between text-white ${mobileGoalAssistGap}`}>
+        <span className="font-semibold">Goals: {player.goals}</span>
+        <span className="font-semibold">Assists: {player.assists}</span>
+      </div>
+
+      {/* ===== EXPANDABLE STATS ===== */}
       <AnimatePresence>
         {isExpanded && (
           <motion.div
@@ -162,24 +157,17 @@ export default function PlayerCard({
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.35, ease: "easeInOut" }}
-            className="grid grid-cols-2 gap-x-6 gap-y-3 pt-5
-                      border-t-2 border-white/50"
-
+            className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 sm:gap-x-6 sm:gap-y-3 pt-4 sm:pt-5 border-t-2 border-white/50 text-white"
           >
             {statsToShow.map((key) => (
               <div
                 key={key}
-                className="flex justify-between items-center text-base font-lightbold"
+                className="flex justify-between items-center text-sm sm:text-base font-lightbold"
               >
-                <span className="text-white/70">
-                  {STAT_LABELS[key] ?? key}
-                </span>
-                <span className="text-white text-lg">
-                  {player[key] ?? 0}
-                </span>
+                <span className="text-white/90">{STAT_LABELS[key] ?? key}</span>
+                <span className="font-semibold">{player[key] ?? 0}</span>
               </div>
             ))}
-
           </motion.div>
         )}
       </AnimatePresence>

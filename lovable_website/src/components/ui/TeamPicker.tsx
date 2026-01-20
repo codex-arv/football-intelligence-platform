@@ -184,7 +184,7 @@ export default function TeamPicker({
             <img
               src={src}
               alt={visible}
-              className="w-full h-full object-contain"
+              className="w-32 h-33 sm:w-full sm:h-full object-contain"
               style={{
                 padding: 10,
                 filter: disabled ? "grayscale(100%) opacity(0.35)" : "none",

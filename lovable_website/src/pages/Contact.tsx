@@ -13,7 +13,7 @@ const Contact = () => {
       <MatrixBackground />
       <MatrixGradientOverlay />
       <Navigation />
-      <div className="relative z-10 max-w-6xl mx-auto px-6 py-28 space-y-24 overflow-visible">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-24 sm:py-28 space-y-16 sm:space-y-24 overflow-visible">
 
         {/* ================= PAGE TITLE ================= */}
         <motion.section
@@ -39,13 +39,13 @@ const Contact = () => {
           transition={{ delay: 0.15 }}
         >
           {/* Background */}
-          <div className="space-y-3 overflow-visible">
-            <h2 className="text-3xl font-bold uppercase tracking-[0.05em] bg-gradient-text bg-clip-text text-transparent leading-[1.3] pb-1">
+          <div className="space-y-0 sm:space-y-3 overflow-visible">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-[0.05em] bg-gradient-text bg-clip-text text-transparent leading-[1.3] pb-1">
               Background
             </h2>
-            <p className="text-lg text-white/90 tracking-[0.03em] leading-relaxed">
-              I am Aarav Srivastava, a B.Tech Computer Science & Engineering student at KIIT University,
-              currently maintaining a CGPA of 9.70. I am driven by a strong interest in
+            <p className="text-lg text-white/80 tracking-[0.03em] leading-relaxed">
+              I am Aarav Srivastava, a B.Tech Computer Science & Engineering student, in my 6th semester at KIIT University,
+              currently maintaining a CGPA of 9.72. I am driven by a strong interest in
               machine learning and data analytics, with a focus on applying data-driven
               approaches to practical, real-world problems. My academic and project
               experience includes exposure to end-to-end ML workflows, performance-focused model evaluation and relevant research publications in IEEE.
@@ -53,11 +53,11 @@ const Contact = () => {
           </div>
 
           {/* Technical Focus */}
-          <div className="space-y-3 overflow-visible">
-            <h2 className="text-3xl font-bold uppercase tracking-[0.05em] bg-gradient-text bg-clip-text text-transparent leading-[1.3] pb-1">
+          <div className="space-y-0 sm:space-y-3 overflow-visible">
+            <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-[0.05em] bg-gradient-text bg-clip-text text-transparent leading-[1.3] pb-1">
               Technical Focus
             </h2>
-            <p className="text-lg text-white/90 tracking-[0.03em] leading-relaxed">
+            <p className="text-lg text-white/80 tracking-[0.03em] leading-relaxed">
               My technical focus lies at the intersection of Machine Learning, Data Science & Deep Learning. I also have hands-on experience with supervised and
               unsupervised learning techniques, data engineering and analysis pipelines and applied model
               development using Python-based ML libraries.
@@ -74,16 +74,16 @@ const Contact = () => {
 
         {/* ================= TECH STACK FEATURE CARDS ================= */}
         <motion.section
-          className="space-y-6"
+          className="space-y-4 sm:space-y-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.25 }}
         >
-          <h2 className="text-3xl font-bold uppercase tracking-[0.05em] bg-gradient-text bg-clip-text text-transparent">
+          <h2 className="text-2xl sm:text-3xl font-bold uppercase tracking-[0.05em] bg-gradient-text bg-clip-text text-transparent">
             Technical Skillsets
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-8">
             {[{
               icon: Brain, title: "Machine Learning & AI", description:
                 "Experience with supervised and unsupervised learning, model evaluation, and applied ML workflows using real datasets.",
@@ -145,7 +145,7 @@ const Contact = () => {
             Contact & Profiles
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-8">
             {[
               { icon: Mail, title: "Work Email", href: "mailto:2305670@kiit.ac.in" },
               { icon: Mail, title: "Personal Email", href: "mailto:aarav.srivastava@aol.com" },

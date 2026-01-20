@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap');
+
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
@@ -9,7 +11,7 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Premier League inspired palette */
-    --matrix-green: 101 100% 34%;
+    --matrix-green: 123 100% 35%;
     --glowing-magenta: 323 92% 26%;
     --vibrant-blue: 224 75% 48%;
     --vibrant-green: 88 78% 33%;

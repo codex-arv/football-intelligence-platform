@@ -180,7 +180,7 @@ const Prediction = () => {
       />
       <Navigation />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-4 py-24 space-y-16">
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-28 sm:py-24 space-y-12 sm:space-y-16">
 
         {/* Title */}
         <motion.section
@@ -189,11 +189,11 @@ const Prediction = () => {
           animate={{ opacity: 1, y: 0 }}
           style={{ animationDelay: "0.2s", opacity: 0 }}
         >
-          <h1 className="text-6xl uppercase italic font-extrabold mb-4 bg-gradient-text bg-clip-text text-transparent">
+          <h1 className="text-5xl sm:text-4xl md:text-6xl uppercase italic font-extrabold mb-4 bg-gradient-text bg-clip-text text-transparent">
             Live Match Prediction
           </h1>
 
-          <p className="text-xl md:text-xl text-semibold max-w-4xl mx-auto text-center">
+          <p className="text-xl md:text-xl text-semibold max-w-4xl mx-8 sm:mx-auto text-center">
             Select any two teams and let our AI model predict the outcome.
           </p>
 

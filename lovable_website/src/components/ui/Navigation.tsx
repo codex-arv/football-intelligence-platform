@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
+import icon1 from "../ui/logo90.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +25,7 @@ const Navigation = () => {
     const element = document.querySelector(hash);
     if (!element) return;
 
-    const yOffset = 16; // 👈 adjust for navbar height
+    const yOffset = 87; // 👈 adjust for navbar height
     const y =
       element.getBoundingClientRect().top + window.pageYOffset + yOffset;
 
@@ -86,10 +87,15 @@ const Navigation = () => {
           {/* LOGO */}
           <button
             onClick={() => handleNavigation("#home")}
-            className="text-2xl font-bold bg-gradient-to-r from-white to-[hsl(var(--light-green))] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-            style={{ fontFamily: "serif" }}
+            className="flex items-center hover:opacity-80 transition-opacity"
+            aria-label="Home"
           >
-            TNM
+            <img 
+              src={icon1}
+              alt="90th Minute Logo" 
+              className="h-16 w-auto object-contain"
+            />
+
           </button>
 
           {/* DESKTOP NAV */}
@@ -109,11 +115,12 @@ const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden text-foreground hover:text-white"
+            className="md:hidden bg-transparent text-white hover:bg-transparent hover:text-white" // ✅ updated here
             onClick={() => setIsOpen(!isOpen)}
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="h-6 w-6 text-white" /> : <Menu className="h-6 w-6 text-white" />}
           </Button>
+
         </div>
       </div>
 

@@ -1,7 +1,6 @@
 "use client";
 
 import { API_BASE_URL } from "../config/api";
-
 import { useEffect, useState } from "react";
 import { useSearchParams, useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -11,12 +10,11 @@ import PlayerCard from "@/components/stats/PlayerCard";
 import MatrixBackground from "@/components/ui/MatrixComponent";
 import MatrixGradientOverlay from "@/components/ui/MatrixGradientOverlay";
 
-/* ---------------- CRESTS ---------------- */
-
+/* ---------------- CRESTS & DISPLAY ---------------- */
 const crestOverrides: Record<string, string> = {
   Liverpool: "/crests/liverpoolcrest.png",
   "Tottenham Hotspur": "/crests/tottenhamcrest.png",
-  "Brighton & Hove Albion": "/crests/brightoncrest.png"
+  "Brighton & Hove Albion": "/crests/brightoncrest.png",
 };
 
 const displayToDataset: Record<string, string> = {
@@ -62,14 +60,11 @@ function getCrestSrc(displayName: string) {
 }
 
 function displayName(dataset: string) {
-  const found = Object.entries(displayToDataset).find(
-    ([, v]) => v === dataset
-  );
+  const found = Object.entries(displayToDataset).find(([, v]) => v === dataset);
   return found ? found[0] : dataset;
 }
 
 /* ---------------- COMPONENT ---------------- */
-
 export default function MatchPlayerStatistics() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -90,7 +85,6 @@ export default function MatchPlayerStatistics() {
   const [score, setScore] = useState<{ FTHG: number; FTAG: number } | null>(null);
   const [loading, setLoading] = useState(true);
 
-  // 🔑 controls expansion
   const [expandedPlayerId, setExpandedPlayerId] = useState<number | null>(null);
 
   /* -------- FETCH MATCH SCORE -------- */
@@ -98,9 +92,7 @@ export default function MatchPlayerStatistics() {
     const fetchMatchScore = async () => {
       try {
         const res = await fetch(
-          `${API_BASE_URL}/api/v1/stats/match/basic` +
-            `?season=${season}&gameweek=${gameweek}` +
-            `&home=${home}&away=${away}`
+          `${API_BASE_URL}/api/v1/stats/match/basic?season=${season}&gameweek=${gameweek}&home=${home}&away=${away}`
         );
         if (!res.ok) throw new Error("Failed to load match score");
         const data = await res.json();
@@ -117,9 +109,7 @@ export default function MatchPlayerStatistics() {
     const fetchPlayers = async () => {
       try {
         const res = await fetch(
-          `${API_BASE_URL}/api/v1/stats/players` +
-            `?season=${season}&gameweek=${gameweek}` +
-            `&home=${home}&away=${away}`
+          `${API_BASE_URL}/api/v1/stats/players?season=${season}&gameweek=${gameweek}&home=${home}&away=${away}`
         );
         if (!res.ok) throw new Error("Failed to load players");
         setPlayers(await res.json());
@@ -132,17 +122,11 @@ export default function MatchPlayerStatistics() {
     fetchPlayers();
   }, [season, gameweek, home, away]);
 
-  /* -------- TEAM FILTERING -------- */
   const homeKey = normalizeTeamName(home);
   const awayKey = normalizeTeamName(away);
 
-  const homePlayers = players.filter(
-    (p) => normalizeTeamName(p.name) === homeKey
-  );
-
-  const awayPlayers = players.filter(
-    (p) => normalizeTeamName(p.name) === awayKey
-  );
+  const homePlayers = players.filter((p) => normalizeTeamName(p.name) === homeKey);
+  const awayPlayers = players.filter((p) => normalizeTeamName(p.name) === awayKey);
 
   return (
     <div className="relative min-h-screen overflow-hidden">
@@ -152,106 +136,92 @@ export default function MatchPlayerStatistics() {
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 py-28 space-y-20">
 
-        {/* MATCH HEADER */}
-        <motion.section className="space-y-12">
-        <div className="grid grid-cols-3 items-center">
+        {/* ===== MATCH HEADER ===== */}
+        <motion.section className="space-y-6 sm:space-y-10">
 
-          {/* LEFT — HOME + Back */}
-          <div className="flex items-center justify-between">
-            <button
-              onClick={() => {
-                if (!navState) return navigate("/statistics");
-                navigate("/statistics", {
-                  state: {
-                    season: navState.season,
-                    matchday: navState.matchday,
-                  },
-                });
-              }}
-              className="transform -translate-x-[-17px] px-6 py-2 rounded-full font-semibold
-                              hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]
-                              hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]
-                              bg-transparent backdrop-blur-sm border border-white transition-all duration-500"
-            >
-              Back to Matches
-            </button>
+          {/* Desktop Header */}
+          <div className="hidden sm:grid grid-cols-3 items-center">
+            <div className="flex items-center justify-between">
+              <button
+                onClick={() => navigate("/statistics", { state: navState ? { season: navState.season, matchday: navState.matchday } : {} })}
+                className="transform -translate-x-[-17px] px-6 py-2 rounded-full font-semibold
+                  hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]
+                  hover:shadow-[0_0_20px_rgba(255,255,255,0.3)]
+                  bg-transparent backdrop-blur-sm border border-white transition-all duration-500"
+              >
+                Back to Matches
+              </button>
+              <div className="h-24 w-24 flex transform translate-x-[90px] items-center justify-center">
+                <img src={getCrestSrc(displayName(home))} className="max-h-full max-w-full object-contain" />
+              </div>
+            </div>
 
-            <div className="h-24 w-24 flex transform translate-x-[90px] items-center justify-center">
-              <img
-                src={getCrestSrc(displayName(home))}
-                className="max-h-full max-w-full object-contain"
-              />
+            <div className="text-5xl font-extrabold text-center">{score ? `${score.FTHG} – ${score.FTAG}` : "–"}</div>
+
+            <div className="flex items-center justify-between">
+              <div className="h-24 w-24 flex transform translate-x-[-90px] items-center justify-center">
+                <img src={getCrestSrc(displayName(away))} className="max-h-full max-w-full object-contain" />
+              </div>
+              <button
+                onClick={() => navigate("/statistics", { state: navState })}
+                className="px-6 py-2 rounded-full font-semibold bg-transparent backdrop-blur-sm border border-white
+                  hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)] transition-all duration-500"
+              >
+                Back to Match Statistics
+              </button>
             </div>
           </div>
 
-
-          {/* CENTER — SCORE */}
-          <div className="text-5xl font-extrabold text-center">
-            {score ? `${score.FTHG} – ${score.FTAG}` : "–"}
-          </div>
-
-          {/* RIGHT — AWAY + Back */}
-          <div className="flex items-center justify-between">
-            <div className="h-24 w-24 flex transform translate-x-[-100px] items-center justify-center">
-              <img
-                src={getCrestSrc(displayName(away))}
-                className="max-h-full max-w-full object-contain"
-              />
+          {/* Mobile Header */}
+          <div className="sm:hidden flex flex-col items-center gap-6 text-center">
+            <div className="flex flex-col gap-4 w-full max-w-xs">
+              <button
+                onClick={() => navigate("/statistics", { state: navState ? { season: navState.season, matchday: navState.matchday } : {} })}
+                className="w-full px-6 py-2 rounded-full font-semibold bg-transparent backdrop-blur-sm border border-white/50 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)]"
+              >
+                Back to Matches
+              </button>
+              <button
+                onClick={() => navigate("/statistics", { state: navState })}
+                className="w-full px-6 py-2 rounded-full font-semibold bg-transparent backdrop-blur-sm border border-white/50 hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.6)] mb-6"
+              >
+                Back to Match Statistics
+              </button>
             </div>
 
-            <button
-              onClick={() => {
-                if (!navState) return navigate("/statistics");
-                navigate("/statistics", {
-                  state: {
-                    season: navState.season,
-                    matchday: navState.matchday,
-                    selectedMatch: navState.selectedMatch,
-                  },
-                });
-              }}
-              className="px-6 py-2 rounded-full font-semibold
-                        bg-transparent backdrop-blur-sm border border-white
-                        hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.9)]
-                        transition-all duration-500"
-            >
-              Back to Match Statistics
-            </button>
+            <div className="flex items-center justify-center gap-6">
+              <img src={getCrestSrc(displayName(home))} className="h-16 w-16 object-contain" />
+              <div className="text-3xl font-extrabold">{score ? `${score.FTHG} – ${score.FTAG}` : "–"}</div>
+              <img src={getCrestSrc(displayName(away))} className="h-16 w-16 object-contain" />
+            </div>
           </div>
 
-
+          <div className="text-center text-white/85 sm:text-white text-md sm:text-xl italic max-w-3xl mx-auto px-10">
+          <p>
+            Click on a player card to explore detailed, in-depth performance stats.
+          </p>
         </div>
-      </motion.section>
 
+        </motion.section>
 
-        {/* PLAYERS */}
-        {loading && (
-          <div className="text-center text-white/60">Loading players...</div>
-        )}
+        {/* ===== PLAYERS ===== */}
+        {loading && <div className="text-center text-white/60">Loading players...</div>}
 
         {!loading && (
-          <motion.section className="max-w-4xl mx-auto">
+          <motion.section className="max-w-4xl mx-auto space-y-12">
 
             {/* HOME TEAM */}
             {homePlayers.length > 0 && (
-              <div className="space-y-6">
-                <h2 className="text-4xl font-bold uppercase tracking-[0.005em] bg-gradient-text bg-clip-text text-transparent leading-[1.15] pb-2">
-                  {displayName(home)}
-                </h2>
-
-                <div>
+              <div className="space-y-5 sm:space-y-6">
+                <h2 className="text-3xl -mt-8 sm:-mt-8 sm:text-4xl text-center sm:text-left font-bold uppercase tracking-[0.005em] bg-gradient-text bg-clip-text text-transparent leading-[1.15]">{displayName(home)}</h2>
+                <div className="space-y-5 sm:space-y-6">
                   {homePlayers.map((p) => (
-                    <div key={p.player_id} className="mb-5 last:mb-0">
-                      <PlayerCard
-                        player={p}
-                        isExpanded={expandedPlayerId === p.player_id}
-                        onToggle={() =>
-                          setExpandedPlayerId(
-                            expandedPlayerId === p.player_id ? null : p.player_id
-                          )
-                        }
-                      />
-                    </div>
+                    <PlayerCard
+                      key={p.player_id}
+                      player={p}
+                      isExpanded={expandedPlayerId === p.player_id}
+                      onToggle={() => setExpandedPlayerId(expandedPlayerId === p.player_id ? null : p.player_id)}
+                    />
                   ))}
                 </div>
               </div>
@@ -259,24 +229,16 @@ export default function MatchPlayerStatistics() {
 
             {/* AWAY TEAM */}
             {awayPlayers.length > 0 && (
-              <div className="space-y-6 mt-12">
-                <h2 className="text-4xl font-bold uppercase tracking-[0.005em] bg-gradient-text bg-clip-text text-transparent leading-[1.15] pb-2">
-                  {displayName(away)}
-                </h2>
-
-                <div>
+              <div className="space-y-6">
+                <h2 className="text-3xl -mt-6 sm:-mt-0 sm:text-4xl text-center sm:text-left font-bold uppercase tracking-[0.005em] bg-gradient-text bg-clip-text text-transparent leading-[1.15] mt-12">{displayName(away)}</h2>
+                <div className="space-y-5 sm:space-y-6">
                   {awayPlayers.map((p) => (
-                    <div key={p.player_id} className="mb-5 last:mb-0">
-                      <PlayerCard
-                        player={p}
-                        isExpanded={expandedPlayerId === p.player_id}
-                        onToggle={() =>
-                          setExpandedPlayerId(
-                            expandedPlayerId === p.player_id ? null : p.player_id
-                          )
-                        }
-                      />
-                    </div>
+                    <PlayerCard
+                      key={p.player_id}
+                      player={p}
+                      isExpanded={expandedPlayerId === p.player_id}
+                      onToggle={() => setExpandedPlayerId(expandedPlayerId === p.player_id ? null : p.player_id)}
+                    />
                   ))}
                 </div>
               </div>

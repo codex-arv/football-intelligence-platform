@@ -260,7 +260,7 @@ export default function KnowYourClubs() {
       <MatrixGradientOverlay />
       <Navigation />
       {/* ---------------- TOP GRADIENT CONTENT ---------------- */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-28 pb-20 space-y-12">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-28 pb-20 space-y-12 sm:space-y-8">
 
         {/* Header */}
         <motion.div
@@ -268,16 +268,16 @@ export default function KnowYourClubs() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <h1 className="text-6xl font-extrabold uppercase italic bg-gradient-text bg-clip-text text-transparent">
+          <h1 className="text-5xl leading-[1.2] sm:text-6xl font-extrabold uppercase italic bg-gradient-text bg-clip-text text-transparent">
             Hall of Clubs
           </h1>
-          <p className="text-xl font-lightbold text-white/80 max-w-3xl mx-auto">
+          <p className="sm:leading-[2.5] text-lg sm:text-xl px-7 sm:px-0 font-lightbold text-white/80 max-w-3xl mx-auto">
             Explore Premier League clubs in depth — history, identity, achievements and legacy.
           </p>
         </motion.div>
 
         {/* Team Picker */}
-        <div className="max-w-xl mx-auto -mt-8">
+        <div className="max-w-xl mx-auto -mt-6">
           <TeamPicker
             teamsDisplay={teamsDisplay}
             selected={selectedClub}
@@ -316,7 +316,7 @@ export default function KnowYourClubs() {
             ref={stadiumRef}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="relative w-full h-[95vh] overflow-hidden border-y border-white/10"
+            className="relative w-full h-[90vh] sm:h-[95vh] overflow-hidden border-y border-white/10"
           >
             <div className="absolute inset-0 z-10 bg-gradient-to-b from-[#050505] via-transparent to-[#050505]" />
             <div className="absolute inset-0 z-10 bg-black/40" />
@@ -327,22 +327,29 @@ export default function KnowYourClubs() {
               src={`/assets/stadiums/${getClubAssets(selectedClub).stadium}.jpg`}
               style={{ filter: "brightness(1.15) contrast(1.3)" }}
               alt={clubData["Home Stadium"]?.Name}
-              className="absolute inset-0 w-full h-full object-cover bg-gradient-hero"
+              className="absolute inset-0 w-full h-full object-cover object-center bg-gradient-hero"
             />
             <div className="relative z-20 h-full flex flex-col justify-end max-w-6xl mx-auto px-8 pb-20">
               <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.5 }}>
-                <h2 className="text-6xl md:text-7xl text-white/80 font-black uppercase tracking-tighter leading-[0.8] mb-6">
+                <h2 className="
+                text-4xl sm:text-6xl md:text-7xl
+                text-white/80 font-black uppercase
+                tracking-tight
+                leading-tight sm:leading-[0.8]
+                mb-4 sm:mb-6
+                break-words
+              ">
                   {clubData["Club Name"]}
                 </h2>
                 <div className="flex flex-wrap items-center gap-6">
                    <div className="flex items-center gap-2 text-white/60">
                      <MapPin className="w-5 h-5" />
-                     <span className="text-lg uppercase tracking-widest font-bold">{clubData["Home Stadium"]?.Name}</span>
+                     <span className="text-md sm:text-lg uppercase tracking-widest font-bold">{clubData["Home Stadium"]?.Name}</span>
                    </div>
                    <div className="h-4 w-[1px] bg-white/20 hidden md:block" />
                    <div className="flex items-center gap-2 text-white/60">
                      <Users className="w-5 h-5" />
-                     <span className="text-lg uppercase tracking-widest font-bold">{clubData["Home Stadium"]?.Capacity?.toLocaleString()} Capacity</span>
+                     <span className="text-md sm:text-lg uppercase tracking-widest font-bold">{clubData["Home Stadium"]?.Capacity?.toLocaleString()} Capacity</span>
                    </div>
                 </div>
               </motion.div>
@@ -378,11 +385,11 @@ export default function KnowYourClubs() {
                     >
                       <div className="flex items-center gap-3 mb-3 text-white transition-colors">
                         <item.icon className="w-6 h-6" />
-                        <span className="text-3xl font-bold uppercase tracking-wide bg-gradient-text bg-clip-text text-transparent">
+                        <span className="text-2xl sm:text-3xl font-semibold sm:font-bold uppercase tracking-wide bg-gradient-text bg-clip-text text-transparent">
                           {item.label}
                         </span>
                       </div>
-                      <p className="text-xl font-semibold tracking-[0.02em] text-white/90">{item.value}</p>
+                      <p className="text-lg sm:text-xl font-semibold tracking-[0.02em] text-white/90">{item.value}</p>
                     </motion.div>
                   )
               )}
@@ -396,7 +403,7 @@ export default function KnowYourClubs() {
                   About the Club
                 </h3>
               </div>
-              <div className="font-normal text-white/90">
+              <div className="font-normal text-white/90 px-2">
                 <ExpandableText text={clubData["About the Club"]} wordLimit={100} />
               </div>
             </section>
@@ -420,14 +427,14 @@ export default function KnowYourClubs() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true, margin: "-100px" }}
                     >
-                      <div className="absolute left-0 top-0 hidden md:flex w-24 h-24 items-center justify-center rounded-full border border-white/50 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group-hover:backdrop-blur-md transition-all">
-                        <span className="text-white font-semibold text-xl group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+                      <div className="absolute left-0 top-0 hidden md:flex w-24 h-24 items-center justify-center rounded-full border border-white/75 group-hover:shadow-[0_0_20px_rgba(255,255,255,0.5)] group-hover:backdrop-blur-md transition-all">
+                        <span className="text-white font-bold text-xl group-hover:drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
                           {year}
                         </span>
                       </div>
                       <div className="space-y-4">
                         <span className="md:hidden text-white font-semibold text-lg">{year}</span>
-                        <p className="text-xl font-semibold leading-relaxed text-white/85 max-w-3xl">
+                        <p className="text-lg sm:text-xl font-lightbold sm:font-semibold leading-relaxed text-white/85 max-w-3xl">
                           {moment}
                         </p>
                       </div>
@@ -485,7 +492,7 @@ export default function KnowYourClubs() {
 
 
                       {/* Number of trophies */}
-                      <span className="text-4xl font-bold text-white mb-1 tracking-tighter">
+                      <span className="text-2xl sm:text-4xl font-bold text-white mb-1 tracking-tighter">
                         {mainNumber}
                       </span>
 
@@ -497,7 +504,19 @@ export default function KnowYourClubs() {
 
 
                       {/* Competition name */}
-                      <p className={`text-m font-semibold uppercase tracking-[0.12em] text-white/90 text-center leading-relaxed group-hover:text-white/100 transition-colors`}>
+                      <p
+                        className="
+                          text-sm sm:text-lg
+                          font-semibold uppercase
+                          tracking-[0.08em] sm:tracking-[0.12em]
+                          text-white/90 text-center
+                          leading-snug sm:leading-relaxed
+                          max-w-full 
+                          break-normal
+                          group-hover:text-white/100
+                          transition-colors
+                        "
+                      >
                         {competition.trim()}
                       </p>
                     </div>

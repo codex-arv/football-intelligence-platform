@@ -12,11 +12,16 @@ export default function MatrixBackground() {
 
   useEffect(() => {
     const canvas = canvasRef.current!;
+    const SWEEP_COLOR = "252, 53, 3"; // freely changeable RGB
     const ctx = canvas.getContext("2d")!;
     const bgImage = new Image();
     bgImage.src = turfImage;
     let raf: number;
     let t = 0;
+
+    // --- OFFSCREEN CANVAS FOR LIGHT SWEEPS (CRITICAL) ---
+    const sweepCanvas = document.createElement("canvas");
+    const sweepCtx = sweepCanvas.getContext("2d")!;
 
     const COLORS = {
       matrix: "0, 255, 90",
@@ -29,6 +34,7 @@ export default function MatrixBackground() {
     const nodes: Node[] = [];
     const pulses: Pulse[] = [];
     const rings: Ring[] = [];
+    const sweeps: Sweep[] = [];
 
     class Node {
       x: number; y: number; vx: number; vy: number;
@@ -105,64 +111,71 @@ export default function MatrixBackground() {
       }
     }
 
+    class Sweep {
+      direction: "horizontal" | "vertical" | "diagonal";
+      position: number;
+      speed: number;
+      width: number;
+      opacity: number;
+
+      constructor() {
+        const dirs = ["horizontal", "vertical", "diagonal"] as const;
+        this.direction = dirs[Math.floor(Math.random() * dirs.length)];
+        this.position = -Math.max(w, h);
+        this.speed = Math.random() * 0.35 + 0.25;
+        this.width = Math.random() * 320 + 260;
+        this.opacity = Math.random() * 0.45 + 0.35;
+      }
+
+      update() {
+        this.position += this.speed;
+      }
+
+      draw() {
+        let grad: CanvasGradient;
+
+        if (this.direction === "horizontal") {
+          grad = sweepCtx.createLinearGradient(
+            0, this.position,
+            0, this.position + this.width
+          );
+        } else if (this.direction === "vertical") {
+          grad = sweepCtx.createLinearGradient(
+            this.position, 0,
+            this.position + this.width, 0
+          );
+        } else {
+          grad = sweepCtx.createLinearGradient(
+            this.position, this.position,
+            this.position + this.width, this.position + this.width
+          );
+        }
+
+        grad.addColorStop(0.35, `rgba(${SWEEP_COLOR}, 0)`);
+        grad.addColorStop(0.5, `rgba(${SWEEP_COLOR}, ${this.opacity})`);
+        grad.addColorStop(0.65, `rgba(${SWEEP_COLOR}, 0)`);
+
+        sweepCtx.fillStyle = grad;
+        sweepCtx.fillRect(0, 0, w, h);
+      }
+    }
+
     const init = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
+      w = canvas.width = sweepCanvas.width = window.innerWidth;
+      h = canvas.height = sweepCanvas.height = window.innerHeight;
 
       nodes.length = 0;
       pulses.length = 0;
       rings.length = 0;
+      sweeps.length = 0;
 
       for (let i = 0; i < 90; i++) nodes.push(new Node());
-    };
-
-    const drawScanlines = () => {
-      ctx.fillStyle = "rgba(0,255,90,0.012)";
-      for (let y = 0; y < h; y += 4) {
-        ctx.fillRect(0, y, w, 1);
-      }
-    };
-
-    const drawConnections = () => {
-      for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-          const dx = nodes[i].x - nodes[j].x;
-          const dy = nodes[i].y - nodes[j].y;
-          const dist = Math.hypot(dx, dy);
-
-          if (dist < 150) {
-            ctx.strokeStyle = `rgba(${COLORS.matrix}, ${0.12 * (1 - dist / 150)})`;
-            ctx.lineWidth = 0.5;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.stroke();
-
-            if (Math.random() > 0.9985) {
-              pulses.push(new Pulse(nodes[i], nodes[j]));
-            }
-          }
-        }
-
-        if (mouseRef.current.active) {
-          const dx = nodes[i].x - mouseRef.current.x;
-          const dy = nodes[i].y - mouseRef.current.y;
-          const d = Math.hypot(dx, dy);
-          if (d < 200) {
-            ctx.strokeStyle = `rgba(${COLORS.matrix}, 0.1)`;
-            ctx.beginPath();
-            ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(mouseRef.current.x, mouseRef.current.y);
-            ctx.stroke();
-          }
-        }
-      }
     };
 
     const animate = () => {
       t += 0.02;
 
-      // Draw turf image as base layer
+      // --- BASE IMAGE ---
       if (bgImage.complete) {
         ctx.drawImage(bgImage, 0, 0, w, h);
       } else {
@@ -170,23 +183,15 @@ export default function MatrixBackground() {
         ctx.fillRect(0, 0, w, h);
       }
 
-      // Darken + unify tone (critical for readability)
-      ctx.fillStyle = "rgba(4, 32, 4, 0.68)";
+      // Darken + unify tone
+      ctx.fillStyle = "rgba(5, 32, 7, 0.68)";
       ctx.fillRect(0, 0, w, h);
 
-      // Subtle desaturation pass (keeps detail, kills glare)
-      ctx.fillStyle = "rgba(5, 33, 3, 0.64)";
+      // Subtle desaturation pass
+      ctx.fillStyle = "rgba(6, 33, 3, 0.64)";
       ctx.fillRect(0, 0, w, h);
 
       // drawConnections();
-
-      nodes.forEach(n => {
-        n.update();
-        ctx.beginPath();
-        ctx.arc(n.x, n.y, n.size, 0, Math.PI * 1);
-        ctx.fillStyle = `rgba(${COLORS.matrix}, ${n.baseOpacity + Math.sin(t + n.x) * 0.15})`;
-        ctx.fill();
-      });
 
       pulses.forEach(p => {
         p.update();
@@ -201,17 +206,37 @@ export default function MatrixBackground() {
       });
       rings.splice(0, rings.filter(r => r.opacity > 0).length);
 
-      drawScanlines();
+      // drawScanlines();
+
+      // === LIGHT SWEEPS (OFFSCREEN → SCREEN BLEND) ===
+      // sweepCtx.clearRect(0, 0, w, h);
+
+      // if (Math.random() > 0.992) {
+      //   sweeps.push(new Sweep());
+      // }
+
+      // for (let i = sweeps.length - 1; i >= 0; i--) {
+      //   const s = sweeps[i];
+      //   s.update();
+      //   s.draw();
+
+      //   if (s.position > Math.max(w, h) * 2) {
+      //     sweeps.splice(i, 1);
+      //   }
+      // }
+
+      // ctx.save();
+      // ctx.globalCompositeOperation = "screen";
+      // ctx.drawImage(sweepCanvas, 0, 0);
+      // ctx.restore();
 
       raf = requestAnimationFrame(animate);
     };
 
-    const onMouseMove = (e: MouseEvent) => {
-      mouseRef.current = { x: e.clientX, y: e.clientY, active: true };
-    };
-
     window.addEventListener("resize", init);
-    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mousemove", (e) => {
+      mouseRef.current = { x: e.clientX, y: e.clientY, active: true };
+    });
 
     init();
     animate();
@@ -219,7 +244,6 @@ export default function MatrixBackground() {
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", init);
-      window.removeEventListener("mousemove", onMouseMove);
     };
   }, []);
 
@@ -241,7 +265,7 @@ export default function MatrixBackground() {
       <canvas
         ref={canvasRef}
         className="fixed inset-0 -z-10"
-        style={{ filter: "contrast(1.27) brightness(2.8)" }}
+        style={{ filter: "contrast(1.27) brightness(2.5)" }}
       />
     </>
   );

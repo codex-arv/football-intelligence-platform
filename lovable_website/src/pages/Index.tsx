@@ -8,21 +8,21 @@ import MatrixGradientOverlay from "@/components/ui/MatrixGradientOverlay";
 
 const Index = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden">
+    <div className="relative min-h-[100svh] overflow-x-hidden">
       <MatrixBackground />
       <MatrixGradientOverlay />
       <Navigation />
       {/* Hero Section - Full Screen with Stadium Background */}
       <section 
         id="home"
-        className="relative z-10 h-screen flex items-center justify-center overflow-hidden"
+        className="relative z-10 min-h-[100svh] md:h-screen flex items-center justify-center overflow-visible"
       >
         {/* Background Image */}
         <div 
           className="absolute inset-0 bg-center bg-cover"
           style={{
             backgroundImage: `url(${stadiumHero})`,
-            filter: "brightness(1.2) contrast(1) saturate(1.5) sepia(0.1)", // ↓ darken, ↑ contrast
+            filter: "brightness(1) contrast(1.1) saturate(1.5) sepia(0.1)", // ↓ darken, ↑ contrast
           }}
         />
 
@@ -31,19 +31,24 @@ const Index = () => {
         
         {/* Hero Content */}
         <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
-          <h1 className="text-6xl md:text-8xl font-extrabold italic uppercase tracking-[0.02em] mb-6 
-          bg-gradient-text bg-clip-text text-transparent animate-fade-in-up inline-block whitespace-nowrap px-6"
+          <h1 className="text-6xl sm:text-5xl md:text-8xl
+                          font-extrabold italic tracking-[0.02em]
+                          mb-6 bg-gradient-text bg-clip-text text-transparent
+                          animate-fade-in-up inline-block
+                          px-2 sm:px-6
+                          whitespace-normal md:whitespace-nowrap
+                          leading-tight"
               style={{ animationDelay: "0.2s", opacity: 0 }}
           >
-            The 90<span className="text-5xl md:text-5xl align-super">th</span> Minute
+            THE 90<span className="text-3xl sm:text-3xl md:text-5xl align-super ml-1">th</span> MINUTE
           </h1>
-          <p className="text-2xl md:text-3xl text-foreground font-lightbold mb-4 animate-fade-in-up"
-            style={{ animationDelay: "0.5s", opacity: 0 }}
+          <p className="text-2xl sm:text-lg md:text-3xl px-6 sm:px-0 text-foreground font-lightbold mb-4 animate-fade-in-up"
+            style={{ animationDelay: "1.2s", opacity: 0 }}
           >
             Every minute. Every match. Every goal, predicted.
           </p>
-          <p className="text-2xl md:text-3xl text-foreground font-lightbold mb-4 animate-fade-in-up"
-            style={{ animationDelay: "1s", opacity: 0 }}
+          <p className="text-2xl sm:text-lg md:text-3xl px-10 sm:px-0 text-foreground font-lightbold mb-4 animate-fade-in-up"
+            style={{ animationDelay: "2s", opacity: 0 }}
           >
             Powered by AI. Inspired by the beautiful game.
           </p>
@@ -52,41 +57,48 @@ const Index = () => {
 
 
       {/* About Section */}
-      <section id="about" className="relative z-10 py-24 px-4">
+      <section id="about" className="relative z-10 py-16 md:py-24 px-6">
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div 
-            className="mb-16 animate-fade-in"
-            style={{ animationDelay: "0.2s", opacity: 0 }}
-          >
-            <div className="h-px w-32 bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mb-12" />
-            
-            <h2 className="text-4xl md:text-6xl uppercase italic tracking-[0.02em] font-bold mb-6 text-foreground bg-gradient-text bg-clip-text text-transparent">
-              About the Project
-            </h2>
-            
-            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
-              Tired of predictions based on gut feelings, biased commentators, or arbitrary streaks?<br />
-              The 90<sup>th</sup> Minute is the data-driven revolution in football analysis.
-            </p>
-            
-            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
-              Our project originated from a single frustration: why do conventional prediction models still miss so many upsets and late-game shifts? We solved this by treating every match not as a linear sequence, but as a complex classification problem. Utilizing over 25 years of historical Premier League data — from team formation and possession metrics to complex shot conversion rates — we leverage advanced machine learning models (specifically designed for multi-class classification) to provide deep, non-emotional match forecasts.
-            </p>
-            
-            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
-              This isn't crystal-ball gazing. This is data science applied directly to the beautiful game, giving you the classified certainty of the match outcome before the referee blows the final whistle.
-            </p>
-            
-            <p className="text-lg md:text-xl text-foreground/80 leading-relaxed tracking-[0.01em]">
-              Welcome to the precision of
-            </p>
+                  <div 
+          className="mb-16 animate-fade-in"
+          style={{ animationDelay: "0.2s", opacity: 0 }}
+        >
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mb-12" />
+          
+          <h2 className="text-4xl md:text-6xl uppercase italic tracking-[0.02em] font-bold mb-6 text-foreground bg-gradient-text bg-clip-text text-transparent">
+            About the Project
+          </h2>
+          
+          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
+            <span className="font-bold">The 90<sup>th</sup> Minute</span> is a data-driven football analytics platform applying 
+            modern machine learning and statistical modeling to match outcome prediction and performance analysis. 
+            It moves beyond intuition-based forecasts, emphasizing reproducibility and interpretability.
+          </p>
 
-            <p className="text-lg md:text-xl text-foreground/80 font-semibold italic leading-relaxed tracking-[0.01em]">
-              The 90<sup>th</sup> Minute
-            </p>
-            
-            <div className="h-px w-32 bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-12" />
-          </div>
+          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
+           The platform treats each football match as a structured learning problem rather than a purely sequential event. 
+           Using historical Premier League data, the system integrates team-level performance metrics, rolling form indicators, 
+           xG/xA dynamics and calculated home-away advantage to model match behavior under varying conditions.
+          </p>
+
+          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
+            The predictive layer follows a hybrid modeling approach, combining probabilistic classification with regression-based 
+            score estimation. This design enables stable outcome predictions while remaining sensitive to statistically meaningful 
+            shifts in team performance, balancing robustness with interpretability.          
+          </p>
+
+          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
+            Beyond prediction, the platform offers structured access to match and player statistics through a unified backend, ensuring consistent, reproducible and versioned data pipelines between development and production.
+          </p>
+
+          <p className="text-lg md:text-xl text-foreground/80 px-14 sm:px-0 leading-relaxed tracking-[0.01em]">
+            Welcome to the precision of <span className="font-bold italic">The 90<sup>th</sup> Minute!</span>
+          </p>
+
+
+          <div className="h-px w-32 bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-12" />
+        </div>
+
 
           {/* Core Features Heading */}
           <h2 className="text-4xl md:text-6xl font-bold uppercase italic tracking-[0.02em] text-foreground bg-gradient-text bg-clip-text text-transparent mt-16 mb-12">
@@ -169,7 +181,7 @@ const FeatureCard = ({ icon, title, description, delay, hoverShadow }: FeatureCa
       <Card
         className={`group relative overflow-hidden transition-all 
                     bg-transparent backdrop-blur-md border border-white/50
-                    scale-110 ${hoverShadow}
+                    scale-100 md:scale-110 ${hoverShadow}
                     animate-scale-in opacity-0`}
         style={{ animationDelay: delay, animationFillMode: "forwards" }}
       >

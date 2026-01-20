@@ -9,14 +9,11 @@ const BASIC_STAT_ROWS = [
   { label: "Possession", home: "home_possession", away: "away_possession", suffix: "%" },
   { label: "Shots", home: "HS", away: "AS" },
   { label: "Shots on Target", home: "HST", away: "AST" },
-  { label: "Expected Goals (xG)", home: "home_expected_goals_xg", away: "away_expected_goals_xg", decimals: 2 },
+  { label: "Expected Goals", home: "home_expected_goals_xg", away: "away_expected_goals_xg", decimals: 2 },
   { label: "Passes", home: "home_passes", away: "away_passes" },
-
-  // already percentages — DO NOT multiply
   { label: "Pass Accuracy", home: "home_accurate_passes_pct", away: "away_accurate_passes_pct", suffix: "%" },
   { label: "Dribble Success", home: "home_successful_dribbles_pct", away: "away_successful_dribbles_pct", suffix: "%" },
   { label: "Tackle Success", home: "home_tackles_won_pct", away: "away_tackles_won_pct", suffix: "%" },
-
   { label: "Corners", home: "HC", away: "AC" },
   { label: "Fouls", home: "HF", away: "AF" },
   { label: "Yellow Cards", home: "HY", away: "AY" },
@@ -26,34 +23,23 @@ const BASIC_STAT_ROWS = [
   { label: "Duels Won", home: "home_duels_won", away: "away_duels_won" },
 ];
 
-/* ---------- ROLLING (Last 5) — CIRCLES ---------- */
+/* ---------- ROLLING STATS ---------- */
 const CIRCLE_STATS = [
-  { label: "Avg Goals For (Last 5)", home: "HT_AvgGF_L5", away: "AT_AvgGF_L5", decimals: 1 },
-  { label: "Avg Goals Against (Last 5)", home: "HT_AvgGA_L5", away: "AT_AvgGA_L5", decimals: 1 },
-  { label: "Avg Shots (Last 5)", home: "HT_AvgShots_L5", away: "AT_AvgShots_L5", decimals: 1 },
-
-  // fractions → multiply by 100
-  { label: "Shot Accuracy (Last 5)", home: "HT_ShotAccuracy_L5", away: "AT_ShotAccuracy_L5", pct: true },
-  { label: "Clean Sheets (Last 5)", home: "HT_CS_L5", away: "AT_CS_L5", pct: true },
-  { label: "Win Rate (Last 5)", home: "HT_WinRate_L5", away: "AT_WinRate_L5", pct: true },
+  { label: "Avg Goals For (LAST 5)", home: "HT_AvgGF_L5", away: "AT_AvgGF_L5", decimals: 1 },
+  { label: "Avg Goals Against (LAST 5)", home: "HT_AvgGA_L5", away: "AT_AvgGA_L5", decimals: 1 },
+  { label: "Avg Shots (LAST 5)", home: "HT_AvgShots_L5", away: "AT_AvgShots_L5", decimals: 1 },
+  { label: "Shot Accuracy (LAST 5)", home: "HT_ShotAccuracy_L5", away: "AT_ShotAccuracy_L5", pct: true },
+  { label: "Clean Sheets (LAST 5)", home: "HT_CS_L5", away: "AT_CS_L5", pct: true },
+  { label: "Win Rate (LAST 5)", home: "HT_WinRate_L5", away: "AT_WinRate_L5", pct: true },
 ];
 
-/* ---------- FORMATTER ---------- */
-const formatValue = (
-  value: any,
-  opts?: { pct?: boolean; decimals?: number }
-) => {
+const formatValue = (value: any, opts?: { pct?: boolean; decimals?: number }) => {
   if (value === null || value === undefined) return "–";
-
   if (opts?.pct) return `${Math.round(value * 100)}%`;
-
-  if (opts?.decimals !== undefined)
-    return Number(value).toFixed(opts.decimals);
-
+  if (opts?.decimals !== undefined) return Number(value).toFixed(opts.decimals);
   return Math.round(value).toString();
 };
 
-/* ---------- CIRCLE ---------- */
 const StatCircle = ({
   value,
   label,
@@ -64,30 +50,16 @@ const StatCircle = ({
   label: string;
   pct?: boolean;
   decimals?: number;
-}) => {
-  let display = "–";
-
-  if (value !== null && value !== undefined) {
-    if (pct) {
-      display = `${Math.round(value * 100)}%`;
-    } else if (decimals !== undefined) {
-      display = Number(value).toFixed(decimals);
-    } else {
-      display = Math.round(value).toString();
-    }
-  }
-
-  return (
-    <div className="flex flex-col items-center gap-2">
-      <div className="h-16 w-16 rounded-full border-2 border-white flex items-center justify-center text-xl font-semibold">
-        {display}
-      </div>
-      <div className="text-base text-white/80 uppercase font-normal text-sm text-center tracking-[0.05em]">
-        {label}
-      </div>
+}) => (
+  <div className="flex flex-col items-center gap-2 min-w-[72px]">
+    <div className="h-14 w-14 sm:h-16 sm:w-16 rounded-full border-2 border-white/75 flex items-center justify-center text-md sm:text-xl font-semibold">
+      {formatValue(value, { pct, decimals })}
     </div>
-  );
-};
+    <div className="text-sm sm:text-md uppercase text-white/70 sm:text-white/80 text-center tracking-wide">
+      {label}
+    </div>
+  </div>
+);
 
 const MatchStatsBasic: React.FC<MatchStatsBasicProps> = ({ stats }) => {
   if (!stats) {
@@ -101,55 +73,88 @@ const MatchStatsBasic: React.FC<MatchStatsBasicProps> = ({ stats }) => {
   return (
     <div className="relative">
 
-      {/* ---------- LEFT CIRCLES ---------- */}
-      <div className="absolute left-0 top-0 flex flex-col gap-10">
-        {CIRCLE_STATS.map((row) => (
-          <StatCircle
-            key={row.label}
-            value={stats[row.home]}
-            label={row.label}
-            pct={row.pct}
-            decimals={row.decimals}
-          />
-        ))}
+      {/* ===================== DESKTOP (UNCHANGED) ===================== */}
+      <div className="hidden sm:block">
+
+        <div className="absolute left-0 top-0 flex flex-col gap-10">
+          {CIRCLE_STATS.map((row) => (
+            <StatCircle
+              key={row.label}
+              value={stats[row.home]}
+              label={row.label}
+              pct={row.pct}
+              decimals={row.decimals}
+            />
+          ))}
+        </div>
+
+        <div className="absolute right-0 top-0 flex flex-col gap-10">
+          {CIRCLE_STATS.map((row) => (
+            <StatCircle
+              key={row.label}
+              value={stats[row.away]}
+              label={row.label}
+              pct={row.pct}
+              decimals={row.decimals}
+            />
+          ))}
+        </div>
+
+        <div className="grid grid-cols-3 gap-y-6 text-xl px-32">
+          {BASIC_STAT_ROWS.map((row) => (
+            <React.Fragment key={row.label}>
+              <div className="text-right text-xl font-semibold">
+                {formatValue(stats[row.home], row)}
+              </div>
+              <div className="text-center uppercase text-white/80 text-md">
+                {row.label}
+              </div>
+              <div className="text-left text-xl font-semibold">
+                {formatValue(stats[row.away], row)}
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
       </div>
 
-      {/* ---------- RIGHT CIRCLES ---------- */}
-      <div className="absolute right-0 top-0 flex flex-col gap-10">
-        {CIRCLE_STATS.map((row) => (
-          <StatCircle
-            key={row.label}
-            value={stats[row.away]}
-            label={row.label}
-            pct={row.pct}
-            decimals={row.decimals}
-          />
-        ))}
-      </div>
+      {/* ===================== MOBILE (NEW) ===================== */}
+      <div className="sm:hidden space-y-10">
 
-      {/* ---------- BASIC STATS ---------- */}
-      <div className="grid grid-cols-3 gap-y-6 text-xl px-32">
-        {BASIC_STAT_ROWS.map((row) => (
-          <React.Fragment key={row.label}>
-            <div className="text-right font-semibold">
-              {formatValue(stats[row.home], {
-                decimals: row.decimals,
-              })}
-              {row.suffix ?? ""}
-            </div>
+        {/* ===================== MOBILE (new desktop-like layout) ===================== */}
+        <div className="sm:hidden grid grid-cols-[1fr_auto_1fr] gap-x-8 gap-y-6 text-md px-4">
+          {BASIC_STAT_ROWS.map((row) => (
+            <React.Fragment key={row.label}>
+              <div className="text-right text-xl text-white/80 font-semibold">
+                {formatValue(stats[row.home], row)}
+              </div>
+              <div className="text-center uppercase text-white/75 text-md">
+                {row.label}
+              </div>
+              <div className="text-left text-xl text-white/90 font-semibold">
+                {formatValue(stats[row.away], row)}
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
 
-            <div className="text-center font-lightbold text-white/80 text-md font-normal uppercase">
-              {row.label}
-            </div>
-
-            <div className="text-left font-semibold">
-              {formatValue(stats[row.away], {
-                decimals: row.decimals,
-              })}
-              {row.suffix ?? ""}
-            </div>
-          </React.Fragment>
-        ))}
+        <div className="grid grid-cols-2 gap-x-4 gap-y-6 px-4">
+          {CIRCLE_STATS.map((row) => (
+            <React.Fragment key={row.label}>
+              <StatCircle
+                value={stats[row.home]}
+                label={row.label}
+                pct={row.pct}
+                decimals={row.decimals}
+              />
+              <StatCircle
+                value={stats[row.away]}
+                label={row.label}
+                pct={row.pct}
+                decimals={row.decimals}
+              />
+            </React.Fragment>
+          ))}
+        </div>
       </div>
 
     </div>
