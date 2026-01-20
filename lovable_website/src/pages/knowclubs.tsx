@@ -512,7 +512,7 @@ export default function KnowYourClubs() {
                           text-white/90 text-center
                           leading-snug sm:leading-relaxed
                           max-w-full 
-                          break-normal
+                          break-words sm:break-normal
                           group-hover:text-white/100
                           transition-colors
                         "

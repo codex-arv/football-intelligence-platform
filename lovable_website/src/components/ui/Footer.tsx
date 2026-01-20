@@ -96,20 +96,20 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
-            className="space-y-4"
+            className="space-y-4 space-x-2 sm:space-x-1"
           >
-            <h4 className="text-2xl text-left font-semibold text-foreground">Quick Links</h4>
+            <h4 className="text-2xl text-left px-2 sm:px-0 font-semibold text-foreground">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <button
                     onClick={() => handleLinkClick(link.href)}
-                    className="text-left text-foreground/70 text-md hover:text-primary transition-colors duration-300 relative group"
+                    className="text-center text-foreground/70 text-md hover:text-primary transition-colors duration-300 relative group"
                   >
                     {link.name}
-                    <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+                    <span className="text-center absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
                   </button>
-                    <span className="absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
+                    <span className="text-center absolute bottom-0 left-0 w-0 h-px bg-primary group-hover:w-full transition-all duration-300" />
                 </li>
               ))}
             </ul>
@@ -123,8 +123,8 @@ const Footer = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div className="space-y-4">
-              <h4 className="text-2xl font-semibold text-foreground">Social Links</h4>
+            <div className="space-y-4 space-x-2 sm:space-x-0">
+              <h4 className="text-2xl px-3 font-semibold text-foreground">Social Links</h4>
               <div className="flex gap-4">
                 {socialLinks.map((social) => (
                   <motion.a

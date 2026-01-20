@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLocation, useNavigate } from "react-router-dom";
-import icon1 from "../ui/logo90.png";
+import icon1 from "../ui/matrix90.png";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,18 +22,27 @@ const Navigation = () => {
   ];
 
   const scrollToSection = (hash: string) => {
-    const element = document.querySelector(hash);
-    if (!element) return;
+  const element = document.querySelector(hash);
+  if (!element) return;
 
-    const yOffset = 87; // 👈 adjust for navbar height
-    const y =
-      element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+  let yOffset = 75; // default offset
 
-    window.scrollTo({
-      top: y,
-      behavior: "smooth",
-    });
-  };
+  if (hash === "#home") {
+    yOffset = 0; // or smaller value if you want hero fully visible
+  }
+
+  if (hash === "#about") {
+    yOffset = -69; // tighter spacing for About section
+  }
+
+  const y =
+    element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+
+  window.scrollTo({
+    top: y,
+    behavior: "smooth",
+  });
+};
 
 
   const handleNavigation = (href: string) => {

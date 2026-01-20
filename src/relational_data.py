@@ -107,7 +107,13 @@ def positional_classification(pms_players: pd.DataFrame) -> Tuple[pd.DataFrame, 
                                 'headed_clearances', 'dribbled_past', 'duels_won',
                                 'ground_duels_won', 'aerial_duels_won', 'was_fouled', 'fouls_committed',
                                 'tackles', 'distance_covered', 'defensive_contributions']].copy()
-    df2['tackles_won_percentage'] = df2['tackles_won'] / df2['tackles']
+    df2['tackles_won_percentage'] = np.divide(
+        df2['tackles_won'].to_numpy(dtype=float),
+        df2['tackles'].to_numpy(dtype=float),
+        out=np.zeros(len(df2), dtype=float),
+        where=df2['tackles'].to_numpy() != 0
+    )
+
     df2 = df2.drop(columns='tackles', errors='ignore')
     df3 = df3[['player_id', 'match_id', 'team_code', 'Game Week', 'minutes_played',
                                 'goals', 'assists', 'xg', 'xa',

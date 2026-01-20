@@ -124,7 +124,7 @@ const MatchStatsBasic: React.FC<MatchStatsBasicProps> = ({ stats }) => {
         <div className="sm:hidden grid grid-cols-[1fr_auto_1fr] gap-x-8 gap-y-6 text-md px-4">
           {BASIC_STAT_ROWS.map((row) => (
             <React.Fragment key={row.label}>
-              <div className="text-right text-xl text-white/80 font-semibold">
+              <div className="text-right text-xl text-white/90 font-semibold">
                 {formatValue(stats[row.home], row)}
               </div>
               <div className="text-center uppercase text-white/75 text-md">

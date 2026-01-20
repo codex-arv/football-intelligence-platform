@@ -213,7 +213,7 @@ def get_venue_performance_mod(home_team, away_team):
         h_mod = 1.15
         is_juggernaut = True
     if a_elo >= 2000:
-        a_mod = 1.10
+        a_mod = 1.05
         is_juggernaut = True
 
     # If a juggernaut is involved, we RETURN NOW so lower logic doesn't overwrite
