@@ -41,14 +41,11 @@ class MatchRequest(BaseModel):
 
 @app.on_event("startup")
 async def startup_event():
-    print("1. Loading Data...")
-    load_data_once()
-    print("2. Loading Models...")
-    load_model_once()
-    print("3. Loading Statistics...")
-    ensure_stats_loaded();
-    print("4. Loading Club Data...")
-    preload_club_data();
+    print("Initializing backend...")
+
+@app.get("/health")
+async def health_check():
+    return {"status": "alive", "mode": "warm-up"}
 
 
 @app.get("/")
@@ -58,9 +55,15 @@ async def root():
 
 @app.get("/api/v1/teams", response_model=List[str])
 async def teams():
+    print("Loading Data...")
+    load_data_once()
     return get_all_teams()
 
 
 @app.post("/api/v1/predict")
 async def predict(req: MatchRequest):
+    print("Loading Data...")
+    load_data_once()
+    print("Loading Models...")
+    load_model_once()
     return predict_match(req.home_team, req.away_team)

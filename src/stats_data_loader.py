@@ -191,3 +191,22 @@ def prepare_players_match_data(
     pm_25_cols = list(pm_25_final.columns)
 
     return pm_24_final, pm_25_final
+
+if __name__ == "__main__":
+    # Load all raw data
+    data = load_all_data()
+    # Prepare player–match datasets
+    pm_24_final, pm_25_final = prepare_players_match_data(
+        data["pms_24"],
+        data["pms_25"],
+        data["players_24"],
+        data["players_25"],
+        data["teams_24"],
+        data["teams_25"]
+    )
+    # Filter: Season 2025 (pm_25_final) & Matchday 16
+    players_gw16_2025 = pm_25_final.loc[(pm_25_final['gameweek']==16)&(pm_25_final['name']=="Arsenal")]
+    # Display result
+    print(players_gw16_2025)
+
+
