@@ -58,37 +58,43 @@ export default function PipelinePage() {
         {/* STEPS */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-          <PipelineCard icon={<Database />} title="Data Collection & Cleaning" num="01">
+          <PipelineCard icon={<Database />} title="Data Collection & Normalization" num="01">
             <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
-            Historical Premier League matches and player performance data is ingested and normalized to ensure each fixture exists
-             on the same analytical timeline.</p>
+            Historical Premier League match and performance data is aggregated, cleaned and normalized into a unified 
+            timeline to ensure consistent feature extraction.</p>
           </PipelineCard>
 
           <PipelineCard icon={<Activity />} title="Feature Engineering" num="02">
             <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
-            Rolling form, xG / xA, home–away splits, squad efficiency, momentum signals and similar other engineered features are encoded into over 40 features.
-            </p>
+            Features are generated using exponentially weighted moving averages (EWMA), home–away contextual modifiers, 
+              strength-of-schedule adjustments, Elo-driven quality scaling and derived momentum indicators capturing 
+              attacking intensity and chance creation trends.            </p>
           </PipelineCard>
 
-          <PipelineCard icon={<Cpu />} title="Model Training Pipeline" num="03" full>
-            <p className="mb-4 text-md sm:text-lg text-white/70">
-              A 75/25 training-validation split ensures strong generalization.
+          <PipelineCard icon={<Cpu />} title="Dual-Model Training Architecture" num="03" full>
+            <p className="mb-4 text-md sm:text-lg text-white/80">
+              The prediction engine uses two complementary learning paths to balance stability and realism.
             </p>
             <p className="text-white/100 tracking-[0.06em] font-semibold text-md sm:text-lg">Classification Engine</p>
-            <p className="text-white/70 mb-4 text-md sm:text-lg">XGBoost (eXtreme Gradient Boosting) classification model predicts win / draw / loss probabilities.</p>
+            <p className="text-white/70 mb-4 text-md sm:text-lg">An XGBoost classifier estimates win, draw and loss probabilities based on engineered match context features.</p>
             <p className="text-white/100 tracking-[0.06em] font-semibold text-md sm:text-lg">Regression Engines</p>
-            <p className="text-white/70 text-md sm:text-lg">Two Random Forest regression models estimate raw, expected goals for each team.</p>
+            <p className="text-white/70 text-md sm:text-lg">Two Random Forest regression models independently estimate expected goals for the home and away teams, 
+              enabling realistic scoreline simulation.</p>
           </PipelineCard>
 
-          <PipelineCard icon={<Network />} title="Prediction Fusion" num="04">
+          <PipelineCard icon={<Network />} title="Adaptive Prediction Fusion" num="04">
             <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
-            60% outcome probability weighting blended with 40% scoreline realism for stable, high-confidence forecasts.
+            Classification and regression outputs are combined using a dynamic weighting system that adapts to match 
+              context, competitive imbalance and team quality. Final probabilities are refined using Poisson-based 
+              scoreline simulation and temperature-scaled probability sharpening.
             </p>
           </PipelineCard>
 
           <PipelineCard icon={<Info />} title="Model Philosophy" num="05">
           <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
-            Predictions are driven strictly by structured match data — not injuries, hype, or media narratives.
+            Predictions are driven strictly by structured match data, to identify repeatable performance patterns rather short-term form. 
+            By prioritizing long-term trends, underlying chance quality and contextual match dynamics, the model aims to 
+            capture how teams typically perform over time instead of isolated outcomes.
             </p>
           </PipelineCard>
         </div>
@@ -168,7 +174,7 @@ function SourceCard({ name, description, href }: any) {
     >
       <div className="flex items-start justify-between gap-8">
         <div>
-          <h3 className="text-lg font-semibold text-white mb-2 flex items-center gap-3">
+          <h3 className="text-lg sm:text-xl font-semibold text-white mb-2 flex items-center gap-3">
             {name}
 
             {/* LINK ICON */}
@@ -185,7 +191,7 @@ function SourceCard({ name, description, href }: any) {
             </span>
           </h3>
 
-          <p className="text-md text-white/75 sm:text-white/60 leading-relaxed">
+          <p className="text-md text-white/75 sm:text-white/80 leading-relaxed">
             {description}
           </p>
         </div>

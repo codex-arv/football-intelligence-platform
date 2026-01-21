@@ -22,27 +22,30 @@ const Navigation = () => {
   ];
 
   const scrollToSection = (hash: string) => {
-  const element = document.querySelector(hash);
-  if (!element) return;
+    const element = document.querySelector(hash);
+    if (!element) return;
 
-  let yOffset = 75; // default offset
+    let yOffset = 75; // default (desktop)
 
-  if (hash === "#home") {
-    yOffset = 0; // or smaller value if you want hero fully visible
-  }
+    const isMobile = window.innerWidth < 640; // Tailwind sm breakpoint
 
-  if (hash === "#about") {
-    yOffset = -69; // tighter spacing for About section
-  }
+    if (hash === "#home") {
+      yOffset = 0;
+    }
 
-  const y =
-    element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+    if (hash === "#about") {
+      yOffset = isMobile ? -53 : -69; // 👈 mobile vs desktop
+    }
 
-  window.scrollTo({
-    top: y,
-    behavior: "smooth",
-  });
-};
+    const y =
+      element.getBoundingClientRect().top + window.pageYOffset - yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  };
+
 
 
   const handleNavigation = (href: string) => {

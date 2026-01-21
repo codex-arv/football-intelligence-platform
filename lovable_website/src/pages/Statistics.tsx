@@ -1,7 +1,7 @@
 "use client";
 
 import { API_BASE_URL } from "../config/api";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/ui/Navigation";
 import Footer from "@/components/ui/Footer";
@@ -67,6 +67,7 @@ const Statistics = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const statsRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (location.state?.season && location.state?.matchday) {
@@ -93,6 +94,21 @@ const Statistics = () => {
     }
     setLoading(false);
   };
+
+  useEffect(() => {
+    if (matches.length === 0 || !statsRef.current) return;
+
+    const yOffset = -80; // adjust for navbar height
+    const y =
+      statsRef.current.getBoundingClientRect().top +
+      window.pageYOffset +
+      yOffset;
+
+    window.scrollTo({
+      top: y,
+      behavior: "smooth",
+    });
+  }, [matches]);
 
   const selectMatch = async (m: any) => {
     setSelectedMatch(m);
@@ -203,7 +219,7 @@ const Statistics = () => {
 
         {/* Match Cards */}
         {!selectedMatch && matches.length > 0 && (
-          <motion.section className="space-y-8">
+          <motion.section ref={statsRef} className="space-y-8">
             {matches.map((m) => (
               <motion.div
                 key={m.match_id}

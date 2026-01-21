@@ -2,7 +2,7 @@
 
 import { API_BASE_URL } from "../config/api";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Navigation from "@/components/ui/Navigation";
 import Footer from "@/components/ui/Footer";
@@ -110,6 +110,7 @@ const ProbabilitySegment = ({ probability, teamName, color, isDraw = false }) =>
 };
 
 const Prediction = () => {
+  const resultsRef = useRef<HTMLDivElement | null>(null);
   
   useEffect(() => {
       window.scrollTo(0, 0);
@@ -127,6 +128,24 @@ const Prediction = () => {
   const [showRawScoreline, setShowRawScoreline] = useState(false);
   const [showRegression, setShowRegression] = useState(false);
   const [showClassification, setShowClassification] = useState(false);
+
+  useEffect(() => {
+    if (!result || !resultsRef.current) return;
+
+    requestAnimationFrame(() => {
+      const yOffset = 422; // adjust for navbar
+      const y =
+        resultsRef.current!.getBoundingClientRect().top +
+        window.pageYOffset -
+        yOffset;
+
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+    });
+  }, [result]);
+
 
   const handlePredict = async () => {
     
@@ -164,6 +183,7 @@ const Prediction = () => {
 
     setLoading(false);
   };
+
 
   return (
     <div className="relative overflow-hidden">
@@ -242,6 +262,7 @@ const Prediction = () => {
           {/* Results */}
           {result && predictedHomeTeam && predictedAwayTeam && (
             <motion.div
+              ref={resultsRef}
               className="mt-12 pb-10 grid grid-cols-1 gap-6"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
