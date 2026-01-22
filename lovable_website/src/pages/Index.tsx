@@ -43,12 +43,12 @@ const Index = () => {
             THE 90<span className="text-3xl sm:text-3xl md:text-5xl align-super ml-1">th</span> MINUTE
           </h1>
           <p className="text-2xl sm:text-lg md:text-3xl px-6 sm:px-0 text-foreground font-lightbold mb-4 animate-fade-in-up"
-            style={{ animationDelay: "1.2s", opacity: 0 }}
+            style={{ animationDelay: "1s", opacity: 0 }}
           >
             Every minute. Every match. Every goal, predicted.
           </p>
           <p className="text-2xl sm:text-lg md:text-3xl px-10 sm:px-0 text-foreground font-lightbold mb-4 animate-fade-in-up"
-            style={{ animationDelay: "2s", opacity: 0 }}
+            style={{ animationDelay: "1.8s", opacity: 0 }}
           >
             Powered by AI. Inspired by the beautiful game.
           </p>

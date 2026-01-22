@@ -7,7 +7,7 @@ from relational_data import work_with_relational_data
 from data_merging import load_merge_data
 from merged_data_feature_engineering import merged_data_cleaning, merged_data_feature_manipulation
 from data_preparation import data_preparation
-from model_ready_data import define_model_ready_data
+from model_ready_data_honest import define_model_ready_data_honest
 from model_training import training_XGB, training_RFR_home, training_RFR_away
 from save_artifacts import save_model_artifacts, save_data_artifact, save_transformed_data_artifact, OUTPUT_ARTIFACTS_DIR, OUTPUT_DATA_DIR
 
@@ -42,7 +42,7 @@ final_passed_df = final_df.drop(columns=['Date', 'HomeTeam', 'AwayTeam'], errors
 
 # 8. Preparing the Model-ready data (involves data splitting, feature scaling, column renaming, label encoding the classification output features and computing the class weight for classification)
 output_tuples = (final_passed_df, y_classification, y_regression_home, y_regression_away)
-X_train, X_test, X_train_ref, X_test_ref, y_train_classification_final, y_test_classification_final, y_train_regression_home, y_test_regression_home, y_train_regression_away, y_test_regression_away, sample_weight, scaler, all_features = define_model_ready_data(output_tuples=output_tuples)
+X_train, X_test, X_train_ref, X_test_ref, y_train_classification_final, y_test_classification_final, y_train_regression_home, y_test_regression_home, y_train_regression_away, y_test_regression_away, sample_weight, scaler, all_features = define_model_ready_data_honest(output_tuples=output_tuples)
 
 # 9. Training the classification model (XGBoost Classifier)
 classification_tuples = (X_train, X_test, y_train_classification_final, y_test_classification_final, sample_weight)

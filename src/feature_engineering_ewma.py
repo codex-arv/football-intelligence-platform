@@ -1,14 +1,19 @@
+# this file is responsible for extensive feature engineering before saving the data as artifact for live predictions
+# this file also accounts for the engineered features over which our models train on 
+
 import numpy as np
 import pandas as pd
 from typing import List
 from data_cleaning import data_cleaning
 
+# multi-class odds: must normalize them
 PROB_NORM_ODDS: List[List[str]] = [
     ['BbAvH', 'BbAvD', 'BbAvA'], ['AvgCH', 'AvgCD', 'AvgCA'], ['PSCH', 'PSCD', 'PSCA'],              
     ['MaxH', 'MaxD', 'MaxA', 'AvgH', 'AvgD', 'AvgA', 'B365H', 'B365D', 'B365A', 'B365CH', 'B365CD', 'B365CA'],
     ['AvgC>2.5', 'AvgC<2.5'], ['PC>2.5', 'PC<2.5']
 ]
 
+# binary odds: doesnt need normalization
 PROB_ODDS: List[List[str]] = [
     ['AvgCAHH', 'AvgCAHA'], 
     ['PCAHH', 'PCAHA']      
@@ -25,6 +30,10 @@ REMOVABLE_COLUMNS: List[str] = ['Div', 'AHCh', 'HHW', 'AHW', 'HO', 'AO', 'IWH', 
                                 'CLH','CLD','CLA', 'BFDCH','BFDCD','BFDCA', 'BMGMCH','BMGMCD','BMGMCA',
                                 'BVCH','BVCD','BVCA', 'CLCH','CLCD','CLCA', 'LBCH', 'LBCD','LBCA']
 
+# bookmakers give decimal odds, not probabilities
+# first, all the odds are converted to implied probabilities
+# domain knowledge: bookmakers add marginal overround (profit) such that the sum of IPs of W,D,L > 1
+# to eliminate the bias added by the bookmaker, we removed the margin giving a much truer estimate of market belief
 def norm_ip_margin_conversion(df: pd.DataFrame) -> pd.DataFrame:
     temp_df = df.copy()
     temp_df['IP_Home_PS'] = 1 / temp_df['PSCH']
@@ -42,13 +51,18 @@ def probability(df: pd.DataFrame, columns: List[str]) -> pd.DataFrame:
     temp_df = temp_df.drop(columns=columns, errors='ignore')
     return temp_df
 
+# why this matters: 
+# failure to normalize probability and remove bias might result in poor generalization, latent bias, lower model performance
 def probability_normalization(df: pd.DataFrame, columns: List[str]) -> pd.DataFrame:
     temp_df = df.copy()
     ip_columns = [f'IP_{col}' for col in columns]
+    # convert to IP
     for odd, new in zip(columns, ip_columns):
         temp_df[new] = 1 / temp_df[odd]
+    # calculate sum for the specific IP columns
     total = temp_df[ip_columns].sum(axis=1)
     norm_columns = [f'NormIP_{col}' for col in columns]
+    # calculate the normalized probability for the implied ones
     for ip, norm in zip(ip_columns, norm_columns):
         temp_df[norm] = temp_df[ip] / total
     temp_df = temp_df.drop(columns=columns + ip_columns, errors='ignore')
@@ -71,13 +85,13 @@ def date_to_datetime(df: pd.DataFrame) -> pd.DataFrame:
 def rolling_feature_engineering_ewma(df: pd.DataFrame) -> pd.DataFrame:
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     
+    # Exponentially Weighted Moving Average
+    # time-aware smoothening technique where recent observations are of higher priority and as we go back in time, the importance exponentially decays
     def get_ewma(series):
         # span=7 ensures matches from 1-2 months ago are included but recent ones dominate
+        # ensuring the use of shift() before ewm to avoid data leakage: ensuring only past matches contribute to features
+        # ewma helped to convert raw match data to team-level chronological signals 
         return series.shift().ewm(span=7, adjust=True).mean()
-    
-    def get_season_anchor(series):
-        # window=12 captures the 'Season identity' without going into last year
-        return series.shift().rolling(window=12, min_periods=4).mean()
 
     # 1. Global Goals (REPLACED WITH EWMA)
     home_df = df[['Date', 'HomeTeam', 'FTHG', 'FTAG']].copy()
@@ -226,9 +240,8 @@ def data_formatting(df: pd.DataFrame) -> pd.DataFrame:
     df['Date'] = pd.to_datetime(df['Date'], errors='coerce')
     return df
 
-# accepts the original dataframe returned from data_ingestion1.py
-# returns the feature engineered and cleaned dataframe
-# main function!
+
+# main function
 def run_full_feature_engineering_ewma(df: pd.DataFrame) -> pd.DataFrame:
     print("="*156)
     print("="*156)

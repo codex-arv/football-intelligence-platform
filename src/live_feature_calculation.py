@@ -29,8 +29,6 @@ RENAME_MAP = {
     'away_expected_goals_xg': 'AT_expected_goals',
     'home_big_chances': 'HT_big_chances',
     'away_big_chances': 'AT_big_chances',
-    'home_xg_on_target_xgot': 'HT_xg_on_targetot',
-    'away_xg_on_target_xgot': 'AT_xg_on_targetot',
     'home_touches_in_opposition_box': 'HT_touches_in_opposition_box',
     'away_touches_in_opposition_box': 'AT_touches_in_opposition_box',
 }
@@ -164,7 +162,7 @@ def _get_rolling_team_stats(team: str, base_features: List[str], window: int = 8
             stats[base] = 0.0
     return stats
 
-def _get_ewma_team_stats(team: str, base_features: List[str], span: int = 7) -> Dict[str, float]:
+def _get_ewma_team_stats(team: str, base_features: List[str], span: int = 15) -> Dict[str, float]:
     # We pull 7 games to ensure the EWMA calculation has enough historical 'momentum'
     mask = (MAIN_DF['HomeTeam'] == team) | (MAIN_DF['AwayTeam'] == team)
     team_history = MAIN_DF[mask].tail(10)
@@ -243,14 +241,40 @@ def get_venue_performance_mod(home_team, away_team):
 # -----------------------------
 # Main Calculation Logic
 # -----------------------------
-def calculate_features(home_team: str, away_team: str, mode: str) -> pd.DataFrame:
+
+def compute_dynamic_weight(home_elo: float, away_elo: float) -> Tuple[float, str]:
+    """
+    Computes blending weight dynamically based on Elo and match context.
+    Prioritizes mismatch > elite duel > balanced game.
+    """
+    elo_diff = abs(home_elo - away_elo)
+    elite_threshold = 1875
+    mismatch_threshold = 150
+
+    # 1. Heavy mismatch first
+    if elo_diff > mismatch_threshold:
+        mode = "MISMATCH"
+        weight_class = 0.45
+    # 2. Elite duel (both teams elite)
+    elif home_elo > elite_threshold and away_elo > elite_threshold:
+        mode = "ELITE"
+        weight_class = 0.35
+    # 3. Otherwise balanced / grind
+    else:
+        mode = "GRIND"
+        weight_class = 0.55
+
+    return weight_class, mode
+
+
+def calculate_features(home_team: str, away_team: str) -> pd.DataFrame:
     load_data_once()
     base_columns, static_features = get_base_features()
     feature_dict = {col: 0.0 for col in FEATURE_LIST}
 
     # 1. Load Data for both teams using EWMA (Span 10)
-    h_stats = _get_ewma_team_stats(home_team, base_columns, span=10)
-    a_stats = _get_ewma_team_stats(away_team, base_columns, span=10)
+    h_stats = _get_ewma_team_stats(home_team, base_columns, span=15)
+    a_stats = _get_ewma_team_stats(away_team, base_columns, span=15)
     h_row, h_pre = _get_latest_metadata(home_team)
     a_row, a_pre = _get_latest_metadata(away_team)
 
@@ -266,7 +290,7 @@ def calculate_features(home_team: str, away_team: str, mode: str) -> pd.DataFram
 
     # 3. Apply EWMA Stats Differences with Quality Adjustments
     # Unified Adjustment Loop (Venue -> Difference -> Quality)
-    adjust_targets = ['xg_on_targetot', 'touches_in_opposition_box', 'expected_goals', 'big_chances', 'possession']
+    adjust_targets = ['touches_in_opposition_box', 'expected_goals', 'big_chances', 'possession']
     h_mod, a_mod = get_venue_performance_mod(home_team, away_team)
 
     for base in base_columns:
@@ -329,10 +353,10 @@ def calculate_features(home_team: str, away_team: str, mode: str) -> pd.DataFram
     
     # 7. Scaling Clamps
     # Clamping prevents extreme outliers but allows elite teams to stand out
-    clip_val = 4 if (h_elo > 1875 or a_elo > 1875) else 1.5
-    for col in ['xg_on_targetot_Diff']:
-        if col in feature_dict:
-            feature_dict[col] = np.clip(feature_dict[col], -clip_val, clip_val)
+    # clip_val = 4 if (h_elo > 1875 or a_elo > 1875) else 1.5
+    # for col in ['xg_on_targetot_Diff']:
+    #     if col in feature_dict:
+    #         feature_dict[col] = np.clip(feature_dict[col], -clip_val, clip_val)
 
     # 8. Final DataFrame Assembly
     final_df = pd.DataFrame([feature_dict])
@@ -365,34 +389,28 @@ def predict_match(home: str, away: str) -> Dict[str, Union[str, float, Dict[str,
     avg_elo = (h_elo + a_elo) / 2
     elo_diff = abs(h_elo - a_elo) 
     
-    # 1. ELITE MATCH (High quality, trust the xG/Regression)
-    if ((h_elo > 1875 or a_elo > 1875) and elo_diff < 150):
-        current_weight = 0.35
-        mode = "ELITE"
-        
-    # 2. HEAVY MISMATCH (One team is significantly better)
-    elif elo_diff > 150:
-        current_weight = 0.25
-        mode = "MISMATCH"
-        
-    # 3. HIGH-QUALITY MID-TABLE (e.g., Brighton vs Newcastle)
-    elif avg_elo > 1800 and elo_diff < 75:
-        current_weight = 0.45
-        mode = "HIGH_QUALITY_MID"
-        
-    # 4. LOW-QUALITY / RELEGATION (The 'Draw Zone')
-    elif (h_elo < 1775 or a_elo < 1775):
-        current_weight = 0.6
-        mode = "GRIND"
-    else:
-        current_weight = 0.5
-        mode = "UNKNOWN"
-    
-    X_live = calculate_features(home, away, mode=mode)
-    
-    # 2. Scaling
+    X_live = calculate_features(home, away)
+
+    # ------------------ CRITICAL FEATURE ALIGNMENT ------------------
+
+    # 1. Add any missing columns
+    for col in FEATURE_LIST:
+        if col not in X_live.columns:
+            X_live[col] = 0.0
+
+    # 2. Remove extra columns
+    X_live = X_live[FEATURE_LIST]
+
+    # 3. Enforce float type (very important for scaler consistency)
+    X_live = X_live.astype(float)
+
+    # ------------------ SCALING ------------------
     scaler = MODELS.get('scaler')
-    X_live_scaled = pd.DataFrame(scaler.transform(X_live), columns=X_live.columns) if scaler else X_live
+    X_live_scaled = pd.DataFrame(
+        scaler.transform(X_live),
+        columns=FEATURE_LIST
+    ) if scaler else X_live
+
 
     # 3. Classification Path
     c_model = MODELS['classification_model']
@@ -412,8 +430,14 @@ def predict_match(home: str, away: str) -> Dict[str, Union[str, float, Dict[str,
     # DEBUG PRINT: This will show you why the weight is failing
     print(f"{home} : ({h_elo}) vs {away} : ({a_elo}) ||| ELO DIFF = {elo_diff}")
     print(f"Elite: {is_elite}, Mismatch: {is_mismatch}")
-    print(f"Mode: {mode} | Weight: {current_weight}")
-    blended_probs = blend_probabilities(class_probs_dict, reg_probs, weight_class=current_weight, mode=mode)
+    weight_class, mode = compute_dynamic_weight(h_elo, a_elo)
+
+    blended_probs = blend_probabilities(
+        class_probs_dict, reg_probs,
+        weight_class=weight_class,
+        mode=mode
+    )
+    print(f"Mode: {mode} | Weight: {weight_class}")
 
     # 4. Final Decision
     final_label = max(blended_probs, key=blended_probs.get)
@@ -430,7 +454,7 @@ def predict_match(home: str, away: str) -> Dict[str, Union[str, float, Dict[str,
         "regression_probabilities": reg_probs,
         "blended_probabilities": blended_probs,
         "predicted_winner_blended": winner_blended,
-        "blending_weights": {"classification": current_weight, "regression": 1 - current_weight},
+        "blending_weights": {"classification": weight_class, "regression": 1 - weight_class},
     }
 
 

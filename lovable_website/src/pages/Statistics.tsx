@@ -77,7 +77,7 @@ const Statistics = () => {
     if (location.state?.selectedMatch) setSelectedMatch(location.state.selectedMatch);
   }, [location.state]);
 
-  const maxMatchday = season === 2025 ? 21 : 38;
+  const maxMatchday = season === 2025 ? 22 : 38;
 
   const fetchMatches = async () => {
     if (!season || !matchday) return;

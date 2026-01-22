@@ -37,21 +37,20 @@ export default function PipelinePage() {
           <p className="text-lg md:text-xl text-foreground/80 leading-relaxed px-2 sm:px-0">
             Our match predictions are generated using a dual-model system trained on Premier League data from the 
             2024 and 2025 seasons. The system blends classification probabilities with regression-based scoreline estimates 
-            to provide a more stable and realistic forecast.
+            using dynamically computed weights to account for team quality, match context, and competitive balance.
           </p>
 
           <p className="text-lg md:text-xl text-foreground/80 leading-relaxed px-2 sm:px-0">
-            <br></br>To build this engine, we processed over two years of granular match statistics including 
-            concrete match statistics, rolling form trends, xG/xGA patterns, and home–away performance splits. 
-            Each match is treated as an independent data point, enriched with over 40 engineered features created from 
-            historical form, momentum shifts and chance creation metrics.
+            <br></br>We processed over two years of granular match statistics, including long-term performance trends, xG/xGA patterns, 
+            home–away splits, and contextual modifiers. Each match is treated as an independent data point, enriched with over 150 engineered 
+            features derived from a 15-match EWMA to capture long-term form rather than short-term fluctuations.
           </p>
 
           <p className="text-lg md:text-xl text-foreground/80 leading-relaxed px-2 sm:px-0">
-            <br></br>Rather than relying on a single algorithm, the prediction engine uses an ensemble structure where classification 
-            and regression models work together. The classifier determines the most likely match outcome (W/D/L), 
-            while the regressors estimate expected goals for each club. These outputs are then combined into a blended prediction 
-            that rewards probability stability while still responding to meaningful statistical deviations in team performance.
+            <br></br>The prediction engine uses an ensemble structure: the classifier estimates the most likely match outcome (W/D/L), 
+            while the regressors simulate expected goals for home and away teams. Outputs are blended using dynamically assigned weights 
+            based on elite status, ELO differences and mismatch intensity. Poisson-based scoreline simulation and temperature-scaled sharpening 
+            ensure stable yet responsive predictions.
           </p>
         </motion.div>
 
@@ -60,41 +59,44 @@ export default function PipelinePage() {
 
           <PipelineCard icon={<Database />} title="Data Collection & Normalization" num="01">
             <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
-            Historical Premier League match and performance data is aggregated, cleaned and normalized into a unified 
-            timeline to ensure consistent feature extraction.</p>
+              Historical Premier League match and performance data is aggregated, cleaned, and normalized into a unified timeline 
+              to ensure consistent feature extraction and reliable statistical baselines.
+            </p>
           </PipelineCard>
 
           <PipelineCard icon={<Activity />} title="Feature Engineering" num="02">
             <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
-            Features are generated using exponentially weighted moving averages (EWMA), home–away contextual modifiers, 
-              strength-of-schedule adjustments, Elo-driven quality scaling and derived momentum indicators capturing 
-              attacking intensity and chance creation trends.            </p>
+              Features are generated using EWMA to capture long-term team trends, home–away contextual modifiers, 
+              strength-of-schedule (SoS) adjustments, ELO-based quality scaling and derived momentum indicators reflecting attacking intensity 
+              and chance creation.
+            </p>
           </PipelineCard>
 
           <PipelineCard icon={<Cpu />} title="Dual-Model Training Architecture" num="03" full>
             <p className="mb-4 text-md sm:text-lg text-white/80">
-              The prediction engine uses two complementary learning paths to balance stability and realism.
+              The prediction engine uses complementary learning paths and heterogenous blended machine learning models to balance prediction stability and responsiveness.
             </p>
             <p className="text-white/100 tracking-[0.06em] font-semibold text-md sm:text-lg">Classification Engine</p>
-            <p className="text-white/70 mb-4 text-md sm:text-lg">An XGBoost classifier estimates win, draw and loss probabilities based on engineered match context features.</p>
+            <p className="text-white/70 mb-4 text-md sm:text-lg">
+              An XGBoost classifier estimates probabilities for home win, draw or away win, considering long-term team form and contextual features.
+            </p>
             <p className="text-white/100 tracking-[0.06em] font-semibold text-md sm:text-lg">Regression Engines</p>
-            <p className="text-white/70 text-md sm:text-lg">Two Random Forest regression models independently estimate expected goals for the home and away teams, 
-              enabling realistic scoreline simulation.</p>
+            <p className="text-white/70 text-md sm:text-lg">
+              Two Random Forest regressors independently predict expected goals for each team, enabling realistic scoreline simulation.
+            </p>
           </PipelineCard>
 
           <PipelineCard icon={<Network />} title="Adaptive Prediction Fusion" num="04">
             <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
-            Classification and regression outputs are combined using a dynamic weighting system that adapts to match 
-              context, competitive imbalance and team quality. Final probabilities are refined using Poisson-based 
-              scoreline simulation and temperature-scaled probability sharpening.
+              Classification and regression outputs are blended using dynamic class weights that adapt to team quality, ELO gaps and match context. 
+              Poisson-based scoreline simulation and temperature scaling sharpen probabilities while respecting the underlying statistical evidence.
             </p>
           </PipelineCard>
 
           <PipelineCard icon={<Info />} title="Model Philosophy" num="05">
-          <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
-            Predictions are driven strictly by structured match data, to identify repeatable performance patterns rather short-term form. 
-            By prioritizing long-term trends, underlying chance quality and contextual match dynamics, the model aims to 
-            capture how teams typically perform over time instead of isolated outcomes.
+            <p className="text-white/85 tracking-[0.02em] font-lightbold text-md sm:text-lg">
+              The model prioritizes long-term trends over short-term anomalies, capturing team “class” and sustainable performance patterns 
+              rather than reacting to one-off results. This ensures predictions are statistically sound, robust and reflective of true team quality.
             </p>
           </PipelineCard>
         </div>

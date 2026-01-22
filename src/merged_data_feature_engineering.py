@@ -54,7 +54,7 @@ ELO_FEATURES = ['ht_match_elo', 'at_match_elo']
 MATCH_FEATURES = ['home_possession', 'away_possession', 'home_expected_goals_xg', 'away_expected_goals_xg',
                   'home_big_chances', 'away_big_chances', 'home_big_chances_missed', 'away_big_chances_missed',
                   'home_xg_open_play', 'away_xg_open_play', 'home_xg_set_play', 'away_xg_set_play', 
-                  'home_non_penalty_xg', 'away_non_penalty_xg', 'home_xg_on_target_xgot', 'away_xg_on_target_xgot',
+                  'home_non_penalty_xg', 'away_non_penalty_xg',
                   'home_touches_in_opposition_box', 'away_touches_in_opposition_box']
 
 def merged_data_cleaning(merged_data: pd.DataFrame) -> pd.DataFrame:
@@ -68,6 +68,8 @@ def merged_data_cleaning(merged_data: pd.DataFrame) -> pd.DataFrame:
     merged_data[cols_to_impute] = merged_data[cols_to_impute].fillna(0)
     print(f"1. Imputed {len(cols_to_impute)} columns with 0 to handle the null values.\n")
     return merged_data
+
+import pandas as pd
 
 def merged_data_feature_manipulation(clean_merged_data: pd.DataFrame) -> Tuple[pd.DataFrame, pd.DataFrame]:
     print("Performing feature engineering and reduction:")
@@ -86,6 +88,7 @@ def merged_data_feature_manipulation(clean_merged_data: pd.DataFrame) -> Tuple[p
         mask['Last_Match'] = mask.groupby('Team')['Date'].shift(1)
         mask['Rest_Days'] = (mask['Date'] - mask['Last_Match']).dt.days.fillna(14)
         # Only clip the numeric column, not the whole dataframe
+        # clipped at 14 as if rest days >= 14, it accounts for international break etc so the effect of fatigueness saturates
         mask['Rest_Days'] = mask['Rest_Days'].clip(upper=14)
         return mask
 
@@ -131,6 +134,7 @@ def merged_data_feature_manipulation(clean_merged_data: pd.DataFrame) -> Tuple[p
     clean_merged_data['AT_Avg_Opponent_Elo_L5'] = clean_merged_data['AT_Avg_Opponent_Elo_L5'].fillna(1500)
 
     # 3. STRENGTH OF SCHEDULE NORMALIZATION
+    # useful in analyzing if the home team has faced tougher or weaker opponents in the last 5 matches, compared to the away team
     clean_merged_data['SoS_Ratio'] = clean_merged_data['HT_Avg_Opponent_Elo_L5'] / clean_merged_data['AT_Avg_Opponent_Elo_L5']
 
     # 4. ELO QUALITY GAP
@@ -150,167 +154,218 @@ def merged_data_feature_manipulation(clean_merged_data: pd.DataFrame) -> Tuple[p
         clean_merged_data['GK_Efficiency_Diff'] = ht_eff - at_eff
 
     # 7. FIELD TILT
+    # accounts for territorial dominance and not just mere possession 
     ht_tilt = clean_merged_data['home_touches_in_opposition_box'].fillna(0) / (clean_merged_data['home_possession'].fillna(50) + 1)
     at_tilt = clean_merged_data['away_touches_in_opposition_box'].fillna(0) / (clean_merged_data['away_possession'].fillna(50) + 1)
     clean_merged_data['Field_Tilt_Diff'] = ht_tilt - at_tilt
 
     # 8. DRAW PROPENSITY FEATURES
-    # A: Elo Symmetry
     if 'Elo_Gap_Absolute' in clean_merged_data.columns:
         clean_merged_data['Elo_Symmetry'] = np.exp(-clean_merged_data['Elo_Gap_Absolute'] / 50)
 
-    # B: Scoring Stalemate
-    if 'HT_AvgGF_L5' in clean_merged_data.columns and 'HT_CS_L5' in clean_merged_data.columns:
+    if all(c in clean_merged_data.columns for c in ['HT_AvgGF_L5', 'AT_AvgGF_L5', 'HT_CS_L5', 'AT_CS_L5']):
         clean_merged_data['Stalemate_Score'] = (
-            (clean_merged_data['HT_CS_L5'] + clean_merged_data['AT_CS_L5']) - 
+            (clean_merged_data['HT_CS_L5'] + clean_merged_data['AT_CS_L5']) -
             (clean_merged_data['HT_AvgGF_L5'] + clean_merged_data['AT_AvgGF_L5'])
         )
 
-    # C: Market Uncertainty
-    if 'NormIP_BbAvH' in clean_merged_data.columns:
+    if all(c in clean_merged_data.columns for c in ['NormIP_BbAvH', 'NormIP_BbAvD', 'NormIP_BbAvA']):
         clean_merged_data['Market_Uncertainty'] = (
-            clean_merged_data['NormIP_BbAvH'] * clean_merged_data['NormIP_BbAvD'] * clean_merged_data['NormIP_BbAvA']
+            clean_merged_data['NormIP_BbAvH'] *
+            clean_merged_data['NormIP_BbAvD'] *
+            clean_merged_data['NormIP_BbAvA']
         )
 
-    # 9. ORIGINAL LOOP LOGIC
-    player_base_features = [col.replace('HT_', '') for col in clean_merged_data.columns 
-                            if col.startswith('HT_GK') or col.startswith('HT_DEF') or col.startswith('HT_MID') or col.startswith('HT_FWD')]
+    # 9. DIFFERENTIAL FEATURES 
+    player_base_features = [
+        col.replace('HT_', '') for col in clean_merged_data.columns
+        if col.startswith(('HT_GK', 'HT_DEF', 'HT_MID', 'HT_FWD'))
+    ]
     player_base_features = sorted(list(set(player_base_features)))
-    
+
     original_cols_to_drop = []
-    
+
+    # Team stats diff
     for home_col in TEAMS_STATS:
         base_col = home_col.replace('HT_', '')
         away_col = f'AT_{base_col}'
         if away_col in clean_merged_data.columns:
-            clean_merged_data[f'{base_col}_Diff'] = clean_merged_data[home_col] - clean_merged_data[away_col]
+            clean_merged_data[f'{base_col}_Diff'] = (
+                clean_merged_data[home_col] - clean_merged_data[away_col]
+            )
             original_cols_to_drop.extend([home_col, away_col])
-    
+
+    # Player stats diff
     for features in player_base_features:
         home = f'HT_{features}'
         away = f'AT_{features}'
-        clean_merged_data[f'{features}_Diff'] = clean_merged_data[home] - clean_merged_data[away]
-        original_cols_to_drop.extend([home, away])
-    
-    original_cols_to_drop.extend(ELO_FEATURES)
-    
+        if home in clean_merged_data.columns and away in clean_merged_data.columns:
+            clean_merged_data[f'{features}_Diff'] = (
+                clean_merged_data[home] - clean_merged_data[away]
+            )
+            original_cols_to_drop.extend([home, away])
+
+    # Match stats diff (FIXED NAMING)
     for idx in range(0, len(MATCH_FEATURES), 2):
         home_col = MATCH_FEATURES[idx]
-        away_col = MATCH_FEATURES[idx+1]
-        new_col = f"{home_col.replace('home_', '').replace('_xg', '')}_Diff"
-        clean_merged_data[new_col] = clean_merged_data[home_col] - clean_merged_data[away_col]
+        away_col = MATCH_FEATURES[idx + 1]
+        base = home_col.replace('home_', '')
+        new_col = f"{base}_Diff"
+        clean_merged_data[new_col] = (
+            clean_merged_data[home_col] - clean_merged_data[away_col]
+        )
         original_cols_to_drop.extend([home_col, away_col])
-    
-    original_cols_to_drop.extend(['HT_Rest', 'AT_Rest'])
-    
-    # Set union and final drop prep
-    original_cols_to_drop = list(set(original_cols_to_drop))
-    future_cols_to_drop = RAW_STATS + ODDS + MATCH_STATS
-    union_cols_to_drop = list(set(future_cols_to_drop).union(set(original_cols_to_drop)))
-    
-    data_analysis = clean_merged_data.copy()
-    
-    new_columns = [c for c in clean_merged_data.columns if c.endswith('_Diff')]
-    print(f"1. Calculated differential features (Added {len(new_columns)} new features!)")
-    print(f"2. Eliminated {len(union_cols_to_drop)} columns to handle noise and redundancy.\n")
+
+    original_cols_to_drop.extend(ELO_FEATURES)
+    original_cols_to_drop.extend(['HT_Rest', 'AT_Rest', 'home_xg_on_target_xgot', 'away_xg_on_target_xgot', 'xg_on_target_xgot_Diff'])
 
     # 10. LONG-TERM ANCHOR (Anti-Fluke)
+    # Calculate average xG over 15 matches to capture the true team class over short-run form
+
+    # Prepare home-side xG
     home_side_long = clean_merged_data[['Date', 'HomeTeam', 'home_expected_goals_xg']].rename(
-        columns={'HomeTeam': 'Team', 'home_expected_goals_xg': 'xG'}
+        columns={
+            'HomeTeam': 'Team',
+            'home_expected_goals_xg': 'xG'
+        }
     )
+
+    # Prepare away-side xG
     away_side_long = clean_merged_data[['Date', 'AwayTeam', 'away_expected_goals_xg']].rename(
-        columns={'AwayTeam': 'Team', 'away_expected_goals_xg': 'xG'}
-    )
-    
-    all_games_long = pd.concat([home_side_long, away_side_long]).sort_values(['Team', 'Date'])
-    all_games_long['xG_Season_Base'] = all_games_long.groupby('Team')['xG'].transform(
-        lambda x: x.shift(1).rolling(window=15, min_periods=5).mean()
+        columns={
+            'AwayTeam': 'Team',
+            'away_expected_goals_xg': 'xG'
+        }
     )
 
+    # Combine all matches into one timeline per team
+    all_games_long = pd.concat([home_side_long, away_side_long]) \
+        .sort_values(['Team', 'Date'])
+
+    # Rolling long-term xG baseline (shifted to avoid leakage)
+    all_games_long['xG_Season_Base'] = (
+        all_games_long
+            .groupby('Team')['xG']
+            .transform(
+                lambda x: x.shift(1).rolling(window=15, min_periods=5).mean()
+            )
+    )
+
+    # Merge back for Home Team
     clean_merged_data = clean_merged_data.merge(
-        all_games_long[['Date', 'Team', 'xG_Season_Base']], 
-        left_on=['Date', 'HomeTeam'], right_on=['Date', 'Team'], how='left'
-    ).rename(columns={'xG_Season_Base': 'HT_xG_Season_Base'}).drop(columns=['Team'])
+        all_games_long[['Date', 'Team', 'xG_Season_Base']],
+        left_on=['Date', 'HomeTeam'],
+        right_on=['Date', 'Team'],
+        how='left'
+    ).rename(
+        columns={'xG_Season_Base': 'HT_xG_Season_Base'}
+    ).drop(columns=['Team'])
 
+    # Merge back for Away Team
     clean_merged_data = clean_merged_data.merge(
-        all_games_long[['Date', 'Team', 'xG_Season_Base']], 
-        left_on=['Date', 'AwayTeam'], right_on=['Date', 'Team'], how='left'
-    ).rename(columns={'xG_Season_Base': 'AT_xG_Season_Base'}).drop(columns=['Team'])
+        all_games_long[['Date', 'Team', 'xG_Season_Base']],
+        left_on=['Date', 'AwayTeam'],
+        right_on=['Date', 'Team'],
+        how='left'
+    ).rename(
+        columns={'xG_Season_Base': 'AT_xG_Season_Base'}
+    ).drop(columns=['Team'])
 
-    clean_merged_data['Season_Class_Diff'] = clean_merged_data['HT_xG_Season_Base'] - clean_merged_data['AT_xG_Season_Base']
+    # Difference in long-term season class between teams
+    clean_merged_data['Season_Class_Diff'] = (
+        clean_merged_data['HT_xG_Season_Base'] -
+        clean_merged_data['AT_xG_Season_Base']
+    )
 
-    # ---------------------------------------------------------
-    # STABLE OFFLINE ADJUSTMENT (ELIMINATES HOME-WIN BIAS)
-    # ---------------------------------------------------------
 
-    # 1. Calculate Quality Boosts (Long-term anchor)
+    # ================= STABLE OFFLINE ADJUSTMENT =================
+
+    clean_merged_data['HT_Quality_Boost'] = 1.0
+    clean_merged_data['AT_Quality_Boost'] = 1.0
+
     if 'ht_match_elo' in clean_merged_data.columns:
-        clean_merged_data['HT_Quality_Boost'] = 1.0 + (np.maximum(0, clean_merged_data['ht_match_elo'] - 1500) / 1000)
-        clean_merged_data['AT_Quality_Boost'] = 1.0 + (np.maximum(0, clean_merged_data['at_match_elo'] - 1500) / 1000)
-    else:
-        clean_merged_data['HT_Quality_Boost'] = 1.0
-        clean_merged_data['AT_Quality_Boost'] = 1.0
+        clean_merged_data['HT_Quality_Boost'] = 1.0 + (
+            np.maximum(0, clean_merged_data['ht_match_elo'] - 1500) / 1000
+        )
+        clean_merged_data['AT_Quality_Boost'] = 1.0 + (
+            np.maximum(0, clean_merged_data['at_match_elo'] - 1500) / 1000
+        )
 
-    # 2. Define Stable Venue Modifiers
-    # We replace the volatile L5/Rolling ratios with tight, quality-dependent constants.
-    # This prevents 'bad' home teams from being nerfed and 'lucky' away teams from being over-buffed.
-    
-    # Baseline: 5% boost for home, 5% tax for away
     clean_merged_data['HT_Home_Comfort'] = 1.05
     clean_merged_data['AT_Away_Resilience'] = 0.95
 
-    # Logic: Elite teams (>1900) don't get 'Away Tax'. 
-    # Logic: Weak home teams (<1700) don't get 'Home Boost'.
     if 'ht_match_elo' in clean_merged_data.columns:
-        clean_merged_data.loc[clean_merged_data['ht_match_elo'] < 1700, 'HT_Home_Comfort'] = 1.0
-        clean_merged_data.loc[clean_merged_data['at_match_elo'] > 1900, 'AT_Away_Resilience'] = 1.0
+        clean_merged_data.loc[
+            clean_merged_data['ht_match_elo'] < 1700, 'HT_Home_Comfort'
+        ] = 1.0
+        clean_merged_data.loc[
+            clean_merged_data['at_match_elo'] > 1900, 'AT_Away_Resilience'
+        ] = 1.0
 
-    # 3. Apply Consolidated Intensity Adjustment
-    adjust_targets = ['expected_goals', 'xg_on_targetot', 'big_chances', 'touches_in_opposition_box', 'possession']
+    # Ensure SoS is stable
+    if 'SoS_Ratio' in clean_merged_data.columns:
+        clean_merged_data['SoS_Ratio'] = clean_merged_data['SoS_Ratio'].clip(0.7, 1.3)
+    else:
+        clean_merged_data['SoS_Ratio'] = 1.0
+
+    adjust_targets = [
+        'expected_goals_xg',
+        'big_chances',
+        'touches_in_opposition_box',
+        'possession'
+    ]
 
     for base in adjust_targets:
         diff_col = f'{base}_Diff'
-        h_col = f'HT_{base}' 
-        a_col = f'AT_{base}'
-        
+        h_col = f'home_{base}'
+        a_col = f'away_{base}'
+
         if h_col in clean_merged_data.columns and a_col in clean_merged_data.columns:
-            # A. Apply Stable Venue modifiers (The multipliers are now 1.05 / 0.95 instead of 1.25 / 0.8)
             h_val = clean_merged_data[h_col] * clean_merged_data['HT_Home_Comfort']
             a_val = clean_merged_data[a_col] * clean_merged_data['AT_Away_Resilience']
-            
-            # B. Calculate Difference
             raw_diff = h_val - a_val
-            
-            # C. Apply Quality and SoS (This is where the 'Historical' power lies)
-            boost_factor = clean_merged_data['HT_Quality_Boost'] / clean_merged_data['AT_Quality_Boost']
-            clean_merged_data[diff_col] = raw_diff * boost_factor * clean_merged_data['SoS_Ratio']
+            boost_factor = (
+                clean_merged_data['HT_Quality_Boost'] /
+                clean_merged_data['AT_Quality_Boost']
+            )
+            clean_merged_data[diff_col] = (
+                raw_diff * boost_factor * clean_merged_data['SoS_Ratio']
+            )
 
-    # 4. Handle Quality Index (Now correctly reflects stabilized xG_Diff)
-    clean_merged_data['Quality_Index_Diff'] = clean_merged_data['expected_goals_Diff']
+    clean_merged_data['Quality_Index_Diff'] = clean_merged_data['expected_goals_xg_Diff']
 
-    # 4. Handle Quality Index (Calculated using the now-boosted xG_Diff)
-    # Online logic: feature_dict['Quality_Index_Diff'] = feature_dict.get('expected_goals_Diff', 0.0)
-    # We don't multiply by SoS again because it's already inside expected_goals_Diff.
-    clean_merged_data['Quality_Index_Diff'] = clean_merged_data['expected_goals_Diff']
-    
-    # 5. CLIPPING (Applied last to ensure outliers are handled after all scaling)
-    if 'xg_on_targetot_Diff' in clean_merged_data.columns:
-        is_apex = (clean_merged_data['ht_match_elo'] > 1875) | (clean_merged_data['at_match_elo'] > 1875)
-        clean_merged_data['xg_on_targetot_Diff'] = np.where(
-            is_apex, 
-            clean_merged_data['xg_on_targetot_Diff'].clip(-4.0, 4.0), 
-            clean_merged_data['xg_on_targetot_Diff'].clip(-1.5, 1.5)
-        )
+    # # Proper clipping 
+    # if 'xg_on_target_xgot_Diff' in clean_merged_data.columns:
+    #     is_apex = (
+    #         (clean_merged_data['ht_match_elo'] > 1875) |
+    #         (clean_merged_data['at_match_elo'] > 1875)
+    #     )
+    #     clean_merged_data['xg_on_target_xgot_Diff'] = np.where(
+    #         is_apex,
+    #         clean_merged_data['xg_on_target_xgot_Diff'].clip(-4.0, 4.0),
+    #         clean_merged_data['xg_on_target_xgot_Diff'].clip(-1.5, 1.5)
+    #     )
 
+    # ================= FINAL DROP =================
+
+    original_cols_to_drop = list(set(original_cols_to_drop))
+    future_cols_to_drop = RAW_STATS + ODDS + MATCH_STATS
+    union_cols_to_drop = list(
+        set(future_cols_to_drop).union(set(original_cols_to_drop))
+    )
+
+    data_analysis = clean_merged_data.copy()
     final_merged = clean_merged_data.drop(columns=union_cols_to_drop, errors='ignore')
-    
+
     gold_check = [
-        'Rest_Days_Diff', 'GK_Efficiency_Diff', 'Field_Tilt_Diff', 
-        'Elo_Gap_Diff', 'Elo_Symmetry', 'Stalemate_Score', 'HT_Avg_Opponent_Elo_L5', 
-        'AT_Avg_Opponent_Elo_L5', 'SoS_Ratio', 'Quality_Index_Diff',
+        'Rest_Days_Diff', 'GK_Efficiency_Diff', 'Field_Tilt_Diff',
+        'Elo_Gap_Diff', 'Elo_Symmetry', 'Stalemate_Score',
+        'HT_Avg_Opponent_Elo_L5', 'AT_Avg_Opponent_Elo_L5',
+        'SoS_Ratio', 'Quality_Index_Diff',
         'HT_Home_Comfort', 'AT_Away_Resilience'
     ]
+
     found_gold = [f for f in gold_check if f in final_merged.columns]
     print(f"GOLD FEATURES VERIFIED: {found_gold}")
-    
+
     return data_analysis, final_merged

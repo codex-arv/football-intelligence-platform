@@ -1,3 +1,7 @@
+# this file is responsible for fetching data (players+match, players, match, team) from a public GitHub repo and further archive the data
+# data archiving is done to freeze the data the model was trained on and also to make our system fault-tolerant
+# next, all these data are read and stored in individual dataframes, collectively stored in one dictionary
+
 import os
 import requests
 import pandas as pd
@@ -5,13 +9,9 @@ from typing import List, Dict, Optional
 import shutil
 from dotenv import load_dotenv
 
-# =====================================================================================
-# CONFIG
-# =====================================================================================
-
+# configuration
 DIRECTORY = r'C:\PROJECT\data\raw-data'
 ARCHIVE_DIR = r'C:\PROJECT\data\archive-data'
-
 
 owner = "olbauday"
 repo = "FPL-Elo-Insights"
@@ -31,10 +31,7 @@ file_dir_map = {
     "matches.csv": os.path.join(DIRECTORY, "match-data-github-25")
 }
 
-# =====================================================================================
-# STEP 0 — GITHUB INGESTION (AUTOMATED)
-# =====================================================================================
-
+# github data ingestion via api
 def download_github_gw_data(base_path: str, current_gw: int):
     headers = {
         "Authorization": f"token {GITHUB_TOKEN}",
@@ -53,24 +50,25 @@ def download_github_gw_data(base_path: str, current_gw: int):
     for item in contents:
         name = item['name']
 
+        # recursively, call this function till we reach at the leaf level of a directory by extracting the GW number
+        # by ignoring all directories with GW number > current GW number, we only extract the files upto the current GW number
         if item['type'] == 'dir' and name.startswith('GW'):
             try:
                 gw_number = int(name[2:])
             except ValueError:
                 continue
-
-            if gw_number > current_gw:
+            if gw_number > current_gw: 
                 continue
-
             new_path = f"{base_path}/{name}"
             download_github_gw_data(new_path, current_gw)
 
+        # if a file is encountered which corresponds to our 'file_dir_map', we download the file and save it to our local path
         elif item['type'] == 'file' and name in file_dir_map:
             download_url = item.get('download_url')
             if not download_url:
                 continue
 
-            gw_folder = base_path.split('/')[-1]  # GWxx
+            gw_folder = base_path.split('/')[-1]  
             target_root = file_dir_map[name]
             local_dir = os.path.join(target_root, gw_folder)
             os.makedirs(local_dir, exist_ok=True)
@@ -85,22 +83,17 @@ def download_github_gw_data(base_path: str, current_gw: int):
                     
             archive_file(local_path, gw_folder, name)
 
-# =====================================================================================
-# STEP 1 — SAVE TO DATA ARCHIVES FOR REPRODUCIBILITY
-# =====================================================================================
-
+# archive the files for reproducibility
 def archive_file(local_path: str, gw_folder: str, filename: str):
-    season = "2025-2026"  # you can make this dynamic later
+    season = "2025-2026"  
     archive_path = os.path.join(ARCHIVE_DIR, season, gw_folder, filename)
 
     if not os.path.exists(archive_path):
         os.makedirs(os.path.dirname(archive_path), exist_ok=True)
         shutil.copy2(local_path, archive_path)
         print(f"Archived -> {archive_path}")
-# =====================================================================================
-# STEP 2 — YOUR ORIGINAL LOADER (UNCHANGED)
-# =====================================================================================
 
+# load the data from system in a dataframe
 def load_gw_data(folder: str, csv_file: str, gw_num: int,
                  gw_column_name: str = 'Game Week') -> Optional[pd.DataFrame]:
 
@@ -127,23 +120,19 @@ def load_csv(folder: str, csv_file: str) -> Optional[pd.DataFrame]:
         return pd.read_csv(csv_path)
     return None
 
-
+# initial data normalization to ensure consistent & normalized data throughout
 def preprocess_matches_df(df: pd.DataFrame) -> pd.DataFrame:
     df['kickoff_time'] = pd.to_datetime(df['kickoff_time'], format="mixed", errors='coerce')
     df['gameweek'] = df['gameweek'].astype(int, errors='ignore')
     return df.sort_values(by=['gameweek', 'kickoff_time']).reset_index(drop=True)
 
+# main function
+def load_all_data(current_gw: int = 22) -> Dict[str, pd.DataFrame]:
 
-# =====================================================================================
-# MAIN PIPELINE
-# =====================================================================================
-
-def load_all_data(current_gw: int = 21) -> Dict[str, pd.DataFrame]:
-
-    print("\n=== UPDATING 2025 DATA FROM GITHUB ===\n")
+    print("\nUPDATING 2025 DATA FROM GITHUB!\n")
     download_github_gw_data(path_25, current_gw)
 
-    print("\n=== LOADING RELATIONAL DATA ===\n")
+    print("\nLOADING RELATIONAL DATA!\n")
     dataframes: Dict[str, pd.DataFrame] = {}
 
     # 2024 (static)
@@ -160,5 +149,5 @@ def load_all_data(current_gw: int = 21) -> Dict[str, pd.DataFrame]:
     dataframes['matches_25'] = preprocess_matches_df(matches_25)
     dataframes['teams_25'] = load_csv("team-data-25", "teams25.csv")
 
-    print("\n=== DATA LOADING COMPLETE ===\n")
+    print("\nDATA LOADING COMPLETE\n")
     return dataframes

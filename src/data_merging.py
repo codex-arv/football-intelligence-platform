@@ -1,3 +1,6 @@
+# this file is majorly responsible for maintaining one consistent dataframe by merging historical match data with the teams-matches data
+# also aggregating the player based rolling features
+
 import pandas as pd
 from typing import Tuple
 import joblib
@@ -13,7 +16,8 @@ def load_merge_data(all_data: Tuple[pd.DataFrame, pd.DataFrame,
     print("="*156)
     print()
     print(f"{" "*66}STARTING DATA MERGING!\n")
-    # ---- FIX BAD DATES IN teams_matches (only these 3 rows) ----
+
+    # fixing faulty dates for specific fixtures
     teams_matches.loc[
         (teams_matches['season'] == 2025) &
         (teams_matches['HomeTeam'] == 'Brentford') &
@@ -41,9 +45,7 @@ def load_merge_data(all_data: Tuple[pd.DataFrame, pd.DataFrame,
     file_path_combined_teams_matches = os.path.join(OUTPUT_DIR, 'combined_tm.pkl')
     joblib.dump(teams_matches, file_path_combined_teams_matches)
 
-    joblib.dump(master_df, "m1.pkl")
-    joblib.dump(teams_matches, "t1.pkl")
-
+    # multi-key merge 1 (master df and teams+matches)
     merged_1 = master_df.merge(
         teams_matches,
         on=['Date', 'season', 'HomeTeam', 'AwayTeam'],
@@ -59,6 +61,8 @@ def load_merge_data(all_data: Tuple[pd.DataFrame, pd.DataFrame,
         'MID':fe_mid,
         'FWD':fe_fwd
     }
+
+    # converting player-level rolling form into team-level positional strength
     aggregated_data = []
     for position, stats in player_stats_df.items():
         print(f"Aggregating {position} stats...")
@@ -67,6 +71,7 @@ def load_merge_data(all_data: Tuple[pd.DataFrame, pd.DataFrame,
         print(f"{position} stats aggregated successfully! Shape: {agg_df.shape}\n")
         agg_df.columns = ['match_id', 'team_code'] + [f'{position}_{col}' for col in rolling_cols]
         aggregated_data.append(agg_df)
+        
     final_players_stats = aggregated_data[0]
     for data in aggregated_data[1:]:
         final_players_stats = final_players_stats.merge(
@@ -80,7 +85,6 @@ def load_merge_data(all_data: Tuple[pd.DataFrame, pd.DataFrame,
     player_features = [col for col in home_final_players_stats.columns if col not in ['match_id', 'team_code']]
     home_rename_map = {col: f'HT_TEMP_{col}' for col in player_features}
     home_final_players_stats = home_final_players_stats.rename(columns=home_rename_map)
-    joblib.dump(merged_1, "merged_1.pkl")
     merged_2a = merged_1.merge(
         home_final_players_stats,
         left_on=['match_id', 'HT_code'],
@@ -110,5 +114,4 @@ def load_merge_data(all_data: Tuple[pd.DataFrame, pd.DataFrame,
     merged_data = merged_2b.copy()
     print(f"Shape of the merged data: {merged_data.shape}\n")
     print(f"{" "*50}RELATIONAL DATA HAS BEEN SUCCESSFULLY MERGED WITH THE MASTER DATA!\n")
-    joblib.dump(merged_data, "A.pkl")
     return merged_data
