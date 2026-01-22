@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-
+import ScrollToTop from "@/components/ui/ScrollToTop";
 import Index from "./pages/Index";
 import Prediction from "./pages/prediction";
 import PlayerStatistics from "./pages/PlayerStatistics"
@@ -15,25 +15,7 @@ import NotFound from "./pages/prediction";
 import KnowClubs from "./pages/knowclubs";
 import Contact from "./pages/Contact";
 
-
 const queryClient = new QueryClient();
-
-// ⭐ Scroll-to-top component (added)
-function ScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    // Disable browser's automatic scroll restoration
-    if ("scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-
-    window.scrollTo(0, 0);
-  }, [pathname]);
-
-  return null;
-}
-
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -41,10 +23,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-
-        {/* ⭐ Always scrolls to top when route changes */}
         <ScrollToTop />
-
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/prediction" element={<Prediction />} />
@@ -56,7 +35,6 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

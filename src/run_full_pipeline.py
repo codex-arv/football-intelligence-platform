@@ -1,6 +1,6 @@
 import pandas as pd
 from data_ingestion1 import load_merge_pl_data, DIRECTORY
-from data_ingestion2 import load_all_data
+from data_ingestion2_pipelined import load_all_data
 from feature_engineering import run_full_feature_engineering
 from feature_engineering_ewma import run_full_feature_engineering_ewma
 from relational_data import work_with_relational_data

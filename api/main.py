@@ -23,6 +23,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:8080",
+                   "http://10.58.74.41:8080",
                    "https://football-intelligence-api-o1dh.onrender.com",
                    "https://the90thminute.vercel.app"],
     allow_credentials=True,

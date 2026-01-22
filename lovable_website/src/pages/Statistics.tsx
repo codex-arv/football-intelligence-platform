@@ -81,19 +81,41 @@ const Statistics = () => {
 
   const fetchMatches = async () => {
     if (!season || !matchday) return;
+
     setLoading(true);
     setMatches([]);
     setSelectedMatch(null);
     setBasicStats(null);
+
     try {
       const res = await fetch(`${API_BASE_URL}/api/v1/stats/matches?season=${season}&gameweek=${matchday}`);
       if (!res.ok) throw new Error("Failed to load matches");
-      setMatches(await res.json());
+
+      const data = await res.json();
+      setMatches(data);
+
+      // 👇 scroll ONLY here
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (!statsRef.current) return;
+
+          const yOffset = -80;
+          const y =
+            statsRef.current.getBoundingClientRect().top +
+            window.pageYOffset +
+            yOffset;
+
+          window.scrollTo({ top: y });
+        }, 0);
+      });
+
     } catch (err) {
       console.error(err);
     }
+
     setLoading(false);
   };
+
 
   useEffect(() => {
     if (matches.length === 0 || !statsRef.current) return;
@@ -113,7 +135,7 @@ const Statistics = () => {
   const selectMatch = async (m: any) => {
     setSelectedMatch(m);
     setBasicStats(null);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo(0, 0);
 
     try {
       const res = await fetch(
