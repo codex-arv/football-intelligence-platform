@@ -233,7 +233,7 @@ def drop_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def data_formatting(df: pd.DataFrame) -> pd.DataFrame:
     df = df[:-1].copy()
-    df = df.tail(590).reset_index(drop=True).copy()
+    df = df.tail(600).reset_index(drop=True).copy()
     df.loc[:379, 'season'] = 2024
     df.loc[380:, 'season'] = 2025
     df['season'] = df['season'].astype(int)

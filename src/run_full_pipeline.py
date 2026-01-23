@@ -29,7 +29,9 @@ fe_gk_stats, fe_def_stats, fe_mid_stats, fe_fwd_stats, final_teams_matches = wor
 merged_tuples = (clean_df, fe_gk_stats, fe_def_stats, fe_mid_stats, fe_fwd_stats, final_teams_matches)
 merged_tuples_transformed = (transformed_df, fe_gk_stats, fe_def_stats, fe_mid_stats, fe_fwd_stats, final_teams_matches)
 merged_df = load_merge_data(all_data=merged_tuples)
+print(merged_df.groupby("season")["gameweek"].min())
 merged_transformed_df = load_merge_data(all_data=merged_tuples_transformed)
+print(merged_transformed_df.groupby("season")["gameweek"].min())
 
 # 6. Clean the merged data, perform Feature Engineering and Feature Reduction
 cleaned_merged_data = merged_data_cleaning(merged_data=merged_df)

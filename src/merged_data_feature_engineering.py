@@ -241,15 +241,18 @@ def merged_data_feature_manipulation(clean_merged_data: pd.DataFrame) -> Tuple[p
     # Combine all matches into one timeline per team
     all_games_long = pd.concat([home_side_long, away_side_long]) \
         .sort_values(['Team', 'Date'])
-
+    
     # Rolling long-term xG baseline (shifted to avoid leakage)
     all_games_long['xG_Season_Base'] = (
         all_games_long
             .groupby('Team')['xG']
             .transform(
-                lambda x: x.shift(1).rolling(window=15, min_periods=5).mean()
+                lambda x: x.shift(1).rolling(window=15, min_periods=1).mean()
             )
     )
+
+    all_games_long['xG_Season_Base'] = all_games_long['xG_Season_Base'].fillna(1.2)
+
 
     # Merge back for Home Team
     clean_merged_data = clean_merged_data.merge(

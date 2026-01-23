@@ -70,30 +70,31 @@ const Index = () => {
           </h2>
           
           <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
-            <span className="font-bold">The 90<sup>th</sup> Minute</span> is a data-driven football analytics platform applying 
-            modern machine learning and statistical modeling to match outcome prediction and performance analysis. 
-            It moves beyond intuition-based forecasts, emphasizing reproducibility and interpretability.
+            <span className="font-bold italic">The 90<sup>th</sup> Minute</span> is a data-driven football intelligence and analytics platform created to turn 
+            raw match data into structured, meaningful understanding of the game. Instead of viewing football as isolated results 
+            or short-term narratives, the platform treats every match, player and club as part of a connected data ecosystem where 
+            performance patterns are calculated and compared over time. By combining disciplined data engineering and
+            statistical modeling, it provides a unified environment where users can explore how the 
+            game unfolds from multiple perspectives — predictive, analytical and contextual — all supported by the same reliable 
+            data foundation.
           </p>
 
           <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
-           The platform treats each football match as a structured learning problem rather than a purely sequential event. 
-           Using historical Premier League data, the system integrates team-level performance metrics, rolling form indicators, 
-           xG/xA dynamics and calculated home-away advantage to model match behavior under varying conditions.
+            The platform is built on three pillars: a machine learning prediction engine trained on recent Premier League seasons which follows
+            a hybrid approach, blended probabilistic classification with regression-based scorelines, 
+            a statistics layer providing structured access to historical match and player data through a unified API, enabling consistent exploration
+            of performance across seasons and gameweeks and a club knowledge base capturing the history and identity of every team through curated datasets.
           </p>
 
           <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
-            The predictive layer follows a hybrid modeling approach, combining probabilistic classification with regression-based 
-            score estimation. This design enables stable outcome predictions while remaining sensitive to statistically meaningful 
-            shifts in team performance, balancing robustness with interpretability.          
-          </p>
-
-          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
-            Beyond prediction, the platform offers structured access to match and player statistics through a unified backend, ensuring consistent, reproducible and versioned data pipelines between development and production.
+            All components share the same clean, versioned data foundation, allowing users to explore past matches, player 
+            contributions and club context through a consistent backend.
           </p>
 
           <p className="text-lg md:text-xl text-foreground/80 px-14 sm:px-0 leading-relaxed tracking-[0.01em]">
             Welcome to the precision of <span className="font-bold italic">The 90<sup>th</sup> Minute!</span>
           </p>
+
 
 
           <div className="h-px w-32 bg-gradient-to-r from-transparent via-secondary to-transparent mx-auto mt-12" />
