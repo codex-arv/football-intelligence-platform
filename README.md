@@ -1,6 +1,6 @@
 # The 90ᵗʰ Minute
 
-*Intelligent Football Analytics & Insights for Premier League Matches*
+*Real-Time Football Intelligence and Analytics Platform for Premier League*
 
 ---
 
@@ -115,8 +115,8 @@ This project demonstrates the **complete ML lifecycle in production** — from d
 ## Installation & Local Setup
 
 ```bash
-git clone https://github.com/codex-arv/football-intelligence-platform.git
-cd football-intelligence-platform
+git clone https://github.com/codex-arv/real-time-premier-league-intelligence-platform.git
+cd real-time-premier-league-intelligence-platform
 pip install -r requirements.txt
 uvicorn api.main:app --port 5005 --reload
 ```
@@ -212,7 +212,7 @@ The container bundles:
 ## Repository & Live Demo
 
 **GitHub Repository**  
-https://github.com/codex-arv/football-intelligence-platform
+https://github.com/codex-arv/real-time-premier-league-intelligence-platform
 
 **Live Application**  
 https://the90thminute.vercel.app
