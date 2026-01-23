@@ -44,8 +44,8 @@ const Contact = () => {
               Background
             </h2>
             <p className="text-lg text-white/80 tracking-[0.03em] leading-relaxed">
-              I am Aarav Srivastava, a B.Tech Computer Science & Engineering student, in my 6th semester at KIIT University,
-              currently maintaining a CGPA of 9.72. I am driven by a strong interest in
+              I am <strong>Aarav Srivastava</strong>, a B.Tech <strong>Computer Science & Engineering</strong> student, in my 6th semester at <strong>KIIT University</strong>,
+              currently maintaining a <strong>CGPA of 9.72</strong>. I am driven by a strong interest in
               machine learning and data analytics, with a focus on applying data-driven
               approaches to practical, real-world problems. My academic and project
               experience includes exposure to end-to-end ML workflows, performance-focused model evaluation and relevant research publications in IEEE.

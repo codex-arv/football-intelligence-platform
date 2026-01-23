@@ -217,7 +217,7 @@ const Footer = () => {
           viewport={{ once: true }}
           className="text-center text-foreground/80 text-sm"
         >
-          © 2026 The 90<sup>th</sup> Minute. All rights reserved.
+          &copy; 2026 Aarav Srivastava. All rights reserved.
         </motion.div>
 
         {/* Disclaimer */}
