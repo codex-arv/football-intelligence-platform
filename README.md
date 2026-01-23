@@ -1,4 +1,4 @@
-# The 90ᵗʰ Minute 
+# The 90ᵗʰ Minute
 
 *Intelligent Football Analytics & Insights for Premier League Matches*
 
@@ -18,72 +18,97 @@
 10. [API Endpoints](#api-endpoints)
 11. [Future Enhancements](#future-enhancements)
 12. [Credits & Acknowledgements](#credits--acknowledgements)
-13. [Repository](#repository)
+13. [Repository & Live Demo](#repository--live-demo)
 
 ---
 
 ## Project Overview
 
-**The 90th Minute** is a full-stack **Machine Learning platform** for Premier League match predictions and player performance analytics. It combines historical match data, player statistics, and fixture insights to deliver **accurate match outcome predictions**, **scoreline forecasts**, and **real-time player analytics**.
+**The 90ᵗʰ Minute** is an end-to-end Machine Learning and Full-Stack platform for Premier League match prediction, match analysis and player performance analytics.
 
-The platform demonstrates the complete ML lifecycle: data collection, preprocessing, model training, evaluation, online API inference, Docker-based containerized deployment, and automated CI/CD pipelines. Production-ready deployment is available on **Render** (backend) and **Vercel** (frontend), with scalable architecture.
+The system combines historical match data, player-level statistics and contextual team strength metrics to generate:
+
+- Match outcome probabilities
+- Predicted scorelines
+- Player performance insights for individual fixtures
+
+This project demonstrates the **complete ML lifecycle in production** — from data consolidation and feature engineering to model training, API inference, containerized deployment and CI/CD automation.
 
 ---
 
 ## Features
 
-* Predict match outcomes and scorelines using historical and live data
-* Real-time player performance insights (FPL & match data)
-* RESTful API for frontend integration or third-party applications
-* Modular ML pipeline to extend to new leagues or datasets
-* CI/CD-enabled Docker deployment for reproducibility
-* Blended predictions: **XGBoost Classifier** for match outcomes and **Random Forest Regressor** for goals
-* Dynamic weighting using team ELO and match context
+- Blended ML predictions using **XGBoost (classification)** and **Random Forest (regression)**
+- Dynamic feature engineering using **ELO ratings**, venue modifiers and rolling player statistics
+- RESTful **FastAPI** backend for real-time inference
+- **React + Tailwind CSS** dashboard for interactive visualization
+- Modular data pipeline extendable to other leagues and datasets
+- Dockerized backend for reproducible deployments
+- Automated CI/CD pipelines for seamless production updates
 
 ---
 
 ## Architecture & Workflow
 
-**Offline Training Pipeline:**
+### Offline Training Pipeline
 
-* Preprocess historical match and player data
-* Feature engineering: differences, EWMA, venue modifiers, ELO adjustments
-* Train ML models:
+1. Consolidation of multi-season match, team and player datasets
+2. Relational data merging and cleaning
+3. Position-specific player feature engineering using rolling match windows
+4. Contextual match feature creation (ELO differences, venue strength, possession, defensive metrics)
+5. Model training:
+   - **XGBoost Classifier** → Match outcome prediction
+   - **Random Forest Regressor** → Home and away goal prediction
+6. Model artifacts stored for online inference
 
-  * **XGBoost Classifier** for match outcome prediction
-  * **Random Forest Regressor** for home/away goals
-* Store trained models and artifacts for inference
+---
 
-**Online Prediction Pipeline:**
+### Online Prediction Pipeline
 
-* FastAPI backend serves real-time predictions
-* Loads models and datasets on startup
-* Computes dynamic features for requested matches (EWMA, ELO, venue adjustments, SoS ratios)
-* Blends classification and regression predictions with dynamic weighting
-* Returns JSON with probabilities, predicted scoreline, winner, confidence levels, and blending weights
-* Implements lazy loading to optimize cold-start performance on free-tier Render deployments
+- FastAPI backend serves real-time predictions
+- Loads trained models and processed datasets on startup
+- Computes dynamic features per requested match (EWMA, ELO, venue adjustments, strength of schedule and many more)
+- Blends classification and regression predictions with dynamic weighting
+- Returns structured JSON with probabilities, predicted scoreline, winner, confidence and blending weights
+- Lazy loading minimizes cold-start latency on Render free tier deployments
 
-**Frontend Interaction:**
+---
 
-* React + Tailwind CSS dashboard
-* Calls backend API for predictions, statistics, and club information
-* Displays live probabilities and historical insights
+### Frontend Interaction
+
+- React dashboard communicates with backend APIs
+- Displays match predictions, club information and match statistics
+- Visualizes probabilities and historical insights
 
 ---
 
 ## Tech Stack
 
-* **Backend:** Python, FastAPI, Pandas, NumPy, Scikit-learn, XGBoost, Random Forest
-* **Frontend:** React, HTML, Tailwind CSS
-* **Data & ML:** Joblib, Numpy, Pandas, Scikit-learn
-* **DevOps:** Docker, Render, Vercel, GitHub Actions (CI/CD)
+**Backend**
+
+- Python, FastAPI
+- Pandas, NumPy
+- Scikit-learn, XGBoost, Random Forest
+- Joblib
+
+**Frontend**
+
+- React
+- Tailwind CSS
+
+**DevOps**
+
+- Docker
+- GitHub Actions (CI/CD)
+- Render (backend hosting)
+- Vercel (frontend hosting)
 
 ---
 
 ## Datasets & Sources
 
-* [**Football-Data**](https://www.football-data.co.uk) — Multi-decade historical match results and fixture statistics
-* [**FPL Core Insights (GitHub)**](https://github.com/olbauday/FPL-Core-Insights) — Player metrics and match insights, including FPL API data
+- [Football-Data](https://www.football-data.co.uk/): Historical match results and fixture statistics
+- [FPL Core Insights (GitHub)](https://github.com/olbauday/FPL-Core-Insights): Player metrics and match insights derived from FPL and event data
 
 ---
 
@@ -93,18 +118,19 @@ The platform demonstrates the complete ML lifecycle: data collection, preprocess
 git clone https://github.com/codex-arv/football-intelligence-platform.git
 cd football-intelligence-platform
 pip install -r requirements.txt
-uvicorn api.main:app --reload --port 5005
+uvicorn api.main:app --port 5005 --reload
 ```
 
-**Local API docs:** [http://localhost:5005/docs](http://localhost:5005/docs)
+**Local API Docs:**  
+http://localhost:5005/docs
 
-**Note:** For production deployment, use the backend URL from Render.
+> For production usage, use the deployed Render backend URL.
 
 ---
 
 ## Docker & Containerized Deployment
 
-Project is fully containerized with separate backend and frontend containers.
+The backend is fully containerized to guarantee reproducibility of the ML environment, dependencies and data artifacts.
 
 ```bash
 # Build backend container
@@ -114,74 +140,79 @@ docker build -t football-api .
 docker run -p 8000:8000 football-api
 ```
 
-Containers include all dependencies, ML artifacts, and preprocessing logic.
+The container bundles:
+ * Trained model artifacts
+ * Feature engineering pipelines
+ * Historical datasets
+ * All runtime dependencies
 
 ---
 
 ## CI/CD Pipelines
 
-* GitHub Actions triggers automatic builds and deployments on push
-* Backend deployed to Render automatically
-* Frontend deployed to Vercel automatically
-* Ensures production-ready models and feature pipelines stay in sync with code
+- GitHub Actions triggers on every push to the main branch
+- Backend is automatically built and deployed to Render
+- Frontend is automatically built and deployed to Vercel
+- Ensures model artifacts, feature pipelines and API remain synchronized with code
 
 ---
 
 ## Frontend & Backend Integration
 
-**Frontend routes:**
+**Frontend Routes**
 
-* `/prediction` — Match Predictions
-* `/knowclubs` — Club Information
-* `/statistics` — Matches List & Stats
-* `/workflow` — Prediction Pipeline Workflow
-* `/contact` — Contact Form
+- `/prediction` — Match Predictions
+- `/knowclubs` — Club Information
+- `/statistics` — Match List and Player Statistics
+- `/workflow` — Prediction Pipeline Workflow
+- `/contact` — Contact Form
 
-**Backend responsibilities:**
+**Backend Responsibilities**
 
-* Dynamic feature calculation per match
-* Classification + regression blending with ELO-based weights
-* Error handling and CORS policies
+- Dynamic feature computation per fixture
+- Classification and regression blending with ELO-based weights
+- Dataset health checks and statistics endpoints
+- CORS handling and robust error management
 
 ---
 
 ## API Endpoints
 
-* `GET /health` — Backend health check
-* `GET /api/v1/teams` — List of all teams
-* `POST /api/v1/predict` — Accepts `home_team` and `away_team`; returns winner, probabilities, scoreline, confidence, blending weights
-* `GET /api/v1/stats/health` — Dataset readiness info
-* `GET /api/v1/stats/matches` — Match list by season & gameweek
-* `GET /api/v1/stats/match/basic` — Basic match statistics
-* `GET /api/v1/stats/players` — Player statistics for a match
-* `GET /api/v1/club?club=<club_name>` — Full club JSON
+| Method | Endpoint | Description |
+|-------|----------|-------------|
+| GET | `/health` | Backend health check |
+| GET | `/api/v1/teams` | List of teams |
+| POST | `/api/v1/predict` | Match prediction |
+| GET | `/api/v1/stats/health` | Dataset readiness information |
+| GET | `/api/v1/stats/matches` | Match list by season and gameweek |
+| GET | `/api/v1/stats/match/basic` | Basic match statistics |
+| GET | `/api/v1/stats/players` | Player statistics for a match |
+| GET | `/api/v1/club?club=<name>` | Club information JSON |
 
 ---
 
 ## Future Enhancements
 
-* Integrate live bookmaker odds for more accurate predictions
-* Graphical dashboards for team & player performance trends
-* Expand to other leagues beyond Premier League
-* Automated model retraining on new data
-* Integrate RAG/LLM for club information retrieval
+- Integration of live bookmaker odds
+- Visual dashboards for team and player performance trends
+- Expansion to additional football leagues
+- Automated model retraining with new season data
+- RAG/LLM integration for intelligent club information retrieval
 
 ---
 
 ## Credits & Acknowledgements
 
-* **Datasets:** Football-Data, FPL Core Insights (GitHub)
-* **Project Inspiration:** End-to-end football analytics and predictive modeling
-* **Frontend & DevOps:** React, Tailwind CSS, Docker, Render, Vercel
+- Football-Data for historical datasets
+- FPL community data for player metrics
+- React, Tailwind, Docker, Render and Vercel for infrastructure and deployment
 
 ---
 
-## Repository
+## Repository & Live Demo
 
-GitHub: [https://github.com/codex-arv/football-intelligence-platform](https://github.com/codex-arv/football-intelligence-platform)
+**GitHub Repository**  
+https://github.com/codex-arv/football-intelligence-platform
 
----
-
-## Deployed Project Website
-
-GitHub: [https://the90thminute.vercel.app](https://the90thminute.vercel.app)
+**Live Application**  
+https://the90thminute.vercel.app
