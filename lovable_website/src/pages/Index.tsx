@@ -73,7 +73,11 @@ const Index = () => {
             <span className="font-bold italic">The 90<sup>th</sup> Minute</span> is a data-driven football intelligence and analytics platform created to turn 
             raw match data into structured, meaningful understanding of the game. Instead of viewing football as isolated results 
             or short-term narratives, the platform treats every match, player and club as part of a connected data ecosystem where 
-            performance patterns are calculated and compared over time. By combining disciplined data engineering and
+            performance patterns are calculated and compared over time. 
+          </p>
+
+          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed mb-6 tracking-[0.01em]">
+          By combining disciplined data engineering and
             statistical modeling, it provides a unified environment where users can explore how the 
             game unfolds from multiple perspectives — predictive, analytical and contextual — all supported by the same reliable 
             data foundation.

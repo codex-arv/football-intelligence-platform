@@ -87,23 +87,23 @@ const Contact = () => {
             {[{
               icon: Brain, title: "Machine Learning & AI", description:
                 "Experience with supervised and unsupervised learning, model evaluation, and applied ML workflows using real datasets.",
-              stack: "Scikit-learn, TensorFlow, PyTorch, NumPy, Pandas",
+              stack: "Python, Scikit-learn, TensorFlow, PyTorch, NumPy, Pandas, n8n",
             }, {
               icon: Code, title: "Programming Languages", description:
                 "Strong command over problem-solving and implementation using multiple programming paradigms.",
-              stack: "Python, C/C++, Java",
+              stack: "Python, C/C++, Java, MATLAB",
             }, {
-              icon: Database, title: "Data & Analytics", description:
+              icon: Database, title: "Data, Analytics & Visualization", description:
                 "Hands-on experience in data cleaning, analysis, visualization, and structured querying.",
-              stack: "SQL, PostgreSQL, NumPy, Pandas, Matplotlib, Jupyter",
+              stack: "SQL, PostgreSQL, Excel, Pandas, Matplotlib, Seaborn, Jupyter",
             }, {
-              icon: Server, title: "Backend & APIs", description:
-                "Experience designing and consuming RESTful APIs with a focus on clean structure and scalability.",
-              stack: "FastAPI, Web Scraping, API Design",
+              icon: Server, title: "Backend, API Design & DevOps", description:
+                "Experience designing and consuming RESTful APIs with a focus on clean architecture, scalability and deployment.",
+              stack: "Python, FastAPI, Docker, Render, Swagger, Flask",
             }, {
               icon: Cpu, title: "Core CS Foundations", description:
                 "Strong conceptual understanding of essential computer science subjects supporting scalable systems.",
-              stack: "DSA, OOP, Operating Systems, Data Mining & Warehousing, Computer Networks",
+              stack: "Data Structures, Object-Oriented Programming, Operating Systems, Data Mining & Warehousing, Computer Networks"
             }].map((item, index) => (
               <motion.div
                 key={index}

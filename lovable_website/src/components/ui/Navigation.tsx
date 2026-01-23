@@ -34,7 +34,7 @@ const Navigation = () => {
     }
 
     if (hash === "#about") {
-      yOffset = isMobile ? -53 : -69; // 👈 mobile vs desktop
+      yOffset = isMobile ? -47 : -83; // 👈 mobile vs desktop
     }
 
     const y =
